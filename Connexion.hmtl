@@ -1,32 +1,52 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Css.css">
+    <link rel="stylesheet" href="Css.css?v=2">
     <title>Page de Connexion</title>
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="container" >
 
-        <h1>Connexion</h1>
+    <h1>Connexion</h1>
 
-        <form action="login.php" method="POST">
+    <form action="" method="POST">
 
-            <label for="username">Numéro de téléphone :</label>
-            <input type="tel" id="telephone" name="telephone" required>
+        <label for="telephone">Numero de telephone :</label>
+        <input
+            type="tel"
+            id="telephone"
+            name="telephone"
+            placeholder="Entrez votre numero de telephone"
+            required
+        >
 
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" required>
+        <label for="password">Mot de passe :</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Entrez votre mot de passe"
+            required
+        >
 
-            <input type="submit" value="Se connecter">
+        <p>
+            <a href="forgot_password.html">Mot de passe oublié ?</a>
+        </p>
 
-        </form>
-<p> <a href="forgot_password.html">Mot de passe oublié ?</a> </p>
-    </div>
+        <input type="submit" value="Se connecter" id="ConnexionButton">
+
+    </form>
+
+    
+
+</div>
+<script src="js.js"> </script>
 
 </body>
 </html>
