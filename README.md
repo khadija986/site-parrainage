@@ -2,15 +2,13 @@ Pour le Css :
 
 Font-family : Tahoma
 
-Le fond de la page pour l'instant : background-color: #fdfeff (blanc)
+Le fond de la page pour l'instant : background-color: #d0f9ff(blue cyan clair
 
-Pour le div de la connexion :  background-color: #83c3fc(bleu clair)
+Pour le div de la connexion :  background-color: #ffffff(blanc)
 
-Pour les ombres sous les input ( là ou on met les info): box-shadow: 5px 5px 5px 0px #1458b7(couleur bleu foncé)
+Pour les ombres sous les input ( là ou on met les info): box-shadow: 5px 5px 5px 0px #d0f9ff (bleu cyan clair)
 
-<img width="1233" height="925" alt="image" src="https://github.com/user-attachments/assets/446ea8bb-eba3-4cb5-a3ed-9f78b0f94a4d" />
-<img width="1187" height="703" alt="image" src="https://github.com/user-attachments/assets/74c0e11a-5a2a-4af8-8f4b-d31acd3a5ec5" />
-
+<img width="1354" height="1130" alt="image" src="https://github.com/user-attachments/assets/3c09a8ea-4569-40b1-8f8c-8f14ccf53040" />
 
 
 
