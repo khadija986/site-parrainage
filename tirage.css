@@ -96,3 +96,26 @@ gap: 8px;}
   object-fit: cover;
   background: green;
 }
+.nom{
+  min-height: 1.3rem;
+  font-size: large;
+  font-weight: 600;
+}
+.role{
+  margin-top: 4px;
+  color: antiquewhite;
+}
+#fleche{
+  font-size: 3rem;
+}
+.btn-tirage{
+  padding: 16px 44px;
+  border: 3px solid darkslategray;
+  box-shadow: 2px 2px 5px black;
+  color: rgb(32, 52, 52);
+  margin-bottom: 50px;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background:  rgb(51, 110, 110);
+}
