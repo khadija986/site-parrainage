@@ -90,13 +90,22 @@ label{
 }
 @media(max-width: 700px){
     form{
-        width: 85%;
+        width: 90%;
     }
     form h2{
         text-align: center;
+        margin-right: 50px;
     }
     #connect{
         text-align: center;
+        margin-right: 50px;
+    }
+    input{
+        width: 80%;
+    }
+    #h1_login{
+        margin-left: 5px;
+        font-weight: 600;
     }
     
 }
