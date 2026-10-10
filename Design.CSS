@@ -1,5 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #d0f9ff;
+    background: linear-gradient(to left, #58d4ed, #45ccaf);
 
     width: 100%;
     min-height: 100vh;
@@ -21,13 +26,14 @@ body {
 
     background-color: #ffffff;
 
-    padding: 30px;
+    padding: 1.5rem 2rem;
 
     border-radius: 20px;
 
     border: 1px solid #E2E8F0;
 
-    box-shadow: 0 10px 30px #8fbfed
+    box-shadow: 0 10px 30px #8fbfed;
+    margin: 50px auto;
 }
 
 
@@ -45,7 +51,7 @@ h1 {
 
 
 form {
-    width: 90%;
+    width: 100%;
     max-width: 320px;
     margin: 0 auto;
 }
@@ -69,11 +75,11 @@ input[type="tel"],
 input[type="text"],
 input[type="password"] {
 
-    width: 95%;
+    width: 100%;
 
     padding: 13px;
 
-    margin-bottom: 25px;
+    margin-bottom: 5px;
 
     box-sizing: border-box;
 
@@ -84,7 +90,6 @@ input[type="password"] {
 
     box-shadow: 0 2px 5px #d0f9ff;
 
-    transition: 0.2s;
      border-radius: 15px; 
 }
 
@@ -115,6 +120,7 @@ input[type="submit"] {
 
  border: 1px solid #8fbfed;
      border-radius: 20px; 
+     margin-top: 20px;
 }
 
 
@@ -122,26 +128,35 @@ input[type="submit"] {
 
 
 
-p {
-    margin: 0 0 20px 0;
-
-    text-align: right;
+button {
+    margin: 0 0 25px 0;
+   color: #4c9edd;
+    background-color: transparent;
+    border: right;
+   border: none;
+    margin-top: 10px;
+    display: flex;
+   margin-left: auto;
+   margin-bottom: 0;
+    
     
 }
 
 
-p a {
+button a {
     color: #4c9edd;
 
     text-decoration: none;
 
     font-size: 13px;
+   
 }
 
 
-p a:hover {
-    text-decoration: underline;
+button:hover {
+    text-decoration: underline rgb(76, 158, 221, 0.5);
 }
+
 
 
 .register {
