@@ -1,28 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Css.css">
-    <title>Mot de passe oublié</title>
-</head>
-<body>
-    <div class="container">
-        <h1>Mot de passe oublié</h1>
-        <form action="" method="POST">
-            <label for="email">Adresse e-mail :</label>
-            <input type="email" id="email" name="email" required>
-             <input   type="submit" value="Réinitialiser le mot de passe" id="ReinitialiserButton"> 
-            
+const ForgetButton = document.getElementById("ForgetButton");
+const RetourButton = document.getElementById("RetourButton");
+const ConnexionForm = document.getElementById("ConnexionForm");
+const ForgetForm = document.getElementById("ForgetForm");
 
-        </form>
-        <p> <a href="html.html">Retour à la page de connexion</a> </p>
-    </div>
+ForgetButton.addEventListener("click", function () {
+    ConnexionForm.style.display = "none";
+    ForgetForm.style.display = "block";
+});
+RetourButton.addEventListener("click", function () {
 
+    ForgetForm.style.display = "none";
+    ConnexionForm.style.display = "block";
 
-
-
-<script src="js.js"> </script>
-
-
-</html>
+});
