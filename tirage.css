@@ -29,6 +29,7 @@ header{
 .barre nav a:hover,
 .barre nav a[aria-current="page"]{
   color: bisque;
+  border-bottom-color: antiquewhite;
 }
 .tirage{
   max-width: 1000px;
@@ -112,10 +113,33 @@ gap: 8px;}
   padding: 16px 44px;
   border: 3px solid darkslategray;
   box-shadow: 2px 2px 5px black;
-  color: rgb(32, 52, 52);
+  color: bisque;
   margin-bottom: 50px;
   border-radius: 10px;
   font-size: 1.25rem;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background:  rgb(51, 110, 110);
+  cursor: pointer;
+}
+.btn-tirage:hover{
+  color: darkslategray;
+  background-color: rgb(213, 192, 162);
+}
+.btn-tirage:active{
+  transform: scale(0.95);
+}
+@media(max-width: 700px){
+  .espace-tirage{
+    grid-template-columns: 1fr;
+  }
+  #fleche{
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+  .barre{
+    padding: 12px 16px;
+  }
+}
+@media(prefers-reduced-motion: reduce){
+  *{transition: none !important;}
 }
