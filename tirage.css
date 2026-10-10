@@ -1,5 +1,6 @@
 
 *{ box-sizing: border-box;}
+
 body{ margin: 0%;
 padding: 0%;
 color: white;
@@ -138,6 +139,7 @@ gap: 8px;}
   }
   .barre{
     padding: 12px 16px;
+    display: flex;
   }
 }
 @media(prefers-reduced-motion: reduce){
