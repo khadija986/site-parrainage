@@ -1,0 +1,87 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Parrainages</title>
+    <link rel="stylesheet" href="gestion-des-utilisateurs.css">
+</head>
+<body>
+
+    <aside>
+        <h2>Parrainage</h2>
+        <p>TABLEAU DE BORD</p>
+        <a href="#">🏠 Accueil</a>
+        <a href="#participants">👥 Utilisateurs</a>
+    </aside>
+
+    <main>
+        <header>
+                <h1>Gestion des utilisateurs</h1>
+            <button type="button" onclick="ouvrirForm()">+ Ajouter</button>
+        </header>
+
+        <section class="stats">
+            <div><p>Total participants</p><h2 id="total">0</h2></div>
+            <div><p>Parrains</p><h2 id="parrains">0</h2></div>
+            <div><p>Filleuls</p><h2 id="filleuls">0</h2></div>
+        </section>
+
+        <input id="recherche" placeholder="🔍 Rechercher un utilisateur..."
+               oninput="afficher()">
+
+        <section id="utilisateurs" class="grille">
+            <div class="carte">
+                <h3> Parrains INF</h3>
+                <div id="pINF"></div>
+            </div>
+
+            <div class="carte">
+                <h3> Filleuls INF</h3>
+                <div id="fINF"></div>
+            </div>
+
+            <div class="carte">
+                <h3> Parrains TR</h3>
+                <div id="pTR"></div>
+            </div>
+
+            <div class="carte">
+                <h3> Filleuls TR</h3>
+                <div id="fTR"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal">
+        <form id="formulaire">
+            <h2 id="titreForm">Ajouter un utilisateur</h2>
+
+            <input id="nom" placeholder="Nom" required>
+            <input id="prenom" placeholder="Prénom" required>
+            <input id="telephone" placeholder="Téléphone" required>
+
+            <select id="role">
+                <option>Parrain</option>
+                <option>Filleul</option>
+            </select>
+
+            <select id="departement">
+                <option value="INF">INF</option>
+                <option value="TR">TR</option>
+            </select>
+
+            <div class="actions">
+                <button type="submit">Enregistrer</button>
+                <button type="button" class="annuler" onclick="fermerForm()">
+                    Annuler
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script src="gestion-des-utilisateurs.js"></script>
+</body>
+</html>
+```
