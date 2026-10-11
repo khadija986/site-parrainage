@@ -20,8 +20,8 @@ function ouvrirForm(id = null) {
     }
 
     $("titreForm").textContent = id === null
-        ? "Ajouter un participant"
-        : "Modifier un participant";
+        ? "Ajouter un utilisateur"
+        : "Modifier un utilisateur";
 
     $("modal").style.display = "flex";
 }
@@ -31,7 +31,7 @@ function fermerForm() {
     $("modal").style.display = "none";
 }
 
-// Enregistrer un participant
+// Enregistrer un utilisateur
 $("formulaire").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -73,15 +73,15 @@ function sauvegarder() {
     afficher();
 }
 
-// Supprimer un participant
+// Supprimer un utilisateur
 function supprimer(id) {
-    if (confirm("Supprimer ce participant ?")) {
+    if (confirm("Supprimer ce utilisateur ?")) {
         personnes = personnes.filter(p => p.id !== id);
         sauvegarder();
     }
 }
 
-// Afficher les participants
+// Afficher les utilisateurs
 function afficher() {
     const categories = {
         "Parrain-INF": "pINF",
