@@ -21,9 +21,11 @@ body {
 
 
 .container {
+    position: absolute;
+    inset: 0;
     width: 70%;
     max-width: 320px;
-
+    
     background-color: #ffffff;
 
     padding: 1.5rem 2rem;
@@ -34,6 +36,11 @@ body {
 
     box-shadow: 0 10px 30px #8fbfed;
     margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 
@@ -180,6 +187,40 @@ button:hover {
 .register a:hover {
     text-decoration: underline;
 }
+
+.flip-container {
+    perspective: 1000px;
+    width: 90%;
+    height: 440px;
+
+}
+.flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.3, 1);
+    transform-style: preserve-3d;
+}
+.flip-inner.flipped {
+    transform: rotateY(180deg);
+}
+.flip-front {
+ transform : rotateY(0deg)
+}
+.flip-back{
+    transform: rotateY(180deg);
+}
+@media(prefers-reduced-motion: reduce) {
+    .flip-inner {
+        transition: none;
+    }
+
+
+    input[type="submit"] {
+        transition: none;
+    }
+}
+
 
 
 @media (max-width: 500px) {
