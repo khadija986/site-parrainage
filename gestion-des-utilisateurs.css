@@ -1,56 +1,46 @@
 * {
     box-sizing: border-box;
-    margin: 0;
     font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-    background: blanchedalmond;
-    color: darkslategray;
-    display: flex;
-}
-
-aside {
-    width: 230px;
+    background: darkslategray;
+    color:bisque;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
-    background: rgb(48, 92, 92);
-    color: white;
-    padding: 30px 20px;
-    position: fixed;
+    line-height: 1.5;
 }
-
-aside h2 {
-    margin-bottom: 50px;
-    color: bisque;
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  border-bottom: 2px solid rgb(48, 92, 92);
 }
-
-
-aside p {
-    font-size: 11px;
-    margin-bottom: 20px;
-    color: bisque;
+.logo{
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: 2px;
 }
-
-aside a {
-    display: block;
-    padding: 14px;
-    margin-bottom: 10px;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
+.barre nav a{
+  color: rgb(78, 168, 168);
+  margin-left: 20px;
+  text-decoration:none;
 }
-
-aside a:hover {
-    background: rgb(96, 127, 123);
+.barre nav a:hover,
+.barre nav a[aria-current="page"]{
+  color: bisque;
+  border-bottom-color: antiquewhite;
 }
 
 main {
-    margin-left: 230px;
-    padding: 35px;
-    width: calc(100% - 230px);
+    margin: 0 auto;
+    padding: 24px;
+   max-width: 1100px;
 }
 
-header {
+main h1,button {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,15 +48,18 @@ header {
     margin-bottom: 30px;
 }
 
-header p { color: #788780; margin-top: 8px; }
-
 button {
     background: rgb(48, 92, 92);
     color: white;
-    border: none;
+    border: 2px rgb(37, 61, 61);
+    box-shadow: 1px 1px 5px black;
     padding: 12px 18px;
     border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s;
+}
+button:active{
+    transform: scale(0.94);
 }
 
 button:hover { background: rgb(96, 127, 123); }
@@ -79,9 +72,10 @@ button:hover { background: rgb(96, 127, 123); }
 }
 
 .stats div, .carte {
-    background: #FFFCF6;
+    background: #f3e2c0;
     padding: 22px;
     border-radius: 14px;
+    color: #385447;
     box-shadow: 0 5px 18px #59452b12;
 }
 
@@ -109,7 +103,7 @@ button:hover { background: rgb(96, 127, 123); }
 .carte h3 {
     margin-bottom: 18px;
     padding-bottom: 12px;
-    border-bottom: 1px solid #E5D8C4;
+    border-bottom: 2px solid #5a7e6d;
 }
 
 .personne {
