@@ -212,3 +212,33 @@ form h2 { margin-bottom: 20px; }
 #modal .actions button {
     flex: 1;
 }
+
+/* champ de séléction de photo */
+#photo { 
+    background: #fffaf0;
+    padding: 12px;
+    border: 1px dashed rgb(96, 127, 123);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* photo de l'utilisateur */
+.photo-personne {
+    display: flex;
+    aligne-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+/* Image par défaut si aucune photo n'est fournie */
+.photo-defaut {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background; rgb(96, 127, 123);
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
