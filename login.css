@@ -9,7 +9,7 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color:blanchedalmond;
+    background-color:rgb(214, 197, 170);
 }
 form{
     padding: 30px;
