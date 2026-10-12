@@ -1,1 +1,37 @@
-<h1>Inscription filleul inf tr</h1>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription filleul INF/TR</title>
+  <link rel="stylesheet" href="inscription_filleul_inf_tr.css">
+</head>
+<body>
+  <h1>Inscription filleul INF/TR</h1>
+
+  <form action="inscription_filleul_inf_tr.php" method="POST" enctype="multipart/form-data">
+
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" name="nom" required>
+
+    <label for="prenom">Prénom</label>
+    <input type="text" id="prenom" name="prenom" required>
+
+    <label for="telephone">Numéro de téléphone</label>
+    <input type="tel" id="telephone" name="telephone" required>
+
+    <label for="mot_de_passe">Mot de passe</label>
+    <input type="password" id="mot_de_passe" name="mot_de_passe" required>
+
+    <label for="confirmation">Confirmer le mot de passe</label>
+    <input type="password" id="confirmation" name="confirmation" required>
+
+    <label for="photo">Photo</label>
+    <input type="file" id="photo" name="photo" accept="image/*" required>
+
+    <button type="submit">S'inscrire</button>
+  </form>
+
+  <script src="inscription_filleul_inf_tr.js"></script>
+</body>
+</html>
