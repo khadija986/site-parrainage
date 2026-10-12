@@ -11,9 +11,10 @@
 </head>
 
 <body>
+<div class="flip-container">
+<div class="flip-inner" id="flipCard">
 
-    <!-- DIV DE CONNEXION -->
-    <div class="container" id="ConnexionForm">
+<div class="container flip-front" id="ConnexionForm" aria-hidden="false">
 
         <h1>Connexion</h1>
 
@@ -50,10 +51,12 @@
         </form>
 
     </div>
+        
+
 
 
     <!-- DIV MOT DE PASSE OUBLIÉ -->
-    <div class="container" id="ForgetForm" style="display: none;">
+    <div class="container flip-back" id="ForgetForm" aria-hidden="true" inert>
 
         <h1>Mot de passe oublié</h1>
 
@@ -81,6 +84,8 @@
             Retour à la page de connexion
         </button>
 
+    </div>
+        </div>
     </div>
 
     <script src="js.js"></script>
