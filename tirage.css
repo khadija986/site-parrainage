@@ -87,13 +87,14 @@ gap: 8px;}
   text-align: center;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 1px 1px 5px rgb(18, 38, 37);
-  height: 60vh;
+  height: 62vh;
 }
 .photo{
-  border-radius: 50%;
+  border-radius: 10px;
   display: block;
-  width: clamp(130px, 18vw, 22px);
-  margin: 0 auto 16px;
+  width: 50%;
+  height: 350px;
+  margin: 20px auto 5px;
   object-fit: cover;
   background: green;
 }
@@ -103,7 +104,7 @@ gap: 8px;}
   font-weight: 600;
 }
 .role{
-  margin-top: 4px;
+  margin-top: px;
   color: antiquewhite;
 }
 #fleche{

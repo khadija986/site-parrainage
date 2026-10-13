@@ -57,7 +57,6 @@ async function obtenirFilleul() {
 // Plus tard : fetch('api/attribuer.php', { method: 'POST', body: ... })
 // Le vrai choix du parrain devra être fait côté PHP, jamais ici.
 async function obtenirParrain(filleul) {
-  const parrains = DONNEES[manche].parrains;
   const min = Math.min(...compteurs);
   const candidats = [];
   compteurs.forEach((n, i) => { if (n === min) candidats.push(i); });
