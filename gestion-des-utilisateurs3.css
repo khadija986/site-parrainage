@@ -1,11 +1,12 @@
+/* PALETTE ROSE : #FFE9EF / #FFC9D7 / #FFBCCD / #FF9CB5 / #FC809F + #440814 pour le texte */
 * {
     box-sizing: border-box;
     font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-    background: #440814;
-    color:#F9DBDC;
+    background: #FFE9EF;
+    color:#440814;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -16,7 +17,8 @@ header{
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  border-bottom: 2px solid #841535;
+  border-bottom: 2px solid #FF9CB5;
+  background-color: #ea809a;
 }
 .logo{
   font-weight: 600;
@@ -24,14 +26,18 @@ header{
   letter-spacing: 2px;
 }
 .barre nav a{
-  color: #EB8097;
+  color: #440814;
   margin-left: 20px;
   text-decoration:none;
 }
 .barre nav a:hover,
 .barre nav a[aria-current="page"]{
-  color: #F9DBDC;
-  border-bottom-color: #F9DBDC;
+  color: #440814;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color:#440814;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }
 
 main {
@@ -49,11 +55,10 @@ main h1,button {
 }
 
 button {
-    background: #841535;
-    color: white;
-    /* CORRECTION : "2px rgb(...)" était invalide (il manquait le style de bordure "solid") */
-    border: 2px solid #440814;
-    box-shadow: 1px 1px 5px black;
+    background: #FC809F;
+    color: #440814;
+    border: 2px solid #FF9CB5;
+    box-shadow: 1px 1px 5px rgba(68, 8, 20, 0.35);
     padding: 12px 18px;
     border-radius: 8px;
     cursor: pointer;
@@ -63,7 +68,7 @@ button:active{
     transform: scale(0.94);
 }
 
-button:hover { background: #CE315E; }
+button:hover { background: #FF9CB5; }
 
 .stats {
     display: grid;
@@ -73,24 +78,24 @@ button:hover { background: #CE315E; }
 }
 
 .stats div, .carte {
-    background: #F9DBDC;
+    background: #FFC9D7;
     padding: 22px;
     border-radius: 14px;
     color: #440814;
-    box-shadow: 0 5px 18px #4408141f;
+    box-shadow: 0 5px 18px rgba(68, 8, 20, 0.12);
 }
 
-.stats p { color: #841535; margin-bottom: 12px; }
+.stats p { color: rgba(68, 8, 20, 0.7); margin-bottom: 12px; }
 .stats h2 { font-size: 30px; }
 
 #recherche, form input, form select {
     width: 100%;
     padding: 13px;
     margin-bottom: 12px;
-    border: 1px solid #EB8097;
+    border: 1px solid #FF9CB5;
     border-radius: 8px;
     background: #FFFFFF;
-    outline-color: #CE315E;
+    outline-color: #FC809F;
 }
 
 #recherche { margin-bottom: 25px; }
@@ -104,11 +109,11 @@ button:hover { background: #CE315E; }
 .carte h3 {
     margin-bottom: 18px;
     padding-bottom: 12px;
-    border-bottom: 2px solid #CE315E;
+    border-bottom: 2px solid #FC809F;
 }
 
 .personne {
-    background: #FFFFFF;
+    background: #FFE9EF;
     padding: 13px;
     border-radius: 9px;
     margin-bottom: 10px;
@@ -123,7 +128,9 @@ button:hover { background: #CE315E; }
     font-size: 12px;
 }
 
-.supprimer { background: #440814; }
+/* le bouton Supprimer reste foncé pour se distinguer des autres boutons roses */
+.supprimer { background: #440814; color: #FFE9EF; }
+.supprimer:hover { background: #6b1a2e; }
 
 #modal {
     display: none;
@@ -136,7 +143,7 @@ button:hover { background: #CE315E; }
 }
 
 form {
-    background: #F9DBDC;
+    background: #FFE9EF;
     padding: 28px;
     border-radius: 16px;
     width: 400px;
@@ -148,7 +155,7 @@ form {
 form h2 { margin-bottom: 20px; }
 
 .actions { display: flex; gap: 10px; }
-.annuler { background: #CE315E; }
+.annuler { background: #FFBCCD; }
 
 @keyframes apparition {
     from { opacity: 0; transform: translateY(15px); }
@@ -159,17 +166,16 @@ form h2 { margin-bottom: 20px; }
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(68, 8, 20, 0.7);
+    background: rgba(68, 8, 20, 0.6);
     justify-content: center;
     align-items: center;
     z-index: 1000;
     padding: 20px;
-    /* RESPONSIVE : si le formulaire est plus haut que l'écran (téléphone), on peut défiler */
     overflow-y: auto;
 }
 
 #modal form {
-    background: #F9DBDC;
+    background: #FFE9EF;
     width: 400px;
     max-width: 100%;
     padding: 25px;
@@ -183,7 +189,7 @@ form h2 { margin-bottom: 20px; }
     width: 100%;
     padding: 12px;
     margin: 12px 0;
-    border: 1px solid #EB8097;
+    border: 1px solid #FF9CB5;
     border-radius: 8px;
 }
 
@@ -201,7 +207,7 @@ form h2 { margin-bottom: 20px; }
 #photo { 
     background: #FFFFFF;
     padding: 12px;
-    border: 1px dashed #CE315E;
+    border: 1px dashed #FC809F;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -219,30 +225,24 @@ form h2 { margin-bottom: 20px; }
     width: 55px;
     height: 55px;
     border-radius: 50%;
-    background: #CE315E;
-    color: white;
+    background: #FC809F;
+    color: #440814;
     display: flex;
     align-items: center;
-    /* CORRECTION : ajouté pour centrer l'initiale horizontalement dans le rond */
     justify-content: center;
     font-size: 22px;
     flex-shrink: 0;
 }
 
-/* RESPONSIVE : grands écrans */
 @media (min-width: 1400px) {
     main { max-width: 1300px; }
 }
 
-/* RESPONSIVE : tablettes */
 @media (max-width: 850px) {
-    /* CORRECTION : les règles sur "aside" (marge de 170px à gauche, etc.) ont été retirées
-       car l'aside n'existe plus : elles décalaient tout le contenu vers la droite */
     main { padding: 20px; }
     .grille { grid-template-columns: 1fr; }
 }
 
-/* RESPONSIVE : téléphones */
 @media (max-width: 600px) {
     .stats { grid-template-columns: 1fr; }
     header { flex-wrap: wrap; gap: 8px; padding: 12px 16px; }
