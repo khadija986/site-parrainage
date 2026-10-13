@@ -1,34 +1,21 @@
-/* ==========================================================================
-   Palette (extraite de l'image de référence)
-   ========================================================================== */
 :root {
-  --navy-900: #091d3a;      /* fond sombre bas du panneau gauche */
-  --navy-700: #123560;      /* fond sombre haut du panneau gauche */
-  --navy-600: #163f6b;      /* bouton principal */
-  --navy-500: #1f5086;      /* bouton au survol */
-  --ink: #0f2744;           /* titres, labels, texte fort */
-  --muted: #7a8aa3;         /* texte secondaire */
-  --placeholder: #9ba6b6;   /* placeholders */
-  --teal: #1b5566;          /* halo turquoise */
-  --paper: #f9f8f5;         /* fond du panneau droit */
-  --field: #fdfdfc;         /* fond des champs */
-  --line: #e6e8ec;          /* bordures des champs */
+  --navy-900: #091d3a;     
+  --navy-700: #123560;      
+  --navy-600: #163f6b;      
+  --navy-500: #1f5086;      
+  --ink: #0f2744;           
+  --muted: #7a8aa3;         
+  --placeholder: #9ba6b6;   
+  --teal: #1b5566;          
+  --paper: #f9f8f5;         
+  --field: #fdfdfc;         
+  --line: #e6e8ec;         
   --danger: #b3261e;
   --danger-bg: #fdf0ef;
   --ok: #1d7a55;
 
   --radius-field: 18px;
   --radius-btn: 22px;
-}
-.parrains_inf_tr {
-  display: inline-block;
-  padding: 10px 20px;
-  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
-  background: #163f6b;
-  border-radius: 14px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -48,16 +35,17 @@ body {
   overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
 
-/* ==========================================================================
-   Mise en page
-   ========================================================================== */
+
 .page {
   min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-columns: 1.02fr 1fr;
 }
+.page > *, .panel__inner { min-width: 0; }
+.error, .form-alert { overflow-wrap: anywhere; }
 
-/* ---------- Panneau gauche ---------- */
+
 .visual {
   position: sticky;
   top: 0;
@@ -65,9 +53,12 @@ body {
   overflow: hidden;
   background: linear-gradient(135deg, var(--navy-700) 0%, var(--navy-900) 62%);
   color: #fff;
+  display: flex;
+  align-items: center;       
+  justify-content: center;   
 }
 
-/* grand arc fin */
+
 .visual::before {
   content: "";
   position: absolute;
@@ -77,7 +68,7 @@ body {
   border-radius: 50%;
 }
 
-/* halo turquoise en bas à gauche */
+
 .visual::after {
   content: "";
   position: absolute;
@@ -96,7 +87,7 @@ body {
 .visual__title { margin: 0 0 12px; font-size: clamp(32px, 3.4vw, 46px); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
 .visual__sub   { margin: 0; font-size: 17px; color: rgba(255,255,255,.72); }
 
-/* ---------- Panneau droit ---------- */
+
 .panel {
   display: flex;
   justify-content: center;
@@ -108,9 +99,7 @@ body {
 .head h1 { margin: 0 0 6px; font-size: 30px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; }
 .head p  { margin: 0; color: var(--muted); font-size: 15px; }
 
-/* ==========================================================================
-   Champs
-   ========================================================================== */
+
 .field { margin-bottom: 24px; }
 
 .label {
@@ -152,10 +141,14 @@ body {
   color: var(--muted);
   cursor: pointer;
 }
+.eye .eye__on  { display: block; }
+.eye .eye__off { display: none; }
+.eye[aria-pressed="true"] .eye__on  { display: none; }
+.eye[aria-pressed="true"] .eye__off { display: block; }
 .eye:hover { color: var(--ink); background: rgba(15,39,68,.06); }
 .eye:focus-visible { outline: 2px solid var(--navy-600); outline-offset: 1px; }
 
-/* ---------- États d'erreur ---------- */
+
 .error {
   margin: 8px 2px 0;
   min-height: 0;
@@ -181,7 +174,7 @@ body {
 }
 .form-alert[data-type="info"] { color: var(--navy-600); background: #eef3f9; border-color: #cfdcec; }
 
-/* ---------- Photo ---------- */
+
 .photo-row { display: flex; align-items: center; gap: 12px; }
 
 .photo {
@@ -234,7 +227,7 @@ body {
 .photo__remove:focus-visible { outline: 2px solid var(--navy-600); outline-offset: 2px; }
 .photo__remove[hidden] { display: none; }
 
-/* ---------- Force du mot de passe ---------- */
+
 .strength { display: flex; align-items: center; gap: 12px; margin: 10px 2px 0; }
 .strength[hidden] { display: none; }
 .strength__bars { display: flex; gap: 6px; }
@@ -247,9 +240,7 @@ body {
 .strength[data-level="2"] .strength__label { color: #a8700f; }
 .strength[data-level="3"] .strength__label { color: var(--ok); }
 
-/* ==========================================================================
-   Bouton principal
-   ========================================================================== */
+
 .submit {
   width: 100%;
   height: 68px;
@@ -295,9 +286,7 @@ body {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ==========================================================================
-   Succès + pied de page
-   ========================================================================== */
+
 .success { text-align: center; padding: 48px 0 24px; }
 .success[hidden] { display: none; }
 .success__icon {
@@ -316,9 +305,7 @@ body {
 .foot a:hover { text-decoration: underline; }
 .foot a:focus-visible { outline: 2px solid var(--navy-600); outline-offset: 3px; border-radius: 4px; }
 
-/* ==========================================================================
-   Responsive
-   ========================================================================== */
+
 @media (max-width: 900px) {
   .page { grid-template-columns: 1fr; }
   .visual { position: relative; height: auto; min-height: 168px; }
@@ -329,15 +316,80 @@ body {
   .visual__sub { font-size: 15px; }
 }
 
+
 @media (max-width: 480px) {
-  .head h1 { font-size: 26px; }
-  .input { height: 54px; font-size: 16px; }
-  .submit { height: 62px; font-size: 18px; padding-left: 28px; }
-  .submit__icon { width: 46px; height: 46px; }
-  .photo__remove { height: 40px; padding: 0 12px; }
+  .visual { min-height: 0; }
+  .visual__text { padding: 24px 20px; }
+  .visual__title { font-size: 24px; margin-bottom: 4px; }
+  .visual__sub { font-size: 14px; }
+
+  .panel {
+    padding: 28px 16px calc(32px + env(safe-area-inset-bottom, 0px));
+  }
+  .head { margin-bottom: 24px; }
+  .head h1 { font-size: 24px; }
+  .head p { font-size: 14px; }
+
+  .field { margin-bottom: 18px; }
+  .label { font-size: 15px; margin-bottom: 8px; }
+
+
+  .input { height: 52px; padding: 0 16px; font-size: 16px; border-radius: 14px; }
+  .input--pw { padding-right: 52px; }
+  .eye { right: 6px; width: 40px; height: 40px; }
+
+ 
+  .photo-row { flex-wrap: wrap; }
+  .photo { flex: 1 1 100%; padding: 10px 14px 10px 10px; gap: 12px; border-radius: 14px; }
+  .photo__preview { width: 56px; height: 56px; }
+  .photo__text strong { font-size: 15px; }
+  .photo__text small { font-size: 13px; }
+  .photo__remove { height: 38px; padding: 0 14px; }
+
+  .strength__bars i { width: 30px; }
+
+  .submit { height: 60px; margin-top: 8px; padding: 0 8px 0 24px; font-size: 17px; border-radius: 18px; }
+  .submit__icon { width: 44px; height: 44px; border-radius: 13px; }
+
+  .success { padding: 32px 0 16px; }
+  .success h2 { font-size: 22px; }
+
+  .foot { margin-top: 32px; font-size: 15px; }
+}
+
+
+@media (max-width: 360px) {
+  .panel { padding-left: 12px; padding-right: 12px; }
+  .visual__sub { display: none; }
+  .head h1 { font-size: 22px; }
+  .input { height: 50px; padding: 0 14px; }
+  .photo__preview { width: 48px; height: 48px; }
+  .strength { flex-wrap: wrap; gap: 6px; }
+  .strength__bars i { width: 26px; }
+  .submit { height: 56px; padding-left: 20px; font-size: 16px; }
+  .submit__icon { width: 40px; height: 40px; }
+  .foot { font-size: 14px; }
+}
+
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .visual { display: none; }
+  .page { grid-template-columns: 1fr; }
+  .panel { padding-top: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation-duration: .01ms !important; }
   .submit:hover { transform: none; }
 }
+.parrains_inf_tr {
+  display: inline-block;
+  padding: 10px 20px;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #163f6b;
+  border-radius: 14px;
+}
+
