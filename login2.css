@@ -6,18 +6,22 @@ body{
     padding: 0%;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    /* RESPONSIVE : min-height au lieu de height, pour que la page puisse défiler
+       si le clavier du téléphone réduit l'écran */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color:rgb(214, 197, 170);
+    background-color: #841535;
 }
 form{
     padding: 30px;
     border-radius: 6px;
     box-shadow: 2px 2px 10px  black;
-    width: 600;
+    /* CORRECTION : "600" -> "600px" (unité manquante) ; max-width ajouté pour les petits écrans */
+    width: 600px;
+    max-width: 100%;
     animation: apparition 1.5s ease-out;
-    background-color: rgb(48, 92, 92);
+    background-color: #F9DBDC;
 
     
 }
@@ -26,20 +30,25 @@ form{
     display: flex;
     flex-direction: column;
     margin-bottom: 5px;
+    /* MODIF : centre horizontalement le label et le champ de saisie */
+    align-items: center;
+    text-align: center;
 }
 input{
     padding: 5px;
     width: 70%;
-    border-radius: 0 6px 6px 0;
-    border: 1px solid grey;
+    border-radius: 0;
+    /* CORRECTION : doublon "border: 1px solid grey;" supprimé (annulé par "border: none") */
     border: none;
 }
 input:focus{
     outline: none;
 }
 form h2{
-  margin-left: 190px;
-  color: bisque;
+  /* MODIF : margin-left: 190px remplacé par 0 + text-align: center pour centrer le titre */
+  margin-left: 0;
+  text-align: center;
+  color:  #841535;
   letter-spacing: 2px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -48,23 +57,27 @@ form h2{
     justify-content: center;
     align-items: center;
     display: flex;
-    margin-left: 190px;
+    /* MODIF : margin-left: 190px remplacé par auto (gauche/droite) pour centrer le bouton */
+    margin-left: auto;
+    margin-right: auto;
     padding: 6px;
     border-radius: 6px;
-    border: 1px solid rgb(14, 36, 14);
+    border: 1px solid #440814;
     width: 160px;
     cursor: pointer;
-    box-shadow: 1px 1px 5px rgb(8, 21, 21) ;
+    box-shadow: 1px 1px 5px #440814 ;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     letter-spacing: 1px;
-    background-color:  rgb(96, 127, 123);
+    background-color:  #CE315E;
     transition: 0.3s;
 }
 #h1_login{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 100;
-    color: darkslategray;
+    color: #F9DBDC;
+    /* RESPONSIVE : titre centré s'il passe sur plusieurs lignes */
+    text-align: center;
 }
 label{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -72,7 +85,7 @@ label{
 }
 #connect:hover{
     color: white;
-    background-color: darkslategray;
+    background-color: #440814;
 }
 #connect:active{
     transform: scale(0.97);
@@ -88,16 +101,32 @@ label{
     }
 
 }
+
+/* RESPONSIVE : grands écrans */
+@media(min-width: 1400px){
+    form{
+        width: 680px;
+    }
+    #h1_login{
+        font-size: 2.4rem;
+    }
+}
+
 @media(max-width: 600px){
+    /* RESPONSIVE : marge autour du formulaire pour qu'il ne touche pas les bords */
+    body{
+        padding: 15px;
+    }
     form{
         width: 100%;
         max-width: 675px;
         margin: 0 auto;
-        padding: 30px;
+        padding: 30px 20px;
     }
     form h2{
         text-align: center;
-        margin-right: 50px;
+        /* MODIF : margin-right: 50px remplacé par 0, sinon le titre est décalé du centre */
+        margin-right: 0;
     }
     form #connect{
         text-align: center;

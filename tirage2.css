@@ -1,10 +1,9 @@
-
 *{ box-sizing: border-box;}
 
 body{ margin: 0%;
 padding: 0%;
 color: white;
-background-color: darkslategray;
+background-color:#440814;
 min-height: 100vh;
 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 line-height: 1.5;
@@ -15,7 +14,7 @@ header{
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  border-bottom: 2px solid rgb(48, 92, 92);
+  border-bottom: 2px solid #841535;
 }
 .logo{
   font-weight: 600;
@@ -23,19 +22,20 @@ header{
   letter-spacing: 2px;
 }
 .barre nav a{
-  color: rgb(78, 168, 168);
+  color: #EB8097;
   margin-left: 20px;
   text-decoration:none;
 }
 .barre nav a:hover,
 .barre nav a[aria-current="page"]{
-  color: bisque;
-  border-bottom-color: antiquewhite;
+  color: #F9DBDC;
+  border-bottom-color: #F9DBDC;
 }
 .tirage{
   max-width: 1000px;
   margin: 0 auto;
-  padding: 28px 20 px 48px;
+  /* CORRECTION : "20 px" -> "20px" (l'espace rendait la ligne invalide) */
+  padding: 28px 20px 48px;
 }
 .entete{
   display: flex;
@@ -46,8 +46,8 @@ header{
   margin-top: 20px;
 }
 .badge{
-  background-color: bisque;
-  color: darkslategray;
+  background-color: #F9DBDC;
+  color: #440814;
   margin-left: 10px;
   font-size: 20px;
   padding: 0 10px 0 10px;
@@ -59,18 +59,20 @@ header{
 gap: 8px;}
 .choix-manche button{
   padding: 10px 18px;
-  border: 2px solid rgb(78, 168, 168);
+  border: 2px solid #EB8097;
   border-radius: 999px;
   background: transparent;
-  color:  rgb(78, 168, 168);
+  color:  #EB8097;
   font-weight: 500;
   cursor: pointer;
 }
 .choix-manche button:hover{
-  color: bisque;
-  border: 2px solid bisque;
+  color: #F9DBDC;
+  border: 2px solid #F9DBDC;
 }
-.compteur{
+/* CORRECTION : le HTML utilise la classe "compteurs" (avec un s), j'ai ajouté ce sélecteur */
+.compteur,
+.compteurs{
   letter-spacing: 1px;
 }
 .espace-tirage{
@@ -81,13 +83,14 @@ gap: 8px;}
   margin: 30px 0;
 }
 .carte{
-  border: 2px solid  rgb(78, 168, 168);
+  border: 2px solid  #EB8097;
   border-radius: 15px;
-  background: rgb(50, 99, 99);
+  background: #841535;
   text-align: center;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 1px 1px 5px rgb(18, 38, 37);
-  height: 62vh;
+  box-shadow: 1px 1px 5px #2a040c;
+  /* RESPONSIVE : min-height au lieu de height, pour que le contenu ne déborde jamais */
+  min-height: 62vh;
 }
 .photo{
   border-radius: 10px;
@@ -96,7 +99,7 @@ gap: 8px;}
   height: 350px;
   margin: 20px auto 5px;
   object-fit: cover;
-  background: green;
+  background: #CE315E;
 }
 .nom{
   min-height: 1.3rem;
@@ -104,31 +107,54 @@ gap: 8px;}
   font-weight: 600;
 }
 .role{
-  margin-top: px;
-  color: antiquewhite;
+  /* CORRECTION : "margin-top: px;" supprimé (valeur sans nombre, donc ignorée) */
+  color: #F9DBDC;
 }
 #fleche{
   font-size: 3rem;
 }
 .btn-tirage{
   padding: 16px 44px;
-  border: 3px solid darkslategray;
+  border: 3px solid #440814;
   box-shadow: 2px 2px 5px black;
-  color: bisque;
+  color: #F9DBDC;
   margin-bottom: 50px;
   border-radius: 10px;
   font-size: 1.25rem;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background:  rgb(51, 110, 110);
+  background:  #CE315E;
   cursor: pointer;
 }
 .btn-tirage:hover{
-  color: darkslategray;
-  background-color: rgb(213, 192, 162);
+  color: #440814;
+  background-color: #F9DBDC;
 }
 .btn-tirage:active{
   transform: scale(0.95);
 }
+
+/* RESPONSIVE : grands écrans */
+@media(min-width: 1400px){
+  .tirage{
+    max-width: 1250px;
+  }
+  .photo{
+    height: 420px;
+  }
+  .carte{
+    min-height: 68vh;
+  }
+}
+
+/* RESPONSIVE : tablettes et petits ordinateurs */
+@media(max-width: 1000px){
+  .photo{
+    width: 70%;
+    height: 280px;
+  }
+}
+
+/* Téléphones et petits écrans */
 @media(max-width: 700px){
   .espace-tirage{
     grid-template-columns: 1fr;
@@ -136,14 +162,45 @@ gap: 8px;}
   #fleche{
     justify-self: center;
     transform: rotate(90deg);
+    margin: 0;
   }
   .barre{
     padding: 12px 16px;
     display: flex;
     flex-direction: row;
+    /* RESPONSIVE : les liens passent à la ligne si besoin */
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .barre nav a{
+    margin-left: 0;
+    margin-right: 14px;
+    font-size: 0.95rem;
   }
   .logo{
     font-size: 20px;
+  }
+  /* RESPONSIVE : cartes adaptées à la hauteur de leur contenu, photo plus petite */
+  .carte{
+    min-height: 0;
+    padding-bottom: 15px;
+  }
+  .photo{
+    width: 60%;
+    max-width: 260px;
+    height: 220px;
+  }
+  .entete{
+    justify-content: center;
+    text-align: center;
+  }
+  .tirage{
+    padding: 20px 14px 40px;
+  }
+  /* RESPONSIVE : bouton de tirage pleine largeur */
+  .btn-tirage{
+    width: 100%;
+    padding: 16px 20px;
   }
 }
 @media(prefers-reduced-motion: reduce){
