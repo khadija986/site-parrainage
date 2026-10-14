@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css?v=10" />
+    <script src="script.js?v=3" defer></script>
+    <title>Inscription des Parrains inf inf</title>
+  </head>
+  <body>
+    <section id="ecran-accueil">
+    <p class="badge">Parrainage 2026-2027 · Informatique</p>
+    <h1>Bienvenue, futur·e parrain/marraine&nbsp;!</h1>
+    <p class="accroche">Tu es sur la page d'inscription des parrains inf inf. Cette année, c'est toi qui accueilles la nouvelle promo. En 2 minutes, ton compte est prêt.</p>
+    <button type="button" id="demarrer">Démarrer l'inscription</button>
+</section>
+<div id="bloc-inscription" hidden>
+
+        <div class="accueil">
+            <p class="badge">Parrainage · Inf_Inf</p>
+            <h1>À toi de guider la relève.</h1>
+            <p class="accroche">Tu es passé·e par là il y a un an. Aujourd'hui, c'est ton tour d'accompagner un nouveau.</p>
+        </div>
+    <form
+      method="post"
+      action="traitement_parrains_inf_inf.php"
+      enctype="multipart/form-data"
+    >
+    <h2 class="titre-carte">Crée ton compte</h2>
+      <p class="note">Tous les champs sont obligatoires.</p>
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" name="nom" placeholder="Ex. : Coumba" required maxlength="50" />
+      <label for="prenom">Prénom</label>
+      <input type="text" id="prenom" name="prenom" placeholder="Ex. : Tall" required maxlength="50" />
+      <label for="telephone">Téléphone</label>
+      <input
+        type="tel"
+        id="telephone"
+        name="telephone"
+        placeholder="Ex. : 77 777 77 77"
+        required
+        maxlength="20"
+      />
+      <div class="champ">
+        <label for="mot_de_passe">Mot de passe</label>
+        <div class="zone-mdp">
+          <input
+            type="password"
+            id="mot_de_passe"
+            name="mot_de_passe"
+            placeholder="Choisis un mot de passe"
+            required
+            maxlength="30"
+          />
+          <span class="bulle">30 caractères maximum</span>
+          <button
+            type="button"
+            id="voir-mdp"
+            class="oeil"
+            aria-label="Afficher le mot de passe"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
+              <circle cx="12" cy="12" r="3" />
+              <line class="barre" x1="3" y1="3" x2="21" y2="21" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <label for="confirmation">Confirmer le mot de passe</label>
+ <div class="zone-mdp">
+          <input
+            type="password"
+            id="confirmation"
+            name="confirmation"
+            placeholder="Retape ton mot de passe"
+            required
+            maxlength="30"
+          />
+          <span class="bulle">30 caractères maximum</span>
+          <button
+            type="button"
+            id="voir-confirmation"
+            class="oeil"
+            aria-label="Afficher le mot de passe"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
+              <circle cx="12" cy="12" r="3" />
+              <line class="barre" x1="3" y1="3" x2="21" y2="21" />
+            </svg>
+          </button>
+        </div>
+      <label for="photo">Photo</label>
+      <div class="zone-photo">
+    <input type="file" id="photo" name="photo" accept="image/*" required>
+    <label for="photo" class="bouton-photo" title="Choisir une photo">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+        </svg>
+    </label>
+    <span id="nom-fichier">Ajoute une belle photo de toi: ton filleul la verra le jour du tirage.</span>
+</div>
+      <img id="apercu" alt="Aperçu de ta photo" />
+      <button type="submit">S'inscrire</button>
+    </form>
+  </body>
+</html>
