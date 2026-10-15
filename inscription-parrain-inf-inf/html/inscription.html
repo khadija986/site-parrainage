@@ -1,127 +1,102 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/inscription.css" />
-    <script src="../js/inscription.js" defer></script>
-    <title>Inscription des Parrains inf inf</title>
-  </head>
-  <body>
-    <section id="ecran-accueil">
-    <p class="badge">Parrainage 2026-2027 · Informatique</p>
-    <h1>Bienvenue, futur·e parrain/marraine&nbsp;!</h1>
-    <p class="accroche">Tu es sur la page d'inscription des parrains inf inf. Cette année, c'est toi qui accueilles la nouvelle promo. En 2 minutes, ton compte est prêt.</p>
-    <button type="button" id="demarrer">Démarrer l'inscription</button>
-</section>
-<div id="bloc-inscription" hidden>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription parrain option INF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/theme.css">
+  <link rel="stylesheet" href="../../shared/css/formulaire.css">
+  <link rel="stylesheet" href="../css/inscription.css">
+</head>
+<body>
+  <main class="contenu">
 
-        <div class="accueil">
-            <p class="badge">Parrainage · Inf_Inf</p>
-            <h1>À toi de guider la relève.</h1>
-            <p class="accroche">Tu es passé·e par là il y a un an. Aujourd'hui, c'est ton tour d'accompagner un nouveau.</p>
+    <a class="retour" href="accueil.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      Retour
+    </a>
+
+    <h1>À toi de guider la relève</h1>
+    <p class="intro">Quelques infos, et tes filleuls te découvriront le jour du tirage.</p>
+
+    <!-- PHP : le traitement est à écrire dans php/inscription.php (voir README) -->
+    <form action="../../php/inscription.php" method="POST" enctype="multipart/form-data">
+
+      <input type="hidden" name="sous_departement" value="INF">
+      <fieldset class="choix">
+        <legend>Tu es</legend>
+        <label><input type="radio" name="role" value="parrain" checked>Parrain</label>
+        <label><input type="radio" name="role" value="marraine">Marraine</label>
+      </fieldset>
+
+      <div class="ligne">
+        <div class="champ">
+          <label class="etiquette" for="nom">Nom</label>
+          <div class="saisie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" id="nom" name="nom" maxlength="50" autocomplete="family-name" required>
+          </div>
         </div>
-    <form
-      method="post"
-      action="traitement_parrains_inf_inf.php"
-      enctype="multipart/form-data"
-    >
-    <h2 class="titre-carte">Crée ton compte</h2>
-      <p class="note">Tous les champs sont obligatoires.</p>
-      <label for="nom">Nom</label>
-      <input type="text" id="nom" name="nom" placeholder="Ex. : Coumba" required maxlength="50" />
-      <label for="prenom">Prénom</label>
-      <input type="text" id="prenom" name="prenom" placeholder="Ex. : Tall" required maxlength="50" />
-      <label for="telephone">Téléphone</label>
-      <input
-        type="tel"
-        id="telephone"
-        name="telephone"
-        placeholder="Ex. : 77 777 77 77"
-        required
-        maxlength="20"
-      />
-      <div class="champ">
-        <label for="mot_de_passe">Mot de passe</label>
-        <div class="zone-mdp">
-          <input
-            type="password"
-            id="mot_de_passe"
-            name="mot_de_passe"
-            placeholder="Choisis un mot de passe"
-            required
-            maxlength="30"
-          />
-          <span class="bulle">30 caractères maximum</span>
-          <button
-            type="button"
-            id="voir-mdp"
-            class="oeil"
-            aria-label="Afficher le mot de passe"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              width="22"
-              height="22"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
-              <circle cx="12" cy="12" r="3" />
-              <line class="barre" x1="3" y1="3" x2="21" y2="21" />
-            </svg>
-          </button>
+        <div class="champ">
+          <label class="etiquette" for="prenom">Prénom</label>
+          <div class="saisie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" id="prenom" name="prenom" maxlength="50" autocomplete="given-name" required>
+          </div>
         </div>
       </div>
-      <label for="confirmation">Confirmer le mot de passe</label>
- <div class="zone-mdp">
-          <input
-            type="password"
-            id="confirmation"
-            name="confirmation"
-            placeholder="Retape ton mot de passe"
-            required
-            maxlength="30"
-          />
-          <span class="bulle">30 caractères maximum</span>
-          <button
-            type="button"
-            id="voir-confirmation"
-            class="oeil"
-            aria-label="Afficher le mot de passe"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              width="22"
-              height="22"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
-              <circle cx="12" cy="12" r="3" />
-              <line class="barre" x1="3" y1="3" x2="21" y2="21" />
-            </svg>
-          </button>
+
+      <div class="champ">
+        <label class="etiquette" for="telephone">Numéro de téléphone</label>
+        <div class="saisie">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <input type="tel" id="telephone" name="telephone" maxlength="20" placeholder="77 123 45 67" autocomplete="tel" required>
         </div>
-      <label for="photo">Photo</label>
-      <div class="zone-photo">
-    <input type="file" id="photo" name="photo" accept="image/*" required>
-    <label for="photo" class="bouton-photo" title="Choisir une photo">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-        </svg>
-    </label>
-    <span id="nom-fichier">Ajoute une belle photo de toi: ton filleul la verra le jour du tirage.</span>
-</div>
-      <img id="apercu" alt="Aperçu de ta photo" />
-      <button type="submit">S'inscrire</button>
+      </div>
+
+      <div class="ligne">
+        <div class="champ">
+          <label class="etiquette" for="mot_de_passe">Mot de passe</label>
+          <div class="saisie avec-oeil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input type="password" id="mot_de_passe" name="mot_de_passe" maxlength="30" autocomplete="new-password" required>
+            <button type="button" class="oeil" data-cible="mot_de_passe" aria-label="Afficher le mot de passe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </div>
+        </div>
+        <div class="champ">
+          <label class="etiquette" for="confirmation">Confirmation</label>
+          <div class="saisie avec-oeil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input type="password" id="confirmation" name="confirmation" maxlength="30" autocomplete="new-password" required>
+            <button type="button" class="oeil" data-cible="confirmation" aria-label="Afficher le mot de passe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <label class="photo" for="photo">
+        <span class="photo-cercle" id="photo-cercle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <img id="photo-apercu" alt="Aperçu de ta photo">
+        </span>
+        <span class="photo-texte">
+          <strong id="photo-titre">Ajoute ta photo</strong>
+          <small id="photo-aide">Tes filleuls la verront le jour du tirage</small>
+        </span>
+        <input class="cache" type="file" id="photo" name="photo" accept="image/*" required>
+      </label>
+
+      <p id="message" role="alert"></p>
+
+      <button class="bouton" type="submit">S'inscrire</button>
+      <p class="pied">Déjà inscrit·e ? <a class="lien" href="../../connexion/html/connexion.html">Se connecter</a></p>
     </form>
-  </body>
+
+  </main>
+
+  <script src="../../shared/js/formulaire.js"></script>
+  <script src="../js/inscription.js"></script>
+</body>
 </html>

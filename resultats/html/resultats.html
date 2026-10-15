@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résultats du parrainage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/theme.css">
+  <link rel="stylesheet" href="../css/resultats.css">
+</head>
+<body>
+  <main class="contenu large">
+
+    <a class="retour" href="../../accueil/html/accueil.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg> Accueil</a>
+
+    <h1>Les familles de cette année</h1>
+    <p class="intro" id="intro">Chaque filleul et son parrain, tirés au sort devant tout le monde.</p>
+    <p class="demo" id="demo" hidden>Données de démonstration : les vrais résultats s'afficheront une fois PHP branché.</p>
+
+    <div class="outils">
+      <div class="onglets" role="group" aria-label="Choix de l'option">
+        <button type="button" class="onglet actif" data-option="TOUS" aria-pressed="true">Tous</button>
+        <button type="button" class="onglet" data-option="INF" aria-pressed="false">Informatique</button>
+        <button type="button" class="onglet" data-option="TR" aria-pressed="false">Télécoms &amp; Réseaux</button>
+      </div>
+      <div class="telechargements">
+        <button type="button" class="bouton clair" id="btn-csv">Télécharger (CSV)</button>
+        <button type="button" class="bouton clair" id="btn-imprimer">Imprimer / PDF</button>
+      </div>
+    </div>
+
+    <p id="message" class="info" role="status"></p>
+    <section id="liste" class="liste" aria-live="polite"></section>
+
+  </main>
+
+  <script src="../../shared/js/config.js"></script>
+  <script src="../js/resultats.js"></script>
+</body>
+</html>

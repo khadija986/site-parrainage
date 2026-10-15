@@ -1,0 +1,20 @@
+/* Ajouts propres à la page des mots de passe oubliés (le reste vient de gestion-utilisateurs.css). */
+.aide { margin: 0 0 18px; opacity: 0.8; }
+.ajout { display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px; }
+.ajout input { margin: 0; width: 100%; padding: 13px; border: 1px solid #FF9CB5; border-radius: 8px; background: #FFFFFF; }
+.ajout button { margin: 0; justify-content: center; }
+.erreur { min-height: 1.4em; margin: 0 0 14px; color: #8a1230; font-weight: 600; }
+
+.stats { grid-template-columns: repeat(2, 1fr); }
+.demande { background: #FFE9EF; padding: 14px; border-radius: 9px; overflow-wrap: anywhere; }
+.demande p { margin: 4px 0; font-size: 13px; }
+.demande .statut { font-weight: 600; }
+.demande .statut.fait { opacity: 0.6; }
+.demande label { display: block; margin-top: 10px; font-size: 12px; font-weight: 600; }
+.demande input { margin: 4px 0 0; width: 100%; padding: 10px; border: 1px solid #FF9CB5; border-radius: 8px; background: #fff; font-family: monospace; }
+.demande .actions { flex-wrap: wrap; margin-top: 10px; }
+.demande .actions button { margin: 0; padding: 8px 12px; font-size: 12px; }
+.supprimer { background: #440814; color: #FFE9EF; }
+
+@media (min-width: 600px) { .ajout { flex-direction: row; } .ajout button { white-space: nowrap; } }
+@media (max-width: 600px) { .stats { grid-template-columns: 1fr 1fr; } }

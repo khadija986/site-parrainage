@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mots de passe oubliés</title>
+    <!-- Le socle visuel admin (en-tête, boutons, cartes) vient de la page gestion-utilisateurs -->
+    <link rel="stylesheet" href="../../gestion-utilisateurs/css/gestion-utilisateurs.css">
+    <link rel="stylesheet" href="../css/gestion-mots-de-passe.css">
+</head>
+<body>
+
+    <header class="barre">
+    <span class="logo">Parrainage</span>
+    <nav>
+      <a href="../../tirage/html/tirage.html">Tirage</a>
+      <a href="../../gestion-utilisateurs/html/gestion-utilisateurs.html">Tableau de bord</a>
+      <a href="gestion-mots-de-passe.html" aria-current="page">Mots de passe</a>
+      <a href="../../admin-login/html/login.html">Déconnexion</a>
+    </nav>
+    </header>
+
+    <main>
+        <h2>Mots de passe oubliés</h2>
+        <p class="aide">Un utilisateur te contacte sur WhatsApp ? Ajoute son numéro, vérifie le mot de passe temporaire proposé, puis envoie-le-lui d'un clic. Il pourra le changer dans son profil.</p>
+
+        <div class="ajout">
+            <input id="telephone" type="tel" placeholder="Numéro de l'utilisateur (ex. 77 123 45 67)" maxlength="20">
+            <button type="button" id="ajouter">+ Ajouter la demande</button>
+        </div>
+        <p id="erreur" class="erreur" role="alert"></p>
+
+        <section class="stats">
+            <div><p>Demandes en attente</p><h2 id="attente">0</h2></div>
+            <div><p>Traitées</p><h2 id="traitees">0</h2></div>
+        </section>
+
+        <section id="demandes" class="grille"></section>
+    </main>
+
+    <script src="../../shared/js/config.js"></script>
+    <script src="../../shared/js/formulaire.js"></script>
+    <script src="../js/gestion-mots-de-passe.js"></script>
+</body>
+</html>

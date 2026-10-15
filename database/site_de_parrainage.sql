@@ -47,6 +47,21 @@ CREATE TABLE `administrateur` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `demande_mot_de_passe`
+--
+
+CREATE TABLE `demande_mot_de_passe` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `telephone` varchar(20) NOT NULL,
+  `date_demande` timestamp NOT NULL DEFAULT current_timestamp(),
+  `traitee` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `fk_demande_participant` (`telephone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `participant`
 --
 
@@ -57,7 +72,8 @@ CREATE TABLE `participant` (
   `sous_departement` enum('INF','TR') NOT NULL,
   `role` enum('parrain','marraine','filleul') NOT NULL,
   `mot_de_passe` varchar(255) NOT NULL,
-  `photo` varchar(255) NOT NULL
+  `photo` varchar(255) NOT NULL,
+  `mot_de_passe_temporaire` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -93,6 +109,12 @@ ALTER TABLE `participant`
 ALTER TABLE `association`
   ADD CONSTRAINT `fk_filleul` FOREIGN KEY (`telephone_filleul`) REFERENCES `participant` (`telephone`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_parrain` FOREIGN KEY (`telephone_parrain`) REFERENCES `participant` (`telephone`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `demande_mot_de_passe`
+--
+ALTER TABLE `demande_mot_de_passe`
+  ADD CONSTRAINT `fk_demande_participant` FOREIGN KEY (`telephone`) REFERENCES `participant` (`telephone`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,35 +1,7 @@
-const ForgetButton = document.getElementById("ForgetButton");
-const RetourButton = document.getElementById("RetourButton");
-const ConnexionForm = document.getElementById("ConnexionForm");
-const ForgetForm = document.getElementById("ForgetForm");
-const flipCard = document.getElementById("flipCard");
-
-ForgetButton.addEventListener("click", function () {
-    ConnexionForm.style.display = "none";
-    ForgetForm.style.display = "block";
-    
-});
-RetourButton.addEventListener("click", function () {
-
-    ForgetForm.style.display = "none";
-    ConnexionForm.style.display = "block";
-    
-
-});
-
-ForgetButton.addEventListener("click", function () {
-    flipCard.classList.add("flipped");
-    ConnexionForm.setAttribute("aria-hidden", "true");
-    ConnexionForm.inert = true;
-    ForgetForm.inert = false;
-    ForgetForm.querySelector("input[type='tel']").focus();
-});
-
-RetourButton.addEventListener("click", function () {
-    flipCard.classList.remove("flipped");
-    ConnexionForm.setAttribute("aria-hidden", "false");
-    ConnexionForm.inert = false;
-    ForgetForm.inert = true;
-    ForgetForm.setAttribute("aria-hidden", "true");
-    ConnexionForm.querySelector("input[type='tel']").focus();
+activerOeils();
+brancherVerification(document.querySelector("form"), function () {
+  const telephone = document.getElementById("telephone").value;
+  if (telephone.trim() === "" || document.getElementById("mot_de_passe").value === "") return "Remplis tous les champs.";
+  if (!telephoneValide(telephone)) return "Numéro invalide. Exemple : 77 123 45 67";
+  return "";
 });

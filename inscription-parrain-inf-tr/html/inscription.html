@@ -2,142 +2,101 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page d'inscription parrains INF_TR</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription parrain option TR</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/theme.css">
+  <link rel="stylesheet" href="../../shared/css/formulaire.css">
   <link rel="stylesheet" href="../css/inscription.css">
 </head>
 <body>
-  <main class="page">
+  <main class="contenu">
 
-    <!-- Panneau décoratif (gauche) -->
-    <aside class="visual" aria-hidden="true">
-      <div class="visual__text">
-        <p class="visual__title">Page d'inscription des DUT Niakeu Kérrsa.</p>
-      </div>
-    </aside>
+    <a class="retour" href="accueil.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      Retour
+    </a>
 
-    <!-- Formulaire (droite) -->
-    <section class="panel">
-      <div class="panel__inner">
+    <h1>À toi de guider la relève</h1>
+    <p class="intro">Quelques infos, et tes filleuls te découvriront le jour du tirage.</p>
 
-        <header class="head">
-          <h2 class="parrains_inf_tr">Parrains INF_TR</h2>
-          <h1>Créer mon compte</h1>
-          <p>Tous les champs sont obligatoires.</p>
-        </header>
+    <!-- PHP : le traitement est à écrire dans php/inscription.php (voir README) -->
+    <form action="../../php/inscription.php" method="POST" enctype="multipart/form-data">
 
-        <!-- Les attributs name correspondent aux clés de config.js -->
-        <form id="signup-form" novalidate autocomplete="on">
+      <input type="hidden" name="sous_departement" value="TR">
+      <fieldset class="choix">
+        <legend>Tu es</legend>
+        <label><input type="radio" name="role" value="parrain" checked>Parrain</label>
+        <label><input type="radio" name="role" value="marraine">Marraine</label>
+      </fieldset>
 
-          <div class="form-alert" id="form-alert" role="alert" hidden></div>
-
-          <div class="field" data-field="nom">
-            <label class="label" for="nom">Nom</label>
-            <input class="input" type="text" id="nom" name="nom" data-key="nom" autocomplete="family-name"
-                   aria-describedby="nom-error">
-            <p class="error" id="nom-error"></p>
+      <div class="ligne">
+        <div class="champ">
+          <label class="etiquette" for="nom">Nom</label>
+          <div class="saisie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" id="nom" name="nom" maxlength="50" autocomplete="family-name" required>
           </div>
-
-          <div class="field" data-field="prenom">
-            <label class="label" for="prenom">Prénom</label>
-            <input class="input" type="text" id="prenom" name="prenom" data-key="prenom"
-                   autocomplete="given-name"
-                   aria-describedby="prenom-error">
-            <p class="error" id="prenom-error"></p>
-          </div>
-
-          <div class="field" data-field="telephone">
-            <label class="label" for="telephone">Numéro de téléphone</label>
-            <input class="input" type="tel" id="telephone" name="telephone" data-key="telephone"
-                   autocomplete="tel" inputmode="tel"
-                   aria-describedby="telephone-error">
-            <p class="error" id="telephone-error"></p>
-          </div>
-
-          <div class="field" data-field="photo">
-            <span class="label">Photo de profil</span>
-            <div class="photo-row">
-              <label class="photo" for="photo" id="dropzone">
-                <input class="sr-only" type="file" id="photo" name="photo" data-key="photo"
-                       accept="image/jpeg,image/png,image/webp"
-                       aria-describedby="photo-hint photo-error">
-                <span class="photo__preview">
-                  <svg class="photo__icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 8a2 2 0 0 1 2-2h1.5l1.2-1.6A1 1 0 0 1 9.5 4h5a1 1 0 0 1 .8.4L16.5 6H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z"/>
-                    <circle cx="12" cy="12.5" r="3.2"/>
-                  </svg>
-                  <img id="photo-img" alt="Aperçu de ta photo" hidden>
-                </span>
-                <span class="photo__text">
-                  <strong id="photo-title">Choisir une photo</strong>
-                  <small id="photo-hint">JPG, PNG ou WebP</small>
-                </span>
-              </label>
-              <button type="button" class="photo__remove" id="photo-remove" hidden>Retirer</button>
-            </div>
-            <p class="error" id="photo-error"></p>
-          </div>
-
-          <div class="field" data-field="password">
-            <label class="label" for="password">Mot de passe</label>
-            <div class="input-wrap">
-              <input class="input input--pw" type="password" id="password" name="password" data-key="password"
-                     placeholder="8 caractères minimum" autocomplete="new-password"
-                     aria-describedby="password-error password-strength">
-              <button type="button" class="eye" data-toggle="password" aria-label="Afficher le mot de passe" aria-pressed="false">
-                <svg class="eye__on" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
-                <svg class="eye__off" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M3 3l18 18"/><path d="M10.6 5.1A10.7 10.7 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4"/><path d="M6.6 6.6A16.6 16.6 0 0 0 2 12s3.6 7 10 7a10 10 0 0 0 4.4-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
-              </button>
-            </div>
-            <div class="strength" id="password-strength" aria-live="polite" hidden>
-              <span class="strength__bars"><i></i><i></i><i></i></span>
-              <span class="strength__label"></span>
-            </div>
-            <p class="error" id="password-error"></p>
-          </div>
-
-          <div class="field" data-field="passwordConfirm">
-            <label class="label" for="password_confirm">Confirmer le mot de passe</label>
-            <div class="input-wrap">
-              <input class="input input--pw" type="password" id="password_confirm" name="password_confirm" data-key="passwordConfirm"
-                     placeholder="Saisis à nouveau ton mot de passe" autocomplete="new-password"
-                     aria-describedby="password_confirm-error">
-              <button type="button" class="eye" data-toggle="password_confirm" aria-label="Afficher le mot de passe" aria-pressed="false">
-                <svg class="eye__on" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
-                <svg class="eye__off" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M3 3l18 18"/><path d="M10.6 5.1A10.7 10.7 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4"/><path d="M6.6 6.6A16.6 16.6 0 0 0 2 12s3.6 7 10 7a10 10 0 0 0 4.4-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
-              </button>
-            </div>
-            <p class="error" id="password_confirm-error"></p>
-          </div>
-
-          <button class="submit" type="submit" id="submit-btn">
-            <span class="submit__label">Créer mon compte</span>
-            <span class="submit__icon" aria-hidden="true">
-              <svg class="submit__arrow" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
-              <span class="submit__spinner"></span>
-            </span>
-          </button>
-        </form>
-
-        <!-- Écran de succès (affiché par script.js) -->
-        <div class="success" id="success" hidden>
-          <div class="success__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
-          </div>
-          <h2 id="success-title"></h2>
-          <p id="success-text"></p>
         </div>
-
-        <p class="foot">Déjà inscrit ? <a href="../../connexion/html/connexion.html">Se connecter</a></p>
+        <div class="champ">
+          <label class="etiquette" for="prenom">Prénom</label>
+          <div class="saisie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" id="prenom" name="prenom" maxlength="50" autocomplete="given-name" required>
+          </div>
+        </div>
       </div>
-    </section>
+
+      <div class="champ">
+        <label class="etiquette" for="telephone">Numéro de téléphone</label>
+        <div class="saisie">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <input type="tel" id="telephone" name="telephone" maxlength="20" placeholder="77 123 45 67" autocomplete="tel" required>
+        </div>
+      </div>
+
+      <div class="ligne">
+        <div class="champ">
+          <label class="etiquette" for="mot_de_passe">Mot de passe</label>
+          <div class="saisie avec-oeil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input type="password" id="mot_de_passe" name="mot_de_passe" maxlength="30" autocomplete="new-password" required>
+            <button type="button" class="oeil" data-cible="mot_de_passe" aria-label="Afficher le mot de passe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </div>
+        </div>
+        <div class="champ">
+          <label class="etiquette" for="confirmation">Confirmation</label>
+          <div class="saisie avec-oeil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input type="password" id="confirmation" name="confirmation" maxlength="30" autocomplete="new-password" required>
+            <button type="button" class="oeil" data-cible="confirmation" aria-label="Afficher le mot de passe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <label class="photo" for="photo">
+        <span class="photo-cercle" id="photo-cercle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <img id="photo-apercu" alt="Aperçu de ta photo">
+        </span>
+        <span class="photo-texte">
+          <strong id="photo-titre">Ajoute ta photo</strong>
+          <small id="photo-aide">Tes filleuls la verront le jour du tirage</small>
+        </span>
+        <input class="cache" type="file" id="photo" name="photo" accept="image/*" required>
+      </label>
+
+      <p id="message" role="alert"></p>
+
+      <button class="bouton" type="submit">S'inscrire</button>
+      <p class="pied">Déjà inscrit·e ? <a class="lien" href="../../connexion/html/connexion.html">Se connecter</a></p>
+    </form>
+
   </main>
 
-  <script src="../js/config.js"></script>
+  <script src="../../shared/js/formulaire.js"></script>
   <script src="../js/inscription.js"></script>
 </body>
 </html>

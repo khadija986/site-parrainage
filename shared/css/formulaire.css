@@ -1,0 +1,82 @@
+/* Champs de formulaire communs (mobile-first). */
+
+.ligne { display: grid; grid-template-columns: 1fr; gap: 0; }
+@media (min-width: 400px) { .ligne { grid-template-columns: 1fr 1fr; gap: 12px; } }
+
+.champ { min-width: 0; margin-bottom: 12px; }
+.etiquette { display: block; margin-bottom: 4px; font-size: 0.8rem; font-weight: 600; }
+
+.saisie { position: relative; }
+.saisie > svg {
+  position: absolute; left: 13px; top: 50%; width: 17px; height: 17px;
+  transform: translateY(-50%); color: var(--icone); pointer-events: none;
+}
+
+input[type="text"], input[type="tel"], input[type="password"] {
+  width: 100%; padding: 12px 10px 12px 40px;
+  font-family: inherit; font-size: 16px; color: var(--cacao);
+  background: var(--blanc); border: 1.5px solid var(--bordure); border-radius: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input::placeholder { color: #c9b3a6; }
+input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(184, 110, 81, 0.18); }
+input[readonly] { background: #f6efe9; color: var(--texte-doux); }
+
+/* Bouton œil (afficher / masquer le mot de passe) */
+.saisie.avec-oeil input { padding-right: 42px; }
+.oeil {
+  position: absolute; right: 6px; top: 50%; width: 34px; height: 34px; transform: translateY(-50%);
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: none; border-radius: 50%; color: var(--icone); cursor: pointer;
+}
+.oeil svg { width: 18px; height: 18px; }
+.oeil:hover { color: var(--accent-fonce); background: var(--peche); }
+.oeil:focus-visible { outline: 3px solid var(--cacao); }
+
+/* Choix Parrain / Marraine */
+.choix { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 12px; padding: 0; border: 0; min-width: 0; }
+.choix legend { padding: 0; margin-bottom: 4px; font-size: 0.8rem; font-weight: 600; }
+.choix label {
+  display: flex; align-items: center; justify-content: center; padding: 10px;
+  font-size: 0.9rem; font-weight: 500; background: var(--blanc);
+  border: 1.5px solid var(--bordure); border-radius: 16px; cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.choix input { position: absolute; opacity: 0; pointer-events: none; }
+.choix label:has(input:checked) { background: var(--peche); border-color: var(--accent); color: var(--accent-fonce); font-weight: 600; }
+.choix label:has(input:focus-visible) { outline: 3px solid var(--cacao); outline-offset: 2px; }
+
+/* Zone photo */
+.photo {
+  position: relative; display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding: 10px 12px;
+  background: var(--blanc); border: 1.5px dashed var(--icone); border-radius: 16px; cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.photo:hover { border-color: var(--accent); background: #fffaf6; }
+.photo:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(184, 110, 81, 0.18); }
+.photo-cercle {
+  flex: none; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+  overflow: hidden; border-radius: 50%; background: var(--peche); color: var(--accent-fonce); box-shadow: 0 0 0 2px var(--icone);
+}
+.photo-cercle svg { width: 26px; height: 26px; }
+.photo-cercle img { display: none; width: 100%; height: 100%; object-fit: cover; }
+.photo-cercle.avec-photo svg { display: none; }
+.photo-cercle.avec-photo img { display: block; }
+.photo-texte { min-width: 0; }
+.photo-texte strong { display: block; font-size: 0.9rem; line-height: 1.3; }
+.photo-texte small { display: block; font-size: 0.75rem; line-height: 1.3; color: var(--texte-doux); overflow-wrap: anywhere; }
+.cache { position: absolute; bottom: 0; left: 50%; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+/* Messages */
+#message { margin: 0 0 12px; padding: 8px 12px; border-radius: 14px; background: #fdecea; color: var(--erreur); font-size: 0.82rem; font-weight: 500; text-align: center; }
+#message.ok { background: #e8f4ec; color: var(--succes); }
+#message:empty { display: none; }
+
+@media (max-height: 700px) { .champ, .photo, .choix { margin-bottom: 9px; } }
+@media (max-height: 600px) {
+  .champ, .photo, .choix { margin-bottom: 6px; }
+  .etiquette { margin-bottom: 2px; }
+  input[type="text"], input[type="tel"], input[type="password"] { padding-top: 8px; padding-bottom: 8px; }
+  .photo { padding: 6px 12px; }
+  .photo-cercle { width: 42px; height: 42px; }
+}

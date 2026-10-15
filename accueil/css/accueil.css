@@ -1,0 +1,6 @@
+/* Accueil : choix du profil (mobile-first). */
+h2 { margin: 14px 0 8px; font-size: 1rem; text-align: center; }
+.groupe { display: grid; gap: 8px; }
+.groupe .bouton { margin: 0; padding: 12px; font-size: 0.95rem; }
+@media (min-width: 420px) { .groupe { grid-template-columns: 1fr 1fr; } }
+hr { margin: 18px 0 14px; border: 0; border-top: 1.5px solid var(--bordure); }
