@@ -46,13 +46,21 @@ body.avec-barre { display: block; padding: 0; min-height: 100vh; }
 .onglets-bas a.sortie { color: var(--erreur); }
 .onglets-bas a:focus-visible { outline: 3px solid var(--cacao); outline-offset: -3px; }
 
+/* ---------- Ordinateur / tablette : la navigation passe dans la barre du haut ---------- */
 @media (min-width: 768px) {
   .appbar { padding: 0 32px; }
-  .onglets-bas { left: 50%; right: auto; bottom: 16px; width: 440px; transform: translateX(-50%); border-radius: 24px; }
+  .onglets-bas {
+    top: 0; bottom: auto; left: auto; right: 96px; width: auto; height: 60px;
+    display: flex; align-items: center; gap: 6px; padding: 0;
+    background: transparent; box-shadow: none; transform: none; border-radius: 0;
+  }
+  .onglets-bas a { flex-direction: row; gap: 8px; min-height: 42px; padding: 0 16px; font-size: 0.92rem; }
+  .onglets-bas a svg { width: 20px; height: 20px; }
 }
 
 /* ---------- Contenu de page ---------- */
 body.avec-barre .page { width: 100%; max-width: 560px; margin: 0 auto; padding: 20px 16px 110px; }
 body.avec-barre .contenu { margin: 0 auto; padding: 20px 16px 110px; }
 @media (min-width: 600px) { body.avec-barre .page, body.avec-barre .contenu { padding-top: 32px; } }
+@media (min-width: 768px) { body.avec-barre .page, body.avec-barre .contenu { padding-bottom: 48px; } }
 @media (min-width: 1024px) { body.avec-barre .page { max-width: 960px; } }
