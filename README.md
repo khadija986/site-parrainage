@@ -17,7 +17,7 @@ Un dossier par page, avec `index.html` (donc des URL propres : `/connexion/`, `/
 | `inscription-parrain-inf-inf/`, `inscription-parrain-inf-tr/` | Accueil + inscription parrain ou marraine (option INF / TR) | public |
 | `connexion/` | Connexion (téléphone + mot de passe) | public |
 | `mot-de-passe-oublie/` | Ouvre WhatsApp vers l'admin avec un message pré-rempli | public |
-| `espace/` | **Accueil de l'utilisateur connecté** : son parrain ou ses filleuls, avatar + menu Profil / Déconnexion | participant |
+| `espace/` | **Accueil de l'utilisateur connecté** : son parrain ou ses filleuls, photo en haut, barre de navigation en bas (Accueil / Profil / Déconnexion) | participant |
 | `profil/` | Modifier nom, prénom, téléphone, photo, mot de passe | participant |
 | `resultats/` | Tous les parrains et filleuls avec photos, CSV / impression PDF | **admin** |
 | `admin-login/` | Connexion administrateur (téléphone) | admin |

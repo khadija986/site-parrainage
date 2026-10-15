@@ -43,7 +43,7 @@ Les tâches ★★★★ (tirage) sont à confier à une personne à l'aise, ou 
 
 ## Règles d'architecture à retenir
 
-- **Deux « accueils » différents.** *Avant* l'inscription : `inscription-…/accueil/` (une page par classe). *Après* inscription ou connexion : **`espace/`**, l'interface propre à l'utilisateur (avatar en haut à droite avec Profil / Déconnexion, mobile-first). Il y voit **uniquement son parrainage** : son parrain / sa marraine, ou ses filleuls ; avant le tirage : « Parrainage pas encore effectué ».
+- **Deux « accueils » différents.** *Avant* l'inscription : `inscription-…/accueil/` (une page par classe). *Après* inscription ou connexion : **`espace/`**, l'interface propre à l'utilisateur (photo de profil en haut à droite et barre de navigation en bas (Accueil / Profil / Déconnexion), mobile-first). Il y voit **uniquement son parrainage** : son parrain / sa marraine, ou ses filleuls ; avant le tirage : « Parrainage pas encore effectué ».
 - **Parcours** : inscription → `/espace/` (le PHP ouvre la session), connexion → `/espace/`. Les **résultats complets sont réservés à l'admin** (`/resultats/`, page admin).
 
 - **4 formulaires d'inscription = 4 classes.** Chaque classe reçoit **son lien secret** (`.../accueil/?code=XXXX`). Un code ne marche que pour son formulaire ; le rôle et l'option sont imposés par le PHP du dossier (`docs/guide-inscription.md`). Personne ne peut accéder au formulaire d'une autre classe.

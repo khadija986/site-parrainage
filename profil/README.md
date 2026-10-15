@@ -8,7 +8,7 @@ Une personne connectée peut changer son nom, prénom, téléphone, photo et mot
 
 ## Déjà fait
 
-La **barre du haut** (avatar en haut à droite, menu Mon profil / Se déconnecter, partagée avec `espace/`) et le lien « Accueil » vers `/espace/`.
+La **barre du haut** (photo de profil en haut à droite, barre de navigation du bas Accueil / Profil / Déconnexion, partagée avec `espace/`) et le lien « Accueil » vers `/espace/`.
 
 `index.html` (formulaire, œil sur les mots de passe, aperçu photo), `js/profil.js` (vérifications, remplissage du formulaire depuis `CONFIG.PROFIL_ENDPOINT`, message « mot de passe temporaire » si l'URL contient `?mdp_temporaire=1`).
 Le formulaire envoie déjà en POST vers `php/profil.php` (ton dossier).

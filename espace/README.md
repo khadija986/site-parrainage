@@ -5,7 +5,7 @@
 ## À ne pas confondre
 
 - `inscription-…/accueil/` : la page d'accueil **avant** l'inscription (une par classe).
-- **`espace/` : l'accueil de l'utilisateur APRÈS son inscription ou sa connexion.** C'est son interface, comme une application mobile : avatar en haut à droite (menu *Mon profil* / *Se déconnecter*), puis **uniquement son propre parrainage**. Il ne voit jamais les résultats des autres : la liste complète est réservée à l'admin (`resultats/`).
+- **`espace/` : l'accueil de l'utilisateur APRÈS son inscription ou sa connexion.** C'est son interface, comme une application mobile : photo de profil en haut à droite (elle mène au profil) et **barre de navigation en bas comme une application mobile** (*Accueil*, *Profil*, *Déconnexion*), puis **uniquement son propre parrainage**. Il ne voit jamais les résultats des autres : la liste complète est réservée à l'admin (`resultats/`).
 
 ## Ce que voit l'utilisateur
 
