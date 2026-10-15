@@ -84,6 +84,10 @@ function activerOeils() {
 
 // Branche une fonction de vérification sur un formulaire : elle renvoie un message d'erreur ou "".
 function brancherVerification(formulaire, verifier) {
+  // Le serveur (PHP) renvoie ses refus par une redirection ?erreur=message : on l'affiche.
+  const erreurServeur = new URLSearchParams(window.location.search).get("erreur");
+  if (erreurServeur) afficherMessage(erreurServeur);
+
   formulaire.addEventListener("input", function () { afficherMessage(""); });
   formulaire.addEventListener("submit", function (evenement) {
     const erreur = verifier();
@@ -109,4 +113,18 @@ function verifierInscription() {
   );
   if (erreurMotDePasse !== "") return erreurMotDePasse;
   return verifierPhoto(photo);
+}
+
+// Chaque classe reçoit un lien avec son code d'accès (?code=...). Il est relayé de l'accueil au formulaire
+// (liens marqués data-garde-code, champ caché #code). La vérification réelle se fait côté serveur (PHP).
+function propagerCode() {
+  const code = new URLSearchParams(window.location.search).get("code") || "";
+  const champ = document.getElementById("code");
+  if (champ) champ.value = code;
+  if (code === "") return;
+  document.querySelectorAll("a[data-garde-code]").forEach(function (lien) {
+    const adresse = new URL(lien.getAttribute("href"), window.location.href);
+    adresse.searchParams.set("code", code);
+    lien.href = adresse.href;
+  });
 }
