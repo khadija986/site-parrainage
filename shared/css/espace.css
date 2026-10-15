@@ -1,4 +1,4 @@
-/* Barre du haut de l'espace utilisateur (mobile-first) : nom du site à gauche, avatar + menu à droite.
+/* Espace utilisateur (mobile-first) : barre du haut (nom du site + photo de profil) et barre de navigation du bas.
    À utiliser avec <body class="avec-barre"> et theme.css. */
 
 body.avec-barre { display: block; padding: 0; min-height: 100vh; }
@@ -15,10 +15,10 @@ body.avec-barre { display: block; padding: 0; min-height: 100vh; }
   color: var(--cacao); text-decoration: none;
 }
 .appbar-logo svg { width: 28px; height: 28px; color: var(--accent); }
-.appbar-logo:focus-visible, .avatar-bouton:focus-visible, .menu a:focus-visible { outline: 3px solid var(--cacao); outline-offset: 3px; }
+.appbar-logo:focus-visible, .avatar-bouton:focus-visible { outline: 3px solid var(--cacao); outline-offset: 3px; }
 
-/* ---------- Avatar ---------- */
-.avatar-bouton { padding: 0; border: 0; border-radius: 50%; background: none; cursor: pointer; }
+/* ---------- Avatar (photo de l'utilisateur, mène au profil) ---------- */
+.avatar-bouton { display: block; padding: 0; border-radius: 50%; text-decoration: none; }
 .avatar-mini {
   display: flex; align-items: center; justify-content: center; overflow: hidden;
   width: 44px; height: 44px; border-radius: 50%;
@@ -27,38 +27,32 @@ body.avec-barre { display: block; padding: 0; min-height: 100vh; }
 }
 .avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ---------- Menu : feuille en bas sur mobile ---------- */
-.menu-profil { position: relative; }
-.menu-fond { position: fixed; inset: 0; z-index: 40; background: rgba(74, 51, 41, 0.45); }
-.menu-fond[hidden], .menu[hidden] { display: none; }
-.menu {
-  position: fixed; z-index: 50; left: 0; right: 0; bottom: 0;
-  display: grid; gap: 4px; padding: 14px 14px calc(14px + env(safe-area-inset-bottom));
-  background: var(--carte); border-radius: 24px 24px 0 0; box-shadow: 0 -10px 30px rgba(110, 70, 50, 0.25);
-  animation: monte 0.2s ease both;
+/* ---------- Barre de navigation du bas (comme une application mobile) ---------- */
+.onglets-bas {
+  position: fixed; z-index: 30; left: 0; right: 0; bottom: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+  background: var(--carte); box-shadow: 0 -4px 18px rgba(110, 70, 50, 0.16);
 }
-.menu .menu-nom { margin: 0 8px 6px; font-weight: 600; text-align: center; color: var(--texte-doux); font-size: 0.9rem; }
-.menu a {
-  display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 14px;
-  border-radius: 14px; color: var(--cacao); font-weight: 500; text-decoration: none;
+.onglets-bas a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  min-height: 56px; border-radius: 16px; color: var(--texte-doux);
+  font-size: 0.72rem; font-weight: 500; text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-.menu a svg { width: 20px; height: 20px; color: var(--icone); flex: none; }
-.menu a:hover { background: var(--peche); }
-@keyframes monte { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+.onglets-bas a svg { width: 24px; height: 24px; }
+.onglets-bas a:hover { background: var(--peche); }
+.onglets-bas a[aria-current="page"] { color: var(--accent-fonce); font-weight: 600; background: var(--peche); }
+.onglets-bas a.sortie { color: var(--erreur); }
+.onglets-bas a:focus-visible { outline: 3px solid var(--cacao); outline-offset: -3px; }
 
-/* ---------- Tablette et plus : menu déroulant ---------- */
 @media (min-width: 768px) {
   .appbar { padding: 0 32px; }
-  .menu-fond { background: transparent; }
-  .menu {
-    position: absolute; top: calc(100% + 10px); right: 0; bottom: auto; left: auto; width: 230px;
-    padding: 10px; border-radius: 18px; box-shadow: 0 14px 34px rgba(110, 70, 50, 0.25);
-  }
+  .onglets-bas { left: 50%; right: auto; bottom: 16px; width: 440px; transform: translateX(-50%); border-radius: 24px; }
 }
-@media (prefers-reduced-motion: reduce) { .menu { animation: none; } }
 
 /* ---------- Contenu de page ---------- */
-body.avec-barre .page { width: 100%; max-width: 560px; margin: 0 auto; padding: 20px 16px 48px; }
-body.avec-barre .contenu { margin: 0 auto; padding: 20px 16px 48px; }
+body.avec-barre .page { width: 100%; max-width: 560px; margin: 0 auto; padding: 20px 16px 110px; }
+body.avec-barre .contenu { margin: 0 auto; padding: 20px 16px 110px; }
 @media (min-width: 600px) { body.avec-barre .page, body.avec-barre .contenu { padding-top: 32px; } }
 @media (min-width: 1024px) { body.avec-barre .page { max-width: 960px; } }

@@ -17,24 +17,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       Parrainage
     </a>
-    <div class="menu-profil">
-      <button type="button" class="avatar-bouton" id="avatar-bouton" aria-haspopup="true" aria-expanded="false" aria-controls="menu-profil" aria-label="Mon compte">
-        <span class="avatar-mini" id="avatar-mini" aria-hidden="true"></span>
-      </button>
-      <div class="menu" id="menu-profil" hidden>
-        <p class="menu-nom" id="menu-nom"></p>
-        <a href="../profil/">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          Mon profil
-        </a>
-        <a href="../connexion/">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-          Se déconnecter
-        </a>
-      </div>
-    </div>
+    <a class="avatar-bouton" href="../profil/" aria-label="Mon profil">
+      <span class="avatar-mini" id="avatar-mini" aria-hidden="true"></span>
+    </a>
   </header>
-  <div class="menu-fond" id="menu-fond" hidden></div>
 
   <main class="page">
     <h1 id="titre" class="titre-page">Bonjour</h1>
@@ -59,6 +45,12 @@
       <p class="intro">Le tirage au sort n'a pas encore eu lieu. Reviens après la cérémonie : ton résultat apparaîtra ici.</p>
     </div>
   </template>
+
+  <nav class="onglets-bas" aria-label="Navigation principale">
+    <a href="../espace/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg><span>Accueil</span></a>
+    <a href="../profil/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profil</span></a>
+    <a href="../connexion/" class="sortie"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span>Déconnexion</span></a>
+  </nav>
 
   <script src="../shared/js/config.js"></script>
   <script src="../shared/js/formulaire.js"></script>

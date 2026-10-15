@@ -35,7 +35,6 @@ if (new URLSearchParams(window.location.search).get("mdp_temporaire")) {
   document.getElementById("intro-profil").textContent = "Ton mot de passe est temporaire : choisis-en un nouveau ci-dessous.";
 }
 
-activerMenuProfil();
 remplirAvatar(UTILISATEUR_DEMO);   // remplacé par le vrai profil dès que PROFIL_ENDPOINT répond
 activerApercuPhoto("Laisse vide pour garder l'actuelle");
 activerOeils();

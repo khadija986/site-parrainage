@@ -101,7 +101,6 @@ function afficher(donnees) {
 }
 
 async function demarrer() {
-  activerMenuProfil();
   try {
     const donnees = await chargerDonnees();
     remplirAvatar(donnees);
