@@ -3,3 +3,4 @@ activerApercuPhoto("Pour que ton parrain ou ta marraine te reconnaisse");
 activerOeils();
 propagerCode();
 brancherVerification(document.querySelector("form"), verifierInscription);
+brancherDemo(document.querySelector("form"), "inscriptionFilleulInf", "../../connexion/?inscrit=1");
