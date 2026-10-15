@@ -14,19 +14,19 @@
 <body>
   <main class="contenu">
 
-    <a class="retour" href="accueil.html">
+    <a class="retour" href="../accueil/" data-garde-code>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
       Retour
     </a>
 
+    <p class="badge">Parrain / Marraine · Option Informatique</p>
     <h1>À toi de guider la relève</h1>
     <p class="intro">Quelques infos, et tes filleuls te découvriront le jour du tirage.</p>
 
-    <!-- PHP : le traitement est à écrire dans php/inscription.php (voir README) -->
-    <form action="../../php/inscription.php" method="POST" enctype="multipart/form-data">
+    <!-- PHP : le traitement est dans le dossier php/ de cette page (voir README). Le rôle et l'option sont imposés par ce script, jamais par le formulaire. -->
+    <form action="../php/inscription.php" method="POST" enctype="multipart/form-data">
 
-      <input type="hidden" name="sous_departement" value="INF">
-      <fieldset class="choix">
+      <input type="hidden" name="code" id="code">      <fieldset class="choix">
         <legend>Tu es</legend>
         <label><input type="radio" name="role" value="parrain" checked>Parrain</label>
         <label><input type="radio" name="role" value="marraine">Marraine</label>
