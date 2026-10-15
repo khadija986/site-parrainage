@@ -1,5 +1,18 @@
 // Réglages communs du site (à adapter avant la mise en ligne).
 const CONFIG = {
+  // MODE DÉMO : tant que le PHP d'une page n'est pas écrit, son formulaire « passe » sans serveur ni base
+  // (il mène directement à la page suivante). Quand TON PHP fonctionne, passe TA ligne à false : le formulaire
+  // enverra alors vraiment les données à ton script PHP. Une ligne par page, pour rester indépendants.
+  DEMO: {
+    inscriptionFilleulInf: true,
+    inscriptionFilleulTr: true,
+    inscriptionParrainInf: true,
+    inscriptionParrainTr: true,
+    connexion: true,
+    profil: true,
+    adminLogin: true,
+  },
+
   // Numéro WhatsApp de l'administrateur, format international sans « + » (ex. Sénégal : 221 + 9 chiffres)
   NUMERO_ADMIN_WHATSAPP: "221770000000",
 
