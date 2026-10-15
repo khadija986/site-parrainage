@@ -64,3 +64,26 @@ body.avec-barre .contenu { margin: 0 auto; padding: 20px 16px 110px; }
 @media (min-width: 600px) { body.avec-barre .page, body.avec-barre .contenu { padding-top: 32px; } }
 @media (min-width: 768px) { body.avec-barre .page, body.avec-barre .contenu { padding-bottom: 48px; } }
 @media (min-width: 1024px) { body.avec-barre .page { max-width: 960px; } }
+
+/* ---------- Photo ronde (cartes et résumé) ---------- */
+.photo-ronde {
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+  width: 128px; height: 128px; border-radius: 50%; object-fit: cover;
+  background: var(--peche); color: var(--accent-fonce); font-size: 2rem; font-weight: 600;
+  box-shadow: 0 0 0 3px var(--icone);
+}
+
+/* ---------- Colonne « mon compte » : grand écran seulement ---------- */
+.resume { display: none; }
+@media (min-width: 900px) {
+  body.avec-barre .mise-en-page { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 32px; align-items: start; max-width: 1040px; margin: 0 auto; padding: 32px 32px 48px; }
+  body.avec-barre .mise-en-page.page, body.avec-barre .mise-en-page.contenu { max-width: 1040px; }
+  .resume {
+    position: sticky; top: 92px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 24px 20px; text-align: center; background: var(--carte); border-radius: 28px;
+    box-shadow: 0 18px 40px rgba(110, 70, 50, 0.16);
+  }
+  .resume h2 { margin: 8px 0 0; font-size: 1.2rem; overflow-wrap: anywhere; }
+  .resume .badge { margin: 0; }
+  .resume .bouton { margin-top: 10px; }
+}
