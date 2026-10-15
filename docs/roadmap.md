@@ -1,11 +1,11 @@
 # Roadmap : partie 2 (PHP + base de données)
 
 La partie 1 (HTML / CSS / JS, design, liens) est terminée sur la branche **`develop`**. Reste à brancher **PHP et MySQL**.
-**12 tâches indépendantes** : chacune a son dossier et son propre `README.md` (pas besoin d'attendre les autres).
+**13 tâches indépendantes** : chacune a son dossier et son propre `README.md` (pas besoin d'attendre les autres).
 
 ## État actuel : tout « passe » sans PHP ni base (mode démo)
 
-Pour pouvoir naviguer dans tout le site dès maintenant, **les formulaires n'appellent encore aucun PHP** : inscription, connexion, profil et connexion admin mènent directement à la page suivante, et les pages admin / tirage / résultats tournent avec des données fictives ou stockées dans le navigateur.
+Pour pouvoir naviguer dans tout le site dès maintenant, **les formulaires n'appellent encore aucun PHP** : inscription et connexion mènent directement à l'espace de l'utilisateur, et profil et connexion admin à leur page suivante, et les pages admin / tirage / résultats tournent avec des données fictives ou stockées dans le navigateur.
 
 > **C'est à chacun de remplacer le mode démo de sa page par du vrai PHP + base de données.** Le README de ta page indique exactement quoi remplacer. Pour les formulaires, tu passes ta ligne `DEMO.<ta page>` à `false` dans `shared/js/config.js` dès que ton PHP marche ; les autres pages restent en démo sans être gênées.
 
@@ -27,20 +27,24 @@ Pour pouvoir naviguer dans tout le site dès maintenant, **les formulaires n'app
 | 4 | `inscription-parrain-inf-tr` | Inscription parrains / marraines TR | ★★ | 1 à 2 h | _à affecter_ |
 | 5 | `connexion` | Connexion des participants | ★★ | 1 à 2 h | _à affecter_ |
 | 6 | `mot-de-passe-oublie` | Enregistrer les demandes | ★ | 1 h | _à affecter_ |
-| 7 | `profil` | Modifier ses infos | ★★★ | 3 h | _à affecter_ |
-| 8 | `resultats` | Résultats publics (JSON) | ★★ | 2 h | _à affecter_ |
-| 9 | `admin-login` | Connexion admin | ★★ | 1 h | _à affecter_ |
-| 10 | `gestion-utilisateurs` | CRUD des participants | ★★★ | 4 h | _à affecter_ |
-| 11 | `gestion-mots-de-passe` | Réinitialisation + WhatsApp | ★★★ | 3 h | _à affecter_ |
-| 12 | `tirage` | Tirage équilibré, pause, reset | ★★★★ | 6 h | _à affecter_ |
+| 7 | `espace` | **Accueil de l'utilisateur connecté** : son parrain ou ses filleuls (JSON) | ★★ | 2 h | _à affecter_ |
+| 8 | `profil` | Modifier ses infos | ★★★ | 3 h | _à affecter_ |
+| 9 | `resultats` | **Résultats complets, page ADMIN** (JSON) | ★★ | 2 h | _à affecter_ |
+| 10 | `admin-login` | Connexion admin | ★★ | 1 h | _à affecter_ |
+| 11 | `gestion-utilisateurs` | CRUD des participants | ★★★ | 4 h | _à affecter_ |
+| 12 | `gestion-mots-de-passe` | Réinitialisation + WhatsApp | ★★★ | 3 h | _à affecter_ |
+| 13 | `tirage` | Tirage équilibré, pause, reset | ★★★★ | 6 h | _à affecter_ |
 
 Les tâches ★★★★ (tirage) sont à confier à une personne à l'aise, ou à faire en binôme.
 
 ## Ordre conseillé si tu es seul·e ou en retard
 
-`connexion` → `inscription-*` → `profil` → `admin-login` → `gestion-utilisateurs` → `tirage` → `resultats` → `gestion-mots-de-passe` + `mot-de-passe-oublie`.
+`connexion` → `inscription-*` → `espace` → `profil` → `admin-login` → `gestion-utilisateurs` → `tirage` → `resultats` → `gestion-mots-de-passe` + `mot-de-passe-oublie`.
 
 ## Règles d'architecture à retenir
+
+- **Deux « accueils » différents.** *Avant* l'inscription : `inscription-…/accueil/` (une page par classe). *Après* inscription ou connexion : **`espace/`**, l'interface propre à l'utilisateur (avatar en haut à droite avec Profil / Déconnexion, mobile-first). Il y voit **uniquement son parrainage** : son parrain / sa marraine, ou ses filleuls ; avant le tirage : « Parrainage pas encore effectué ».
+- **Parcours** : inscription → `/espace/` (le PHP ouvre la session), connexion → `/espace/`. Les **résultats complets sont réservés à l'admin** (`/resultats/`, page admin).
 
 - **4 formulaires d'inscription = 4 classes.** Chaque classe reçoit **son lien secret** (`.../accueil/?code=XXXX`). Un code ne marche que pour son formulaire ; le rôle et l'option sont imposés par le PHP du dossier (`docs/guide-inscription.md`). Personne ne peut accéder au formulaire d'une autre classe.
 - **Chaque formulaire a sa propre page d'accueil** (badge « Filleul · Option … ») : elle évite les erreurs d'option ou de niveau (parrain / filleul).
@@ -55,8 +59,8 @@ Chaque page est un **dossier qui contient `index.html`** : le serveur l'ouvre to
 | Adresse | Fichier réel |
 |---|---|
 | `/connexion/` | `connexion/index.html` |
-| `/profil/`, `/resultats/`, `/mot-de-passe-oublie/` | `<dossier>/index.html` |
-| `/admin-login/`, `/gestion-utilisateurs/`, `/gestion-mots-de-passe/`, `/tirage/` | `<dossier>/index.html` |
+| `/espace/`, `/profil/`, `/mot-de-passe-oublie/` | `<dossier>/index.html` |
+| `/admin-login/`, `/gestion-utilisateurs/`, `/gestion-mots-de-passe/`, `/tirage/`, `/resultats/` | `<dossier>/index.html` |
 | `/inscription-parrain-inf-tr/accueil/` | `inscription-parrain-inf-tr/accueil/index.html` |
 | `/inscription-parrain-inf-tr/inscription/` | `inscription-parrain-inf-tr/inscription/index.html` |
 
@@ -71,7 +75,7 @@ Chaque page est un **dossier qui contient `index.html`** : le serveur l'ouvre to
 - [ ] Supprimer `php/dev/` et `database/donnees-de-test.sql`, retirer le compte admin de test.
 - [ ] Créer le vrai compte admin (`admin-login/README.md`).
 - [ ] Activer HTTPS, dossier `uploads/` non exécutable, `display_errors = Off`.
-- [ ] Parcours complet : inscription → connexion → profil → tirage → résultats.
+- [ ] Parcours complet : inscription → espace → profil → déconnexion → connexion → espace ; côté admin : tirage → résultats.
 
 ## Suivi
 
