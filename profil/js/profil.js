@@ -51,3 +51,5 @@ brancherVerification(document.querySelector("form"), function () {
   }
   return verifierPhoto(document.getElementById("photo").files[0]);
 });
+
+brancherDemo(document.querySelector("form"), "profil", "", "Modifications enregistrées (mode démo : rien n'est sauvegardé pour l'instant).");
