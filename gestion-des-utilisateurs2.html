@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Parrainages</title>
+    <link rel="stylesheet" href="gestion-des-utilisateurs4.css">
+</head>
+<body>
+
+  <aside class="barre">
+    <span class="logo">Parrainage</span>
+    <nav>
+      <a href="index.html" title="Accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><span>Accueil</span></a>
+      <a href="gestion-des-utilisateurs2.html" aria-current="page" title="Utilisateurs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 4.2a4 4 0 0 1 0 7.6"/><path d="M18 14.3c2.3.9 4 3.2 4 5.7"/></svg><span>Utilisateurs</span></a>
+      <a href="Tirage2.html" title="Tirage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg><span>Tirage</span></a>
+      <a href="login.html" title="Déconnexion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg><span>Déconnexion</span></a>
+    </nav>
+  </aside>
+
+    <main>
+        
+        <h2>Gestion des utilisateurs</h2>
+        <button type="button" onclick="ouvrirForm()">+ Ajouter</button>
+        
+
+        <section class="stats">
+            <div><p>Total utilisateurs</p><h2 id="total">0</h2></div>
+            <div><p>Parrains</p><h2 id="parrains">0</h2></div>
+            <div><p>Filleuls</p><h2 id="filleuls">0</h2></div>
+        </section>
+
+        <input id="recherche" placeholder="🔍 Rechercher un utilisateur..."
+               oninput="afficher()">
+
+        <section id="utilisateurs" class="grille">
+            <div class="carte">
+                <h3> Parrains INF</h3>
+                <div id="pINF"></div>
+            </div>
+
+            <div class="carte">
+                <h3> Filleuls INF</h3>
+                <div id="fINF"></div>
+            </div>
+
+            <div class="carte">
+                <h3> Parrains TR</h3>
+                <div id="pTR"></div>
+            </div>
+
+            <div class="carte">
+                <h3> Filleuls TR</h3>
+                <div id="fTR"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal">
+        <form id="formulaire">
+            <h2 id="titreForm">Ajouter un utilisateur</h2>
+
+            <input id="nom" placeholder="Nom" required>
+            <input id="prenom" placeholder="Prénom" required>
+            <input id="telephone" placeholder="Téléphone" required>
+            <input type="file" id="photo" accept="image/*"> 
+
+            <select id="role">
+                <option>Parrain</option>
+                <option>Filleul</option>
+            </select>
+
+            <select id="departement">
+                <option value="INF">INF</option>
+                <option value="TR">TR</option>
+            </select>
+
+            <div class="actions">
+                <button type="submit">Enregistrer</button>
+                <button type="button" class="annuler" onclick="fermerForm()">
+                    Annuler
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script src="gestion-des-utilisateurs.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+/* PAGE DE CONNEXION : disposition en panneau coloré (titre à gauche, carte de connexion à droite).
+   Le HTML n'est pas modifié. */
+*{
+    box-sizing: border-box;
+}
+html{
+    min-height: 100vh;
+    display: flex;
+    padding: 24px;
+    background: #f9ecf0;
+}
+/* le body devient le grand panneau arrondi du modèle */
+body{
+    margin: auto;
+    width: min(1000px, 100%);
+    min-height: 520px;
+    padding: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 48px;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 24px;
+    color: #440814;
+    /* deux grands cercles clairs décoratifs + dégradé */
+    background:
+        radial-gradient(circle at 15% 108%, rgba(255, 255, 255, 0.28) 0 150px, transparent 151px),
+        radial-gradient(circle at 88% -8%, rgba(255, 255, 255, 0.22) 0 180px, transparent 181px),
+        linear-gradient(135deg, #FF9CB5, #FC809F);
+    box-shadow: 0 25px 50px rgba(68, 8, 20, 0.15);
+}
+
+/* ----- colonne de gauche : titre (+ petit texte que tu pourras ajouter juste après) ----- */
+#h1_login{
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    margin: 0 0 12px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.15;
+    text-align: left;
+    color: #440814;
+}
+/* un <p> placé juste sous le h1 viendra se ranger tout seul sous le titre */
+body > p{
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    max-width: 38ch;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 1.6;
+    color: rgba(68, 8, 20, 0.85);
+}
+
+/* ----- colonne de droite : carte de connexion blanche ----- */
+form{
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    justify-self: end;
+    width: 100%;
+    max-width: 380px;
+    padding: 34px 30px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 10px 30px rgba(68, 8, 20, 0.2);
+    animation: apparition 1.5s ease-out;
+}
+form h2{
+    margin: 0 0 22px;
+    text-align: left;
+    font-size: 1.9rem;
+    letter-spacing: 1px;
+    color: #440814;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.champ{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 0 16px;
+    text-align: left;
+}
+label{
+    margin-bottom: 6px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.9rem;
+    color: #440814;
+}
+input{
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #FF9CB5;
+    border-radius: 8px;
+    background: #FFFFFF;
+    font-size: 0.95rem;
+}
+input:focus{
+    outline: none;
+    border-color: #FC809F;
+    box-shadow: 0 0 0 3px rgba(252, 128, 159, 0.25);
+}
+#connect{
+    display: block;
+    width: 100%;
+    margin: 26px 0 0;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #440814;
+    background: linear-gradient(90deg, #FC809F, #FF9CB5);
+    box-shadow: 0 6px 14px rgba(252, 128, 159, 0.5);
+    transition: 0.3s;
+}
+#connect:hover{
+    color: #FFE9EF;
+    background: #440814;
+}
+#connect:active{
+    transform: scale(0.97);
+}
+@keyframes apparition{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ----- grands écrans ----- */
+@media(min-width: 1400px){
+    body{
+        width: 1150px;
+        min-height: 600px;
+        padding: 70px;
+    }
+    #h1_login{
+        font-size: 3.2rem;
+    }
+    form{
+        max-width: 420px;
+    }
+}
+
+/* ----- tablettes et téléphones : tout s'empile ----- */
+@media(max-width: 800px){
+    html{
+        padding: 12px;
+    }
+    body{
+        min-height: 0;
+        padding: 36px 22px;
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        row-gap: 14px;
+    }
+    #h1_login{
+        grid-row: auto;
+        align-self: auto;
+        margin: 0;
+        text-align: center;
+        font-size: 2rem;
+    }
+    body > p{
+        grid-row: auto;
+        max-width: none;
+        text-align: center;
+    }
+    form{
+        grid-column: 1;
+        grid-row: auto;
+        justify-self: stretch;
+        max-width: none;
+        margin-top: 14px;
+        padding: 28px 20px;
+    }
+}

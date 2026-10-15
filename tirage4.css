@@ -3,41 +3,84 @@
 *{ box-sizing: border-box;}
 
 body{ margin: 0%;
-padding: 0%;
+/* SIDEBAR : on laisse la place à gauche pour la barre latérale */
+padding: 0 0 0 250px;
 color: #440814;
-background-color: #FFE9EF;
+background-color: #fef9fa;
 min-height: 100vh;
 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 line-height: 1.5;
 }
 
-header{
+/* ===== SIDEBAR (remplace l'ancien header) ===== */
+.barre{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  border-bottom: 2px solid #FF9CB5;
-  background-color:  #ea809a;
+  flex-direction: column;
+  padding: 28px 0;
+  background: #f2d5dd;
+  box-shadow: 2px 0 18px rgba(68, 8, 20, 0.08);
+  overflow-y: auto;
+  z-index: 10;
 }
 .logo{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+  margin-bottom: 36px;
   font-weight: 600;
-  font-size: 30px;
-  letter-spacing: 2px;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+/* pastille ronde devant le nom (comme sur le modèle) */
+.logo::before{
+  content: "P";
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 20px;
+  background: linear-gradient(135deg, #f3d2da, #FF9CB5);
+}
+.barre nav{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .barre nav a{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px 12px 28px;
+  margin-right: 16px;
+  border-radius: 0 999px 999px 0;
   color: #440814;
-  margin-left: 20px;
-  text-decoration:none;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s ease;
 }
-.barre nav a:hover,
+.barre nav a svg{
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.barre nav a:hover{
+  background: #f8f2f3;
+}
 .barre nav a[aria-current="page"]{
-  color: #440814;
   font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: #440814;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 6px;
+  background: linear-gradient(90deg, #f3d2da, #FF9CB5);
+  box-shadow: 0 4px 12px rgba(252, 128, 159, 0.45);
 }
+
 .tirage{
   max-width: 1000px;
   margin: 0 auto;
@@ -52,8 +95,8 @@ header{
   margin-top: 20px;
 }
 .badge{
-  background-color: #FC809F;
-  color: #440814;
+  background-color: #f1b1c1;
+  color: #fef9fa;
   margin-left: 10px;
   font-size: 20px;
   padding: 0 10px 0 10px;
@@ -73,9 +116,9 @@ gap: 8px;}
   cursor: pointer;
 }
 .choix-manche button:hover{
-  color: #440814;
+  color: #fef9fa;
   background: #FFC9D7;
-  border: 2px solid #440814;
+  border: 2px solid #fef9fa;
 }
 .compteur,
 .compteurs{
@@ -89,9 +132,9 @@ gap: 8px;}
   margin: 30px 0;
 }
 .carte{
-  border: 2px solid  #FC809F;
+  border: 2px solid  #FFC9DF;
   border-radius: 15px;
-  background: #FFC9D7;
+  background: #f5d3dc;
   text-align: center;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 1px 1px 5px rgba(68, 8, 20, 0.25);
@@ -104,7 +147,7 @@ gap: 8px;}
   height: 350px;
   margin: 20px auto 5px;
   object-fit: cover;
-  background: #FF9CB5;
+  background: #f9ccd7;
 }
 .nom{
   min-height: 1.3rem;
@@ -119,14 +162,14 @@ gap: 8px;}
 }
 .btn-tirage{
   padding: 16px 44px;
-  border: 3px solid #FF9CB5;
+  border: 3px solid #f5b7c7;
   box-shadow: 2px 2px 5px rgba(68, 8, 20, 0.35);
   color: #440814;
   margin-bottom: 50px;
   border-radius: 10px;
   font-size: 1.25rem;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background:  #FC809F;
+  background:  linear-gradient(135deg, #f3d2da, #eb87a0);
   cursor: pointer;
 }
 .btn-tirage:hover{
@@ -156,7 +199,8 @@ gap: 8px;}
   }
 }
 
-@media(max-width: 700px){
+/* cartes empilées dès 900px, car la sidebar réduit la place disponible */
+@media(max-width: 900px){
   .espace-tirage{
     grid-template-columns: 1fr;
   }
@@ -164,21 +208,6 @@ gap: 8px;}
     justify-self: center;
     transform: rotate(90deg);
     margin: 0;
-  }
-  .barre{
-    padding: 12px 16px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .barre nav a{
-    margin-left: 0;
-    margin-right: 14px;
-    font-size: 0.95rem;
-  }
-  .logo{
-    font-size: 20px;
   }
   .carte{
     min-height: 0;
@@ -188,6 +217,43 @@ gap: 8px;}
     width: 60%;
     max-width: 260px;
     height: 220px;
+  }
+}
+
+@media(max-width: 700px){
+  /* SIDEBAR réduite aux icônes sur téléphone */
+  body{
+    padding-left: 64px;
+  }
+  .barre{
+    width: 64px;
+    padding: 18px 0;
+  }
+  .logo{
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    margin-bottom: 24px;
+    font-size: 0;
+  }
+  .logo::before{
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+  .barre nav a{
+    justify-content: center;
+    padding: 12px 0;
+    margin: 0 8px;
+    border-radius: 12px;
+  }
+  .barre nav a span{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
   .entete{
     justify-content: center;
