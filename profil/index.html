@@ -23,13 +23,17 @@
     </a>
   </header>
 
-  <main class="contenu">
+  <main class="contenu mise-en-page">
+    <aside class="resume" aria-label="Mon compte">
+      <div id="resume-photo"></div>
+      <h2 id="resume-nom"></h2>
+      <p class="badge" id="resume-badge"></p>
+    </aside>
 
-    <a class="retour" href="../espace/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg> Accueil</a>
+    <div class="principal">
 
     <h1>Mon profil</h1>
     <p class="intro" id="intro-profil">Modifie tes informations quand tu veux.</p>
-    <p class="badge" id="badge-profil" hidden></p>
 
     <!-- PHP : le traitement est à écrire dans php/profil.php (voir README) -->
     <form action="php/profil.php" method="POST" enctype="multipart/form-data">
@@ -85,6 +89,7 @@
       <a class="bouton clair" href="../connexion/">Se déconnecter</a>
     </form>
 
+    </div>
   </main>
 
   <nav class="onglets-bas" aria-label="Navigation principale">

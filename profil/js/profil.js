@@ -1,6 +1,3 @@
-const LIBELLES_OPTION = { INF: "Informatique", TR: "Télécoms & Réseaux" };
-const LIBELLES_ROLE = { parrain: "Parrain", marraine: "Marraine", filleul: "Filleul" };
-
 // Remplit le formulaire avec le profil renvoyé par le serveur (PROFIL_ENDPOINT)
 function remplirProfil(profil) {
   remplirAvatar(profil);
@@ -8,9 +5,6 @@ function remplirProfil(profil) {
   document.getElementById("prenom").value = profil.prenom;
   document.getElementById("telephone").value = profil.telephone;
 
-  const badge = document.getElementById("badge-profil");
-  badge.textContent = LIBELLES_ROLE[profil.role] + " · option " + LIBELLES_OPTION[profil.sous_departement];
-  badge.hidden = false;
 
   if (profil.photo) {
     document.getElementById("photo-apercu").src = profil.photo;
