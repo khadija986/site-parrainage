@@ -22,7 +22,7 @@ ForgetButton.addEventListener("click", function () {
     ConnexionForm.setAttribute("aria-hidden", "true");
     ConnexionForm.inert = true;
     ForgetForm.inert = false;
-    ForgetForm.querySelector("input[type='email']").focus();
+    ForgetForm.querySelector("input[type='tel']").focus();
 });
 
 RetourButton.addEventListener("click", function () {

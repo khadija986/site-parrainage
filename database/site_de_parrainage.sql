@@ -29,7 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `association` (
   `telephone_filleul` varchar(20) NOT NULL,
-  `telephone_parrain` varchar(20) NOT NULL
+  `telephone_parrain` varchar(20) NOT NULL,
+  `date_tirage` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `administrateur`
+--
+
+CREATE TABLE `administrateur` (
+  `telephone` varchar(20) NOT NULL,
+  `mot_de_passe` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -44,7 +56,7 @@ CREATE TABLE `participant` (
   `prenom` varchar(50) NOT NULL,
   `sous_departement` enum('INF','TR') NOT NULL,
   `role` enum('parrain','marraine','filleul') NOT NULL,
-  `mot_de_passe` varchar(30) NOT NULL,
+  `mot_de_passe` varchar(255) NOT NULL,
   `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -58,6 +70,12 @@ CREATE TABLE `participant` (
 ALTER TABLE `association`
   ADD PRIMARY KEY (`telephone_filleul`),
   ADD KEY `fk_parrain` (`telephone_parrain`);
+
+--
+-- Index pour la table `administrateur`
+--
+ALTER TABLE `administrateur`
+  ADD PRIMARY KEY (`telephone`);
 
 --
 -- Index pour la table `participant`
