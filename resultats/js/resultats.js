@@ -88,7 +88,7 @@ function celluleCsv(valeur) {
 }
 
 function telechargerCsv() {
-  const lignes = [["Option", "Parrain", "Filleul"]];
+  const lignes = [["Option", "Parrain", "Filleul"]];   // page admin : export complet
   parrainsAffiches().forEach(function (parrain) {
     const nomParrain = parrain.prenom + " " + parrain.nom;
     if (parrain.filleuls.length === 0) lignes.push([parrain.sous_departement, nomParrain, ""]);
