@@ -1,0 +1,8 @@
+# Secrets et fichiers locaux
+php/config/db.php
+php/config/codes.php
+
+# Photos envoyées par les utilisateurs (garder defaut.svg)
+uploads/*
+!uploads/defaut.svg
+!uploads/.gitkeep
