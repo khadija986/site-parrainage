@@ -33,8 +33,8 @@ const OPTION = 'TR';                               // <-- à adapter (voir le ta
 const ROLES_AUTORISES = ['parrain', 'marraine'];   // <-- à adapter
 const CLE_CODE = 'parrain-TR';                     // <-- à adapter
 
-const PAGE_FORMULAIRE = '../html/inscription.html';
-const PAGE_SUCCES = '../../connexion/html/connexion.html?inscrit=1';
+const PAGE_FORMULAIRE = '../inscription/';
+const PAGE_SUCCES = '../../connexion/?inscrit=1';
 const PHOTO_MAX_OCTETS = 2 * 1024 * 1024;
 const TYPES_PHOTO = [IMAGETYPE_JPEG => 'jpg', IMAGETYPE_PNG => 'png', IMAGETYPE_WEBP => 'webp'];
 

@@ -9,7 +9,7 @@ Cahier des charges complet : [docs/cahier-des-charges.pdf](docs/cahier-des-charg
 
 ## Structure
 
-Un dossier par page, chacun séparé en `html/`, `css/`, `js/` (et `accueil/index.html` pour les 4 inscriptions). Le style et les scripts communs sont dans `shared/`.
+Un dossier par page, avec `index.html` (donc des URL propres : `/connexion/`, `/profil/`…), `css/` et `js/`. Les 4 inscriptions ont deux pages : `accueil/index.html` et `inscription/index.html`. Le style et les scripts communs sont dans `shared/`.
 
 | Dossier | Page | Design |
 |---|---|---|
@@ -60,6 +60,14 @@ Tout est expliqué pour des personnes qui n'ont jamais fait de PHP.
 | `<dossier>/README.md` | Étapes précises et checklist de la page concernée |
 
 Fichiers PHP communs déjà fournis : `php/config/db.example.php`, `php/config/codes.example.php`, `php/includes/auth.php`, `php/dev/connecter-test.php`, `database/donnees-de-test.sql`.
+
+### Lancer le site
+
+```bash
+php -S localhost:8000      # depuis la racine du projet, puis ouvrir http://localhost:8000/
+```
+
+Ne pas ouvrir les fichiers en double-cliquant (`file://`) : voir `docs/xampp.md`.
 
 ### Points à noter
 

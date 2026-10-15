@@ -4,7 +4,7 @@ Chaque personne a **une page** (un dossier). Tout le monde peut avancer en même
 
 ## Règles d'indépendance
 
-1. **Tu ne modifies que ton dossier** (`html/`, `css/`, `js/` et un sous-dossier **`php/`** à créer dans ton dossier pour ton code serveur). Les actions des formulaires pointent déjà vers `../php/<fichier>.php` quand c'est le cas.
+1. **Tu ne modifies que ton dossier** (`index.html`, `css/`, `js/` — ou `accueil/` et `inscription/` pour les inscriptions — et un sous-dossier **`php/`** à créer dans ton dossier pour ton code serveur). Les actions des formulaires pointent déjà vers `../php/<fichier>.php` quand c'est le cas.
 2. **Fichiers partagés en lecture seule** : `shared/*`, `php/config/*`, `php/includes/auth.php`, `database/*.sql`. **Exception** : dans `shared/js/config.js`, tu peux remplir **uniquement la ligne d'endpoint de ta page** (ex. `PROFIL_ENDPOINT`). Besoin d'un autre changement ? Ouvre une demande (issue / pull request séparée, petite et ciblée) et préviens le groupe. Ne modifie pas ces fichiers au passage dans la branche de ta page.
 3. **Pas de `require` vers le dossier d'une autre page.** Ton PHP ne dépend que de `php/config/db.php` et `php/includes/auth.php`.
 4. **Tu testes avec les données de test** (`database/donnees-de-test.sql`) et l'outil `php/dev/connecter-test.php` : tu n'as besoin ni de la page d'inscription, ni de la connexion, ni de l'admin pour travailler.

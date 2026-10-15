@@ -79,10 +79,14 @@ Dans ton code PHP : `require __DIR__ . '/../../php/config/db.php'; $pdo = pdo();
 `http://localhost:8000/php/dev/connecter-test.php?participant=771000001` (participant) ou `?admin=770000000` (admin).
 Cet outil n'accepte que `localhost` ; il sera supprimé avant la mise en ligne.
 
+## Important : toujours passer par `http://`
+
+N'ouvre **jamais** une page en double-cliquant sur un fichier (adresse qui commence par `file://`) : les adresses propres comme `/connexion/` n'ouvriraient pas `index.html` (Firefox afficherait la liste des fichiers), et PHP ne s'exécuterait pas. Lance toujours `php -S localhost:8000` (ou Apache) et ouvre `http://localhost:8000/…`.
+
 ## 6. Voir ton travail
 
 1. Serveur lancé (option A) et MySQL démarré.
-2. Ouvrir la page de ton dossier, par ex. http://localhost:8000/profil/html/profil.html .
+2. Ouvrir la page de ton dossier, par ex. http://localhost:8000/profil/ (adresse avec le `/` final, sans nom de fichier). Avec `php -S`, sans le `/` final la page s'affiche sans son style : Apache, lui, l'ajoute tout seul.
 3. Envoyer le formulaire : il appelle ton script PHP ; regarde le résultat dans phpMyAdmin (onglet *Parcourir* de la table).
 4. Les erreurs PHP s'affichent dans le terminal de `php -S` (option A) ou dans `xampp/apache/logs/error.log`.
 

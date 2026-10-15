@@ -42,12 +42,21 @@ Les tâches ★★★★ (tirage) sont à confier à une personne à l'aise, ou 
 - **Mot de passe oublié** : contact WhatsApp de l'admin ; l'admin définit un mot de passe temporaire ; l'utilisateur le change dans son profil.
 - **Un seul identifiant : le téléphone** (9 chiffres en base).
 
-## URLs propres (sans `accueil.html` dans l'adresse)
+## URLs propres (jamais de nom de fichier dans l'adresse)
 
-Chaque page d'accueil d'inscription vit dans un dossier `accueil/` contenant **`index.html`** : l'adresse est donc `.../inscription-parrain-inf-tr/accueil/` (le serveur ouvre `index.html` automatiquement).
+Chaque page est un **dossier qui contient `index.html`** : le serveur l'ouvre tout seul.
 
-- Quand il faudra faire du PHP sur l'accueil (par exemple refuser un mauvais code **avant** d'afficher la page), **renomme `index.html` en `index.php`** : l'adresse ne change pas. Dans ce cas, déplace le contrôle du code (`hash_equals` avec `php/config/codes.php`) en haut de `index.php`.
-- Même principe recommandé pour les autres pages à la mise en ligne : un dossier + `index.php` (`/connexion/`, `/profil/`…), en gardant `html/` pour les fichiers statiques. À faire **en dernier**, par une seule personne, pour ne pas bloquer les autres.
+| Adresse | Fichier réel |
+|---|---|
+| `/connexion/` | `connexion/index.html` |
+| `/profil/`, `/resultats/`, `/mot-de-passe-oublie/` | `<dossier>/index.html` |
+| `/admin-login/`, `/gestion-utilisateurs/`, `/gestion-mots-de-passe/`, `/tirage/` | `<dossier>/index.html` |
+| `/inscription-parrain-inf-tr/accueil/` | `inscription-parrain-inf-tr/accueil/index.html` |
+| `/inscription-parrain-inf-tr/inscription/` | `inscription-parrain-inf-tr/inscription/index.html` |
+
+- **Toujours** écrire les liens avec le `/` final (`href="../connexion/"`), et les ressources de la page en relatif (`css/…`, `js/…`).
+- Quand une page aura besoin de PHP *avant* l'affichage (par exemple refuser un mauvais code d'accès sur l'accueil, ou protéger une page admin), **renomme son `index.html` en `index.php`** : l'adresse ne change pas. Mets alors `exigerAdmin();` / `exigerParticipant();` ou le contrôle du code (`hash_equals` avec `php/config/codes.php`) en première ligne du fichier.
+- **Ne jamais ouvrir le site en double-cliquant sur un fichier** (`file://`) : le navigateur affiche alors la liste des fichiers du dossier. Passe toujours par le serveur : `php -S localhost:8000` (voir `docs/xampp.md`).
 
 ## Avant la mise en ligne (une personne, à la fin)
 
