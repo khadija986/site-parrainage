@@ -91,7 +91,7 @@ session_destroy();                                  // à la déconnexion
 ## 7. Répondre : rediriger ou renvoyer du JSON
 
 ```php
-header('Location: /connexion/?inscrit=1');   // redirection
+header('Location: /espace/');   // redirection
 exit;                                                           // toujours exit après
 
 header('Content-Type: application/json; charset=utf-8');         // JSON pour le JS

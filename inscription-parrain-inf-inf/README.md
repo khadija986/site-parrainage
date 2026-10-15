@@ -15,7 +15,7 @@
 
 ## Mode démo actuel (important)
 
-Aujourd'hui ce formulaire **passe sans PHP ni base de données** : après les vérifications du navigateur, il mène directement à la page de connexion (`../../connexion/?inscrit=1`). C'est voulu, pour pouvoir naviguer dans tout le site avant la partie 2.
+Aujourd'hui ce formulaire **passe sans PHP ni base de données** : après les vérifications du navigateur, il mène directement à l'espace de l'utilisateur (`../../espace/`). C'est voulu, pour pouvoir naviguer dans tout le site avant la partie 2.
 **Remplacer ce comportement par du vrai est ton travail.** Quand ton PHP fonctionne :
 
 1. Dans `shared/js/config.js`, passe **ta** ligne `DEMO.inscriptionParrainInf` à `false` (c'est la seule ligne à toucher) : le formulaire envoie alors vraiment les données à ton script PHP.
@@ -37,6 +37,7 @@ Aujourd'hui ce formulaire **passe sans PHP ni base de données** : après les v�
 
 - Le rôle et l'option viennent **de ton PHP**, jamais du formulaire : même si quelqu'un modifie le HTML, il ne doit pas pouvoir s'inscrire ailleurs que dans parrain INF.
 - Sans le bon **code d'accès** (`?code=...` dans le lien de la classe), l'inscription est refusée.
+- Après l'inscription, **la personne est directement connectée** et arrive sur son espace (`/espace/`) : ton PHP ouvre la session.
 - Le mot de passe est enregistré **haché** (`password_hash`). Le téléphone est enregistré en **9 chiffres**.
 
 ## Mots à rechercher
@@ -45,7 +46,7 @@ Aujourd'hui ce formulaire **passe sans PHP ni base de données** : après les v�
 
 ## C'est terminé quand…
 
-- [ ] Une inscription correcte crée une ligne `participant` avec `role` ∈ ['parrain', 'marraine'] et `sous_departement = 'INF'`.
+- [ ] Une inscription correcte ouvre la session et redirige vers `/espace/` ; elle crée une ligne `participant` avec `role` ∈ ['parrain', 'marraine'] et `sous_departement = 'INF'`.
 - [ ] Mauvais ou absent code d'accès : refus (403), rien en base.
 - [ ] Modifier le formulaire dans le navigateur (F12) ne change ni le rôle ni l'option enregistrés.
 - [ ] Numéro déjà inscrit, mot de passe trop court, mauvaise photo : message clair, aucune photo orpheline dans `uploads/`.
@@ -54,4 +55,4 @@ Aujourd'hui ce formulaire **passe sans PHP ni base de données** : après les v�
 
 ## Tu n'as pas à t'occuper de
 
-La connexion, le profil, l'admin, le tirage. Après l'inscription tu rediriges simplement vers `../../connexion/?inscrit=1` ; cette page sera faite par quelqu'un d'autre.
+La connexion, le profil, l'admin, le tirage. Après l'inscription tu ouvres la session et tu rediriges vers `../../espace/` ; cette page sera faite par quelqu'un d'autre.

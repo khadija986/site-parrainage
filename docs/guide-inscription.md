@@ -28,13 +28,14 @@ Il faut **PHP 8.1 ou plus** (`php -v`).
 declare(strict_types=1);
 
 require __DIR__ . '/../../php/config/db.php';
+require __DIR__ . '/../../php/includes/auth.php';
 
 const OPTION = 'TR';                               // <-- à adapter (voir le tableau)
 const ROLES_AUTORISES = ['parrain', 'marraine'];   // <-- à adapter
 const CLE_CODE = 'parrain-TR';                     // <-- à adapter
 
 const PAGE_FORMULAIRE = '../inscription/';
-const PAGE_SUCCES = '../../connexion/?inscrit=1';
+const PAGE_SUCCES = '../../espace/';             // l'utilisateur arrive directement sur son espace
 const PHOTO_MAX_OCTETS = 2 * 1024 * 1024;
 const TYPES_PHOTO = [IMAGETYPE_JPEG => 'jpg', IMAGETYPE_PNG => 'png', IMAGETYPE_WEBP => 'webp'];
 
@@ -127,6 +128,11 @@ try {
     refuser('Erreur serveur. Réessaie plus tard.');
 }
 
+// 6. Connexion automatique : la personne arrive directement sur son espace
+demarrerSession();
+session_regenerate_id(true);
+$_SESSION['participant_telephone'] = $telephone;
+
 header('Location: ' . PAGE_SUCCES);
 exit;
 ```
@@ -142,7 +148,7 @@ exit;
 ## Comment tester (checklist)
 
 1. Mets des codes quelconques dans `php/config/codes.php`, ouvre `http://localhost:8000/<ton-dossier>/accueil/?code=LE_CODE` : le bouton « Je m'inscris » garde le code dans l'URL.
-2. Inscription correcte → redirection vers la connexion, ligne visible dans `participant` (bons `role`, `sous_departement`, mot de passe **haché**), photo dans `uploads/`.
+2. Inscription correcte → **tu arrives directement sur `/espace/`** (session ouverte), ligne visible dans `participant` (bons `role`, `sous_departement`, mot de passe **haché**), photo dans `uploads/`.
 3. Mauvais code (`?code=faux`) → page « Lien d'inscription invalide » (403), **rien en base**.
 4. Même numéro deux fois → message « déjà inscrit », pas de photo orpheline dans `uploads/`.
 5. **Triche** : dans les outils du navigateur (F12), ajoute/modifie un champ `role=parrain` ou `sous_departement=INF` avant l'envoi : l'enregistrement doit rester **celui de ton dossier**.
