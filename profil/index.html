@@ -9,12 +9,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../shared/css/theme.css">
   <link rel="stylesheet" href="../shared/css/formulaire.css">
+  <link rel="stylesheet" href="../shared/css/espace.css">
   <link rel="stylesheet" href="css/profil.css">
 </head>
-<body>
+<body class="avec-barre">
+  <header class="appbar">
+    <a class="appbar-logo" href="../espace/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Parrainage
+    </a>
+    <div class="menu-profil">
+      <button type="button" class="avatar-bouton" id="avatar-bouton" aria-haspopup="true" aria-expanded="false" aria-controls="menu-profil" aria-label="Mon compte">
+        <span class="avatar-mini" id="avatar-mini" aria-hidden="true"></span>
+      </button>
+      <div class="menu" id="menu-profil" hidden>
+        <p class="menu-nom" id="menu-nom"></p>
+        <a href="../profil/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Mon profil
+        </a>
+        <a href="../connexion/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Se déconnecter
+        </a>
+      </div>
+    </div>
+  </header>
+  <div class="menu-fond" id="menu-fond" hidden></div>
+
   <main class="contenu">
 
-    <a class="retour" href="../resultats/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg> Résultats</a>
+    <a class="retour" href="../espace/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg> Accueil</a>
 
     <h1>Mon profil</h1>
     <p class="intro" id="intro-profil">Modifie tes informations quand tu veux.</p>
@@ -78,6 +103,7 @@
 
   <script src="../shared/js/config.js"></script>
   <script src="../shared/js/formulaire.js"></script>
+  <script src="../shared/js/espace.js"></script>
   <script src="js/profil.js"></script>
 </body>
 </html>

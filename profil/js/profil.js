@@ -3,6 +3,7 @@ const LIBELLES_ROLE = { parrain: "Parrain", marraine: "Marraine", filleul: "Fill
 
 // Remplit le formulaire avec le profil renvoyé par le serveur (PROFIL_ENDPOINT)
 function remplirProfil(profil) {
+  remplirAvatar(profil);
   document.getElementById("nom").value = profil.nom;
   document.getElementById("prenom").value = profil.prenom;
   document.getElementById("telephone").value = profil.telephone;
@@ -34,6 +35,8 @@ if (new URLSearchParams(window.location.search).get("mdp_temporaire")) {
   document.getElementById("intro-profil").textContent = "Ton mot de passe est temporaire : choisis-en un nouveau ci-dessous.";
 }
 
+activerMenuProfil();
+remplirAvatar(UTILISATEUR_DEMO);   // remplacé par le vrai profil dès que PROFIL_ENDPOINT répond
 activerApercuPhoto("Laisse vide pour garder l'actuelle");
 activerOeils();
 chargerProfil();
