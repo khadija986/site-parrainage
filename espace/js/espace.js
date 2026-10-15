@@ -1,6 +1,5 @@
 // Accueil de l'utilisateur connecté : il ne voit que SON parrainage.
 // Démo (CONFIG.DEMO.espace) : ajouter ?demo=avant, ?demo=filleul ou ?demo=parrain à l'adresse.
-const LIBELLES_OPTION = { INF: "Informatique", TR: "Télécoms & Réseaux" };
 const ICONE_WHATSAPP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.2-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>';
 
 const CORRESPONDANTS_DEMO = {
@@ -26,21 +25,6 @@ async function chargerDonnees() {
   return reponse.json();
 }
 
-function creerPhoto(personne) {
-  if (personne.photo) {
-    const image = document.createElement("img");
-    image.className = "photo-ronde";
-    image.src = personne.photo;
-    image.alt = "Photo de " + personne.prenom + " " + personne.nom;
-    return image;
-  }
-  const pastille = document.createElement("span");
-  pastille.className = "photo-ronde";
-  pastille.textContent = initialesDe(personne);
-  pastille.setAttribute("aria-hidden", "true");
-  return pastille;
-}
-
 function creerCarte(personne, moi) {
   const carte = document.createElement("article");
   carte.className = "carte personne-carte";
@@ -60,7 +44,7 @@ function creerCarte(personne, moi) {
   lien.insertAdjacentHTML("afterbegin", ICONE_WHATSAPP);
   lien.append("Écrire sur WhatsApp");
 
-  carte.append(creerPhoto(personne), nom, option, lien);
+  carte.append(creerPhotoRonde(personne), nom, option, lien);
   return carte;
 }
 
