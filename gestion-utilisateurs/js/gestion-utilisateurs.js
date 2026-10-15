@@ -17,13 +17,20 @@ function ouvrirForm(id = null) {
         $("telephone").value = p.telephone;
         $("role").value = p.role;
         $("departement").value = p.departement;
+        $("accepte_plusieurs").checked = p.accepte_plusieurs !== false;
     }
+    majOptionPlusieurs();
 
     $("titreForm").textContent = id === null
         ? "Ajouter un utilisateur"
         : "Modifier un utilisateur";
 
     $("modal").style.display = "flex";
+}
+
+// La case « plusieurs filleuls » n'a de sens que pour un parrain
+function majOptionPlusieurs() {
+    $("bloc-plusieurs").style.display = $("role").value === "Parrain" ? "flex" : "none";
 }
 
 // Fermer le formulaire
@@ -41,7 +48,8 @@ $("formulaire").addEventListener("submit", function(e) {
         prenom: $("prenom").value.trim(),
         telephone: $("telephone").value.trim(),
         role: $("role").value,
-        departement: $("departement").value
+        departement: $("departement").value,
+        accepte_plusieurs: $("role").value === "Parrain" ? $("accepte_plusieurs").checked : true
     };
 
     if (!p.nom || !p.prenom || !p.telephone) {
@@ -121,7 +129,13 @@ function afficher() {
         supprimerBtn.className = "supprimer";
         supprimerBtn.onclick = () => supprimer(p.id);
 
-        bloc.append(nom, tel, modifier, supprimerBtn);
+        bloc.append(nom, tel);
+        if (p.role === "Parrain") {
+            const plusieurs = document.createElement("p");
+            plusieurs.textContent = p.accepte_plusieurs === false ? "Un seul filleul maximum" : "Peut recevoir plusieurs filleuls";
+            bloc.append(plusieurs);
+        }
+        bloc.append(modifier, supprimerBtn);
         $(categorie).appendChild(bloc);
     });
 
