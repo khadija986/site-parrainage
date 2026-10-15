@@ -1,5 +1,4 @@
-/* PAGE DE CONNEXION : disposition en panneau coloré (titre à gauche, carte de connexion à droite).
-   Le HTML n'est pas modifié. */
+
 *{
     box-sizing: border-box;
 }
@@ -9,7 +8,6 @@ html{
     padding: 24px;
     background: #f9ecf0;
 }
-/* le body devient le grand panneau arrondi du modèle */
 body{
     margin: auto;
     width: min(1000px, 100%);
@@ -23,15 +21,12 @@ body{
     overflow: hidden;
     border-radius: 24px;
     color: #440814;
-    /* deux grands cercles clairs décoratifs + dégradé */
     background:
         radial-gradient(circle at 15% 108%, rgba(255, 255, 255, 0.28) 0 150px, transparent 151px),
         radial-gradient(circle at 88% -8%, rgba(255, 255, 255, 0.22) 0 180px, transparent 181px),
         linear-gradient(135deg, #FF9CB5, #FC809F);
     box-shadow: 0 25px 50px rgba(68, 8, 20, 0.15);
 }
-
-/* ----- colonne de gauche : titre (+ petit texte que tu pourras ajouter juste après) ----- */
 #h1_login{
     grid-column: 1;
     grid-row: 1;
@@ -45,7 +40,6 @@ body{
     text-align: left;
     color: #440814;
 }
-/* un <p> placé juste sous le h1 viendra se ranger tout seul sous le titre */
 body > p{
     grid-column: 1;
     grid-row: 2;
@@ -57,7 +51,6 @@ body > p{
     color: rgba(68, 8, 20, 0.85);
 }
 
-/* ----- colonne de droite : carte de connexion blanche ----- */
 form{
     grid-column: 2;
     grid-row: 1 / span 2;
@@ -138,7 +131,7 @@ input:focus{
     }
 }
 
-/* ----- grands écrans ----- */
+
 @media(min-width: 1400px){
     body{
         width: 1150px;
@@ -153,7 +146,6 @@ input:focus{
     }
 }
 
-/* ----- tablettes et téléphones : tout s'empile ----- */
 @media(max-width: 800px){
     html{
         padding: 12px;

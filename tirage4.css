@@ -1,9 +1,8 @@
-/* PALETTE ROSE : #FFE9EF (fond) / #FFC9D7 / #FFBCCD / #FF9CB5 / #FC809F (accent)
-   + #440814 (bordeaux foncé de la palette précédente) pour le texte, car la nouvelle palette ne contient que des teintes claires */
+
 *{ box-sizing: border-box;}
 
 body{ margin: 0%;
-/* SIDEBAR : on laisse la place à gauche pour la barre latérale */
+
 padding: 0 0 0 250px;
 color: #440814;
 background-color: #fef9fa;
@@ -12,7 +11,6 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
 line-height: 1.5;
 }
 
-/* ===== SIDEBAR (remplace l'ancien header) ===== */
 .barre{
   position: fixed;
   top: 0;
@@ -37,7 +35,7 @@ line-height: 1.5;
   font-size: 22px;
   letter-spacing: 1px;
 }
-/* pastille ronde devant le nom (comme sur le modèle) */
+
 .logo::before{
   content: "P";
   width: 42px;
