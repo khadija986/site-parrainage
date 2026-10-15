@@ -7,9 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../shared/css/theme.css">
-  <link rel="stylesheet" href="../../shared/css/formulaire.css">
-  <link rel="stylesheet" href="../css/connexion.css">
+  <link rel="stylesheet" href="../shared/css/theme.css">
+  <link rel="stylesheet" href="../shared/css/formulaire.css">
+  <link rel="stylesheet" href="css/connexion.css">
 </head>
 <body>
   <main class="contenu">
@@ -18,7 +18,7 @@
     <p class="intro">Connecte-toi avec ton numéro de téléphone.</p>
 
     <!-- PHP : le traitement est à écrire dans connexion/php/connexion.php (voir README) -->
-    <form action="../php/connexion.php" method="POST">
+    <form action="php/connexion.php" method="POST">
 
       <div class="champ">
         <label class="etiquette" for="telephone">Numéro de téléphone</label>
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <p class="oubli"><a class="lien" href="../../mot-de-passe-oublie/html/mot-de-passe-oublie.html">Mot de passe oublié ?</a></p>
+      <p class="oubli"><a class="lien" href="../mot-de-passe-oublie/">Mot de passe oublié ?</a></p>
 
       <p id="message" role="alert"></p>
 
@@ -45,11 +45,11 @@
       <p class="pied">Pas encore inscrit·e ? Utilise le lien d'inscription donné à ta classe.</p>
     </form>
 
-    <p class="pied lien-seul"><a class="lien" href="../../admin-login/html/login.html">Espace administrateur</a></p>
+    <p class="pied lien-seul"><a class="lien" href="../admin-login/">Espace administrateur</a></p>
 
   </main>
 
-  <script src="../../shared/js/formulaire.js"></script>
-  <script src="../js/connexion.js"></script>
+  <script src="../shared/js/formulaire.js"></script>
+  <script src="js/connexion.js"></script>
 </body>
 </html>

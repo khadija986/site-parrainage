@@ -8,7 +8,7 @@
 
 ## Déjà fait
 
-`html/connexion.html` (formulaire téléphone + mot de passe, bouton œil, lien « Mot de passe oublié ? »), `js/connexion.js` (vérifications dans le navigateur). Le formulaire envoie déjà en POST vers `../php/connexion.php` (ton dossier).
+`index.html` (formulaire téléphone + mot de passe, bouton œil, lien « Mot de passe oublié ? »), `js/connexion.js` (vérifications dans le navigateur). Le formulaire envoie déjà en POST vers `php/connexion.php` (ton dossier).
 
 ## Étapes
 
@@ -21,8 +21,8 @@ declare(strict_types=1);
 require __DIR__ . '/../../php/config/db.php';
 require __DIR__ . '/../../php/includes/auth.php';
 
-const PAGE_FORMULAIRE = '../html/connexion.html';
-const PAGE_PROFIL = '../../profil/html/profil.html';
+const PAGE_FORMULAIRE = '../';
+const PAGE_PROFIL = '../../profil/';
 const MESSAGE_ERREUR = 'Numéro ou mot de passe incorrect.';   // le même dans les 2 cas, volontairement
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: ' . PAGE_FORMULAIRE); exit; }

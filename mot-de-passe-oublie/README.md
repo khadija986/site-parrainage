@@ -8,7 +8,7 @@ Quand quelqu'un oublie son mot de passe, il saisit son numéro : la page ouvre *
 
 ## Déjà fait
 
-`html/` (formulaire avec le numéro), `js/mot-de-passe-oublie.js` (ouvre WhatsApp avec le message prêt, puis envoie le numéro à `CONFIG.DEMANDE_MDP_ENDPOINT` si cette adresse est renseignée).
+`index.html` (formulaire avec le numéro), `js/mot-de-passe-oublie.js` (ouvre WhatsApp avec le message prêt, puis envoie le numéro à `CONFIG.DEMANDE_MDP_ENDPOINT` si cette adresse est renseignée).
 
 ## Étapes
 
@@ -18,7 +18,7 @@ Quand quelqu'un oublie son mot de passe, il saisit son numéro : la page ouvre *
    - normalise le numéro en 9 chiffres (`docs/contrat-commun.md`) ;
    - si le numéro existe dans `participant` **et** qu'il n'y a pas déjà une demande non traitée pour lui, fais `INSERT INTO demande_mot_de_passe (telephone) VALUES (:tel)` ;
    - **réponds toujours la même chose** (`{"ok": true}`, code 200), que le numéro existe ou non (sinon on peut deviner qui est inscrit).
-3. Dans `shared/js/config.js`, `DEMANDE_MDP_ENDPOINT` doit valoir `"../../mot-de-passe-oublie/php/demande.php"`. C'est la seule ligne partagée que tu as le droit de modifier (voir `docs/contrat-commun.md`).
+3. Dans `shared/js/config.js`, `DEMANDE_MDP_ENDPOINT` doit valoir `"php/demande.php"`. C'est la seule ligne partagée que tu as le droit de modifier (voir `docs/contrat-commun.md`).
 4. Anti-abus : au plus 3 demandes par heure et par numéro (compte les lignes récentes avec `date_demande > NOW() - INTERVAL 1 HOUR`).
 5. Teste dans phpMyAdmin : la table `demande_mot_de_passe` se remplit, une seule ligne en attente par numéro.
 
