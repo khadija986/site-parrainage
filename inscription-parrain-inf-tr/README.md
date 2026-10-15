@@ -10,7 +10,7 @@
 ## Ce qui est déjà fait (ne pas refaire)
 
 - `accueil/index.html` : page d'accueil de **cette** classe (badge « Parrain / Marraine · Option Télécoms & Réseaux » pour éviter de se tromper de formulaire).
-- `html/inscription.html` : le formulaire (nom, prénom, téléphone, mot de passe, confirmation, photo, choix Parrain / Marraine). Il envoie en POST vers `../php/inscription.php`.
+- `inscription/index.html` : le formulaire (nom, prénom, téléphone, mot de passe, confirmation, photo, choix Parrain / Marraine). Il envoie en POST vers `../php/inscription.php`.
 - `js/` : vérifications dans le navigateur, aperçu de la photo, transmission du code d'accès.
 
 ## Ce que tu dois faire
@@ -46,4 +46,4 @@
 
 ## Tu n'as pas à t'occuper de
 
-La connexion, le profil, l'admin, le tirage. Après l'inscription tu rediriges simplement vers `../../connexion/html/connexion.html?inscrit=1` ; cette page sera faite par quelqu'un d'autre.
+La connexion, le profil, l'admin, le tirage. Après l'inscription tu rediriges simplement vers `../../connexion/?inscrit=1` ; cette page sera faite par quelqu'un d'autre.
