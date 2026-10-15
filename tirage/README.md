@@ -52,7 +52,7 @@ Le tirage tourne avec de **fausses données** dans le JS (objet `DONNEES`) et ch
 5. **`reinitialiser`** (POST) : `DELETE FROM association` (ou seulement pour une option), derrière une **confirmation** en deux étapes (`confirm()` dans le JS **et** un champ `confirmation=OUI` vérifié côté PHP). Jeton CSRF obligatoire.
 6. **`etat`** (GET) : associations déjà faites (pour reprendre un tirage interrompu : au rechargement, la page affiche la liste existante et le compteur `tirés / total`).
 7. **Brancher le JS** : remplace le contenu de `obtenirFilleul()` (appel `piocher`) et `obtenirParrain(filleul)` (appel `attribuer`) par des `fetch`. Garde l'animation telle quelle : les photos qui défilent sont du décor, le vrai parrain vient du serveur. Supprime l'objet `DONNEES` (fausses données) à la fin.
-8. **Fin de manche** : quand il n'y a plus de filleul sans parrain, la page propose la manche suivante (INF → TR) ; à la fin des deux, indiquer que les résultats sont publics (`resultats/`).
+8. **Fin de manche** : quand il n'y a plus de filleul sans parrain, la page propose la manche suivante (INF → TR) ; à la fin des deux, proposer d'ouvrir la page **Résultats** (`/resultats/`, réservée à l'admin). Les participants, eux, verront leur parrain ou leurs filleuls dans leur espace (`/espace/`) dès que le tirage est terminé.
 
 ## Pièges
 

@@ -17,8 +17,9 @@ Un dossier par page, avec `index.html` (donc des URL propres : `/connexion/`, `/
 | `inscription-parrain-inf-inf/`, `inscription-parrain-inf-tr/` | Accueil + inscription parrain ou marraine (option INF / TR) | public |
 | `connexion/` | Connexion (téléphone + mot de passe) | public |
 | `mot-de-passe-oublie/` | Ouvre WhatsApp vers l'admin avec un message pré-rempli | public |
-| `profil/` | Modifier nom, prénom, téléphone, photo, mot de passe | public |
-| `resultats/` | Parrains et filleuls avec photos, téléchargement CSV / impression PDF | public |
+| `espace/` | **Accueil de l'utilisateur connecté** : son parrain ou ses filleuls, avatar + menu Profil / Déconnexion | participant |
+| `profil/` | Modifier nom, prénom, téléphone, photo, mot de passe | participant |
+| `resultats/` | Tous les parrains et filleuls avec photos, CSV / impression PDF | **admin** |
 | `admin-login/` | Connexion administrateur (téléphone) | admin |
 | `gestion-utilisateurs/` | CRUD des participants | admin |
 | `gestion-mots-de-passe/` | Demandes de mot de passe oublié : mot de passe temporaire + envoi WhatsApp en un clic | admin |
@@ -75,7 +76,7 @@ Ne pas ouvrir les fichiers en double-cliquant (`file://`) : voir `docs/xampp.md`
 
 ### Points à noter
 
-- `resultats/` n'affiche les résultats et ne permet le téléchargement que si `termine = true`. En mode démo (endpoint vide) il affiche des données fictives, signalées sur la page.
+- `resultats/` est une **page admin** : liste complète des familles, export CSV / PDF. Un participant ne voit, dans `espace/`, que son propre parrainage (ou « Parrainage pas encore effectué » avant le tirage). Cela remplace la page de résultats publique du cahier des charges (§6), à la demande du client. En mode démo (endpoint vide) la page affiche des données fictives.
 - Les pages d'accueil des inscriptions sont dans `accueil/index.html` (URL sans nom de fichier).
 - L'espace admin garde ses couleurs roses, avec une barre latérale à icônes (`shared/css/admin.css`).
 

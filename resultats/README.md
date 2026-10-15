@@ -1,10 +1,10 @@
-# resultats : page publique des résultats du tirage
+# resultats : résultats complets du tirage (page ADMIN)
 
 > Avant de commencer : `docs/php-pour-debutants.md`, `docs/xampp.md`, `docs/contrat-commun.md`.
 
 ## Ta mission
 
-Fournir au navigateur les résultats **une fois le tirage terminé** : écrire `resultats/php/resultats.php` qui renvoie du JSON. La page est publique (aucune connexion).
+Fournir à l'admin les résultats du tirage (complets ou partiels) : écrire `resultats/php/resultats.php` qui renvoie du JSON. **La page est réservée à l'admin** : mets `exigerAdmin();` en première ligne de ton PHP. Les participants ne voient pas cette liste : chacun voit uniquement son parrainage dans `espace/`.
 
 ## Déjà fait
 
@@ -39,7 +39,7 @@ Quand le tirage n'est pas terminé : `{"termine": false, "parrains": []}`.
    WHERE f.role = 'filleul' AND a.telephone_filleul IS NULL;
    ```
 3. Si terminé : récupère tous les parrains/marraines (`role IN ('parrain','marraine')`) **avec** leurs filleuls (`LEFT JOIN`, parce qu'un parrain peut n'avoir aucun filleul). Construis le tableau PHP, puis `echo json_encode(...)` avec l'en-tête `Content-Type: application/json`.
-4. **Ne mets dans le JSON que** nom, prénom, option et photo. **Jamais** de téléphone, de mot de passe ni de rôle détaillé.
+4. Mets nom, prénom, option et photo (le téléphone est permis puisque la page est admin). **Jamais** de mot de passe.
 5. Branche `RESULTATS_ENDPOINT` dans `shared/js/config.js` sur `"php/resultats.php"` (une seule ligne, voir l'exception dans `docs/contrat-commun.md`) et vérifie que la bande « Données de démonstration » disparaît.
 6. (Option) Téléchargement côté serveur : un export CSV en PHP avec `fputcsv` si on veut mieux que le CSV du navigateur.
 
@@ -57,5 +57,6 @@ Quand le tirage n'est pas terminé : `{"termine": false, "parrains": []}`.
 
 - [ ] Sans tirage terminé : `{"termine": false, ...}` et la page affiche « Le tirage n'est pas encore terminé ».
 - [ ] Avec des associations pour tous les filleuls : la page affiche les vraies familles, boutons CSV et impression actifs.
-- [ ] Aucun téléphone ni mot de passe dans la réponse (regarde l'onglet *Réseau* du navigateur).
+- [ ] Sans session admin : refus (401/403), aucune donnée.
+- [ ] Aucun mot de passe dans la réponse (regarde l'onglet *Réseau* du navigateur).
 - [ ] Tu n'as modifié que `resultats/`.
