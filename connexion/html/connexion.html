@@ -14,13 +14,11 @@
 <body>
   <main class="contenu">
 
-    <a class="retour" href="../../accueil/html/accueil.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg> Accueil</a>
-
     <h1>Content de te revoir</h1>
     <p class="intro">Connecte-toi avec ton numéro de téléphone.</p>
 
-    <!-- PHP : le traitement est à écrire dans php/connexion.php (voir README) -->
-    <form action="../../php/connexion.php" method="POST">
+    <!-- PHP : le traitement est à écrire dans connexion/php/connexion.php (voir README) -->
+    <form action="../php/connexion.php" method="POST">
 
       <div class="champ">
         <label class="etiquette" for="telephone">Numéro de téléphone</label>
@@ -44,7 +42,7 @@
       <p id="message" role="alert"></p>
 
       <button class="bouton" type="submit">Se connecter</button>
-      <p class="pied">Pas encore inscrit·e ? <a class="lien" href="../../accueil/html/accueil.html">S'inscrire</a></p>
+      <p class="pied">Pas encore inscrit·e ? Utilise le lien d'inscription donné à ta classe.</p>
     </form>
 
     <p class="pied lien-seul"><a class="lien" href="../../admin-login/html/login.html">Espace administrateur</a></p>
