@@ -10,6 +10,11 @@ Remplacer le stockage temporaire du navigateur (`localStorage`) par la **vraie b
 
 `index.html` + `css/` + `js/gestion-utilisateurs.js` : barre latérale, compteurs, recherche, 4 colonnes (parrains INF, filleuls INF, parrains TR, filleuls TR), fenêtre d'ajout / modification (nom, prénom, téléphone, photo, rôle, option, case « plusieurs filleuls »). Tout fonctionne en démo dans le navigateur.
 
+## Mode démo actuel (important)
+
+Les utilisateurs sont enregistrés **dans le navigateur** (`localStorage`) : ça marche sans PHP, mais rien n'est partagé ni sauvegardé en base.
+**Remplacer cela par du vrai (PHP + base) est ton travail** : les étapes ci-dessous t'expliquent comment, dans l'ordre.
+
 ## Étapes
 
 1. Environnement prêt, session admin de test ouverte.

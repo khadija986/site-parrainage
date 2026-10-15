@@ -10,6 +10,14 @@
 
 `index.html` (téléphone + mot de passe, rose admin) qui envoie en POST vers `php/connexion.php` (ton dossier).
 
+## Mode démo actuel (important)
+
+Aujourd'hui ce formulaire **passe sans PHP ni base de données** : après les vérifications du navigateur, il mène directement à le tableau de bord (`../gestion-utilisateurs/`), sans vérifier aucun mot de passe. C'est voulu, pour pouvoir naviguer dans tout le site avant la partie 2.
+**Remplacer ce comportement par du vrai est ton travail.** Quand ton PHP fonctionne :
+
+1. Dans `shared/js/config.js`, passe **ta** ligne `DEMO.adminLogin` à `false` (c'est la seule ligne à toucher) : le formulaire envoie alors vraiment les données à ton script PHP.
+2. Quand tout est testé, supprime la ligne `brancherDemo(...)` à la fin de `js/login.js` : le mode démo n'a plus de raison d'exister pour ta page.
+
 ## Étapes
 
 1. Environnement prêt. Admin de test : `770000000` / `admin1234` (dans `donnees-de-test.sql`).

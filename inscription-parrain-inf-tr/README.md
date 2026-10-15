@@ -13,6 +13,14 @@
 - `inscription/index.html` : le formulaire (nom, prénom, téléphone, mot de passe, confirmation, photo, choix Parrain / Marraine). Il envoie en POST vers `../php/inscription.php`.
 - `js/` : vérifications dans le navigateur, aperçu de la photo, transmission du code d'accès.
 
+## Mode démo actuel (important)
+
+Aujourd'hui ce formulaire **passe sans PHP ni base de données** : après les vérifications du navigateur, il mène directement à la page de connexion (`../../connexion/?inscrit=1`). C'est voulu, pour pouvoir naviguer dans tout le site avant la partie 2.
+**Remplacer ce comportement par du vrai est ton travail.** Quand ton PHP fonctionne :
+
+1. Dans `shared/js/config.js`, passe **ta** ligne `DEMO.inscriptionParrainTr` à `false` (c'est la seule ligne à toucher) : le formulaire envoie alors vraiment les données à ton script PHP.
+2. Quand tout est testé, supprime la ligne `brancherDemo(...)` à la fin de `js/inscription.js` : le mode démo n'a plus de raison d'exister pour ta page.
+
 ## Ce que tu dois faire
 
 1. **Prépare ton environnement** (`docs/xampp.md`) : XAMPP démarré, base `site_de_parrainage` importée, `php/config/db.php` et `php/config/codes.php` créés, serveur lancé avec `php -S localhost:8000`.

@@ -61,6 +61,10 @@ Tout est expliqué pour des personnes qui n'ont jamais fait de PHP.
 
 Fichiers PHP communs déjà fournis : `php/config/db.example.php`, `php/config/codes.example.php`, `php/includes/auth.php`, `php/dev/connecter-test.php`, `database/donnees-de-test.sql`.
 
+### Mode démo (état actuel)
+
+Les formulaires « passent » sans PHP ni base : c'est volontaire pour naviguer dans tout le site. **Remplacer ce mode démo par du vrai PHP est le travail de chaque responsable de page** (voir `docs/roadmap.md` et le README de chaque dossier).
+
 ### Lancer le site
 
 ```bash

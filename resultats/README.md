@@ -10,6 +10,11 @@ Fournir au navigateur les résultats **une fois le tirage terminé** : écrire `
 
 `index.html` + `js/resultats.js` : affichage des familles (parrain + filleuls, photos ou initiales), onglets Tous / INF / TR, téléchargement CSV, impression PDF. Le JS affiche des **données de démonstration** tant que `CONFIG.RESULTATS_ENDPOINT` est vide.
 
+## Mode démo actuel (important)
+
+Tant que `RESULTATS_ENDPOINT` est vide, la page affiche des **résultats fictifs** (bandeau « Données de démonstration »).
+**Remplacer cela par du vrai (PHP + base) est ton travail** : les étapes ci-dessous t'expliquent comment, dans l'ordre.
+
 ## Format JSON à produire
 
 ```json

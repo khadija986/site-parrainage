@@ -10,6 +10,14 @@
 
 `index.html` (formulaire téléphone + mot de passe, bouton œil, lien « Mot de passe oublié ? »), `js/connexion.js` (vérifications dans le navigateur). Le formulaire envoie déjà en POST vers `php/connexion.php` (ton dossier).
 
+## Mode démo actuel (important)
+
+Aujourd'hui ce formulaire **passe sans PHP ni base de données** : après les vérifications du navigateur, il mène directement à la page profil (`../profil/`), sans vérifier aucun mot de passe. C'est voulu, pour pouvoir naviguer dans tout le site avant la partie 2.
+**Remplacer ce comportement par du vrai est ton travail.** Quand ton PHP fonctionne :
+
+1. Dans `shared/js/config.js`, passe **ta** ligne `DEMO.connexion` à `false` (c'est la seule ligne à toucher) : le formulaire envoie alors vraiment les données à ton script PHP.
+2. Quand tout est testé, supprime la ligne `brancherDemo(...)` à la fin de `js/connexion.js` : le mode démo n'a plus de raison d'exister pour ta page.
+
 ## Étapes
 
 1. Environnement prêt (XAMPP, base + `donnees-de-test.sql`, `db.php`). Compte pour tester : `771000001` / `test1234`.
@@ -52,7 +60,6 @@ exit;
 
 3. **Déconnexion** : crée `connexion/php/deconnexion.php` (`demarrerSession(); session_destroy();` puis redirection vers la connexion) et branche-le sur le bouton « Se déconnecter » de la page profil **par une demande** à la personne qui fait le profil (tu ne modifies pas son dossier).
 4. Limite les essais : après 5 échecs pour un numéro, attendre quelques minutes (stocke un compteur en session ou en base, au choix : demande avant d'ajouter une colonne).
-5. Affiche un petit message vert si l'URL contient `?inscrit=1` (« Compte créé, connecte-toi ») dans `js/connexion.js`.
 
 ## Pièges
 

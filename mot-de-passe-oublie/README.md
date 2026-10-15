@@ -10,6 +10,11 @@ Quand quelqu'un oublie son mot de passe, il saisit son numéro : la page ouvre *
 
 `index.html` (formulaire avec le numéro), `js/mot-de-passe-oublie.js` (ouvre WhatsApp avec le message prêt, puis envoie le numéro à `CONFIG.DEMANDE_MDP_ENDPOINT` si cette adresse est renseignée).
 
+## Mode démo actuel (important)
+
+Tant que `DEMANDE_MDP_ENDPOINT` est vide, la page ouvre WhatsApp mais **n'enregistre aucune demande** côté serveur.
+**Remplacer cela par du vrai (PHP + base) est ton travail** : les étapes ci-dessous t'expliquent comment, dans l'ordre.
+
 ## Étapes
 
 1. Environnement prêt (`docs/xampp.md`).

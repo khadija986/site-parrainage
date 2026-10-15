@@ -16,6 +16,11 @@ Ces règles sont rappelées dans l'encadré « Règles du tirage » de la page (
 
 `index.html` + `css/` + `js/tirage.js` : choix de la manche, carte filleul → carte parrain, animation de suspense (photos de parrains qui défilent), barre de progression, liste des associations, encadré des règles. Le JS fonctionne **en démonstration** avec de fausses données ; ses fonctions `obtenirFilleul()` et `obtenirParrain()` sont les seuls endroits à brancher sur PHP.
 
+## Mode démo actuel (important)
+
+Le tirage tourne avec de **fausses données** dans le JS (objet `DONNEES`) et choisit le parrain **dans le navigateur** : c'est seulement pour voir l'animation.
+**Remplacer cela par du vrai (PHP + base) est ton travail** : les étapes ci-dessous t'expliquent comment, dans l'ordre.
+
 ## Ta mission
 
 Écrire `tirage/php/api.php` (protégé par `exigerAdmin();`) et brancher le JS dessus. Session admin de test : `/php/dev/connecter-test.php?admin=770000000`.

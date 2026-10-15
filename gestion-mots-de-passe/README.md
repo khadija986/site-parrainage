@@ -17,6 +17,11 @@ Remplacer le stockage temporaire (`localStorage`) par la table **`demande_mot_de
 
 `index.html`, `css/`, `js/gestion-mots-de-passe.js` : liste des demandes, génération du mot de passe, bouton WhatsApp, compteurs, ajout manuel par numéro (quelqu'un qui appelle l'admin au téléphone).
 
+## Mode démo actuel (important)
+
+Les demandes sont gardées **dans le navigateur** (`localStorage`) et aucun mot de passe n'est réellement changé.
+**Remplacer cela par du vrai (PHP + base) est ton travail** : les étapes ci-dessous t'expliquent comment, dans l'ordre.
+
 ## Étapes
 
 1. Environnement prêt (`donnees-de-test.sql` contient une demande pour `773000001`).

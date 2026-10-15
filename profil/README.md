@@ -11,6 +11,14 @@ Une personne connectée peut changer son nom, prénom, téléphone, photo et mot
 `index.html` (formulaire, œil sur les mots de passe, aperçu photo), `js/profil.js` (vérifications, remplissage du formulaire depuis `CONFIG.PROFIL_ENDPOINT`, message « mot de passe temporaire » si l'URL contient `?mdp_temporaire=1`).
 Le formulaire envoie déjà en POST vers `php/profil.php` (ton dossier).
 
+## Mode démo actuel (important)
+
+Aujourd'hui ce formulaire **passe sans PHP ni base de données** : après les vérifications du navigateur, il mène directement à un message « Modifications enregistrées (mode démo) » : rien n'est sauvegardé. C'est voulu, pour pouvoir naviguer dans tout le site avant la partie 2.
+**Remplacer ce comportement par du vrai est ton travail.** Quand ton PHP fonctionne :
+
+1. Dans `shared/js/config.js`, passe **ta** ligne `DEMO.profil` à `false` (c'est la seule ligne à toucher) : le formulaire envoie alors vraiment les données à ton script PHP.
+2. Quand tout est testé, supprime la ligne `brancherDemo(...)` à la fin de `js/profil.js` : le mode démo n'a plus de raison d'exister pour ta page.
+
 ## Étapes
 
 1. Environnement prêt. Ouvre `http://localhost:8000/php/dev/connecter-test.php?participant=771000001`.

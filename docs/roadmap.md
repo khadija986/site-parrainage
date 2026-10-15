@@ -3,6 +3,12 @@
 La partie 1 (HTML / CSS / JS, design, liens) est terminée sur la branche **`develop`**. Reste à brancher **PHP et MySQL**.
 **12 tâches indépendantes** : chacune a son dossier et son propre `README.md` (pas besoin d'attendre les autres).
 
+## État actuel : tout « passe » sans PHP ni base (mode démo)
+
+Pour pouvoir naviguer dans tout le site dès maintenant, **les formulaires n'appellent encore aucun PHP** : inscription, connexion, profil et connexion admin mènent directement à la page suivante, et les pages admin / tirage / résultats tournent avec des données fictives ou stockées dans le navigateur.
+
+> **C'est à chacun de remplacer le mode démo de sa page par du vrai PHP + base de données.** Le README de ta page indique exactement quoi remplacer. Pour les formulaires, tu passes ta ligne `DEMO.<ta page>` à `false` dans `shared/js/config.js` dès que ton PHP marche ; les autres pages restent en démo sans être gênées.
+
 ## Comment démarrer (tout le monde)
 
 1. Lire **`docs/php-pour-debutants.md`** (20 min).
