@@ -14,7 +14,6 @@ function demarrerSession(): void
         session_start();
     }
 }
-
 function exigerParticipant(): string
 {
     demarrerSession();

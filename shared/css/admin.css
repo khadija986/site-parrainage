@@ -11,7 +11,7 @@ button, input, select { font-family: inherit; }
 .sidebar {
   position: sticky; top: 0; align-self: start; height: 100vh;
   display: flex; flex-direction: column; gap: 6px; padding: 20px 14px;
-  background: #ea809a; border-right: 2px solid #FF9CB5; color: #440814;
+  background: #f9cfda; border-right: 2px solid #f3cad4; color: #440814;
 }
 .sidebar .marque { display: flex; align-items: center; gap: 10px; padding: 4px 10px 18px; font-weight: 700; font-size: 1.25rem; letter-spacing: 0.5px; }
 .sidebar .marque svg { width: 26px; height: 26px; }
@@ -28,11 +28,11 @@ button, input, select { font-family: inherit; }
 .sidebar .bas { margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(68, 8, 20, 0.25); }
 
 /* ---------- Barre du haut (mobile) ---------- */
-.topbar { display: none; align-items: center; gap: 12px; padding: 10px 14px; background: #ea809a; border-bottom: 2px solid #FF9CB5; }
+.topbar { display: none; align-items: center; gap: 12px; padding: 10px 14px; background:#f9cfda; border-bottom: 2px solid #efb1c0; }
 .topbar .titre { font-weight: 700; color: #440814; }
 .burger {
   display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin: 0; padding: 0;
-  background: #FFE9EF; border: 2px solid #FF9CB5; border-radius: 10px; box-shadow: none; color: #440814; cursor: pointer;
+  background: #FFE9EF; border: 2px solid #efb1c0; border-radius: 10px; box-shadow: none; color: #440814; cursor: pointer;
 }
 .burger svg { width: 22px; height: 22px; }
 .fond-menu { display: none; }

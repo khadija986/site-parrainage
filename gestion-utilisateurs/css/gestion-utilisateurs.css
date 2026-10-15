@@ -4,7 +4,7 @@
 }
 
 body {
-    background: #FFE9EF;
+    background: #fbfafa;
     color:#440814;
     margin: 0;
     padding: 0;
@@ -27,9 +27,9 @@ main h1,button {
 }
 
 button {
-    background: #FC809F;
+    background: #f9b7c8;
     color: #440814;
-    border: 2px solid #FF9CB5;
+    border: none;
     box-shadow: 1px 1px 5px rgba(68, 8, 20, 0.35);
     padding: 12px 18px;
     border-radius: 8px;
@@ -50,7 +50,7 @@ button:hover { background: #FF9CB5; }
 }
 
 .stats div, .carte {
-    background: #FFC9D7;
+    background: #f2d9df;
     padding: 22px;
     border-radius: 14px;
     color: #440814;
@@ -81,11 +81,11 @@ button:hover { background: #FF9CB5; }
 .carte h3 {
     margin-bottom: 18px;
     padding-bottom: 12px;
-    border-bottom: 2px solid #FC809F;
+    border-bottom: 2px solid #53353d;
 }
 
 .personne {
-    background: #FFE9EF;
+    background: #faf0f3;
     padding: 13px;
     border-radius: 9px;
     margin-bottom: 10px;
@@ -101,7 +101,7 @@ button:hover { background: #FF9CB5; }
 }
 
 /* le bouton Supprimer reste foncé pour se distinguer des autres boutons roses */
-.supprimer { background: #440814; color: #FFE9EF; }
+.supprimer { background: #570d1c; color: #FFE9EF; }
 .supprimer:hover { background: #6b1a2e; }
 
 #modal {
@@ -161,7 +161,7 @@ form h2 { margin-bottom: 20px; }
     width: 100%;
     padding: 12px;
     margin: 12px 0;
-    border: 1px solid #FF9CB5;
+    border: 1px solid #f5bac8;
     border-radius: 8px;
 }
 
