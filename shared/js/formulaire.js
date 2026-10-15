@@ -128,3 +128,18 @@ function propagerCode() {
     lien.href = adresse.href;
   });
 }
+
+// Mode démo (voir shared/js/config.js) : sans PHP, l'envoi du formulaire mène directement à la page suivante,
+// ou affiche un message si aucune destination n'est donnée. À appeler APRÈS brancherVerification.
+function brancherDemo(formulaire, cle, destination, messageSucces) {
+  if (typeof CONFIG === "undefined" || !CONFIG.DEMO || !CONFIG.DEMO[cle]) return;
+  formulaire.addEventListener("submit", function (evenement) {
+    if (evenement.defaultPrevented) return;   // la vérification a refusé l'envoi
+    evenement.preventDefault();
+    if (destination) {
+      window.location.href = destination;
+    } else {
+      afficherMessage(messageSucces, true);
+    }
+  });
+}
