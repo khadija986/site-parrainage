@@ -9,11 +9,10 @@ Cahier des charges complet : [docs/cahier-des-charges.pdf](docs/cahier-des-charg
 
 ## Structure
 
-Un dossier par page, chacun séparé en `html/`, `css/`, `js/`. Le style et les scripts communs sont dans `shared/`.
+Un dossier par page, chacun séparé en `html/`, `css/`, `js/` (et `accueil/index.html` pour les 4 inscriptions). Le style et les scripts communs sont dans `shared/`.
 
 | Dossier | Page | Design |
 |---|---|---|
-| `accueil/` | Choix du profil (filleul / parrain × option INF / TR), accès connexion et résultats | public |
 | `inscription-filleul-inf-inf/`, `inscription-filleul-inf-tr/` | Accueil + inscription filleul (option INF / TR) | public |
 | `inscription-parrain-inf-inf/`, `inscription-parrain-inf-tr/` | Accueil + inscription parrain ou marraine (option INF / TR) | public |
 | `connexion/` | Connexion (téléphone + mot de passe) | public |
@@ -28,7 +27,7 @@ Un dossier par page, chacun séparé en `html/`, `css/`, `js/`. Le style et les 
 | `database/` · `docs/` | Base SQL · cahier des charges | |
 
 Design : les pages publiques suivent le design marron/pêche (Lora + Poppins), **mobile-first** (la mise en page s'élargit à 600 px puis 1024 px). L'espace admin garde son design rose.
-Liens relatifs entre pages : `index.html` redirige vers `accueil/`.
+`index.html` redirige vers la connexion. Il n'y a volontairement **pas** de page qui liste les 4 inscriptions : chaque classe reçoit uniquement son lien.
 
 ### À régler avant la mise en ligne
 
@@ -47,40 +46,26 @@ Base `site_de_parrainage` — fichier `database/site_de_parrainage.sql` (à impo
 La clé primaire d'un filleul dans `association` garantit « un seul parrain par filleul » ; un parrain peut apparaître 0, 1 ou plusieurs fois.
 Les mots de passe doivent être enregistrés avec `password_hash()` (colonnes en 255 caractères pour cela).
 
-## Partie 2 : brancher PHP et la base
+## Partie 2 : PHP + base de données
 
-Les pages publient vers des scripts PHP à créer dans `php/` (les `action` sont déjà posés) :
+Tout est expliqué pour des personnes qui n'ont jamais fait de PHP.
 
-| Script | Appelé par | À faire |
-|---|---|---|
-| `php/config/db.php` | tous | Connexion PDO ; identifiants lus depuis l'environnement / un fichier ignoré par git |
-| `php/inscription.php` | les 4 inscriptions | Champs : `role` (`parrain`/`marraine`/`filleul`), `sous_departement` (`INF`/`TR`), `nom`, `prenom`, `telephone`, `mot_de_passe`, `confirmation`, `photo`. Revalider côté serveur, `password_hash`, photo dans `uploads/` (type MIME + taille) |
-| `php/connexion.php` | `connexion/` | Vérifier `password_verify`, session (`session_regenerate_id`), rediriger vers `profil/` (avec `?mdp_temporaire=1` si `mot_de_passe_temporaire = 1`) |
-| `php/profil.php` | `profil/` | GET : JSON `{nom, prenom, telephone, role, sous_departement, photo}` (à brancher sur `PROFIL_ENDPOINT`) ; POST : exiger `mot_de_passe_actuel`, mettre à jour, remettre `mot_de_passe_temporaire` à 0 |
-| `php/demande_mot_de_passe.php` | `mot-de-passe-oublie/` | POST `telephone` → insérer dans `demande_mot_de_passe` (à brancher sur `DEMANDE_MDP_ENDPOINT`) |
-| `php/resultats.php` | `resultats/` | JSON `{termine, parrains:[{nom, prenom, sous_departement, photo, filleuls:[{nom, prenom, photo}]}]}` (ne pas exposer les téléphones) |
+| Document | Contenu |
+|---|---|
+| [docs/roadmap.md](docs/roadmap.md) | Les 12 tâches, l'ordre, les règles d'architecture, la liste avant mise en ligne |
+| [docs/php-pour-debutants.md](docs/php-pour-debutants.md) | Le PHP minimum, avec exemples |
+| [docs/xampp.md](docs/xampp.md) | Installer XAMPP, importer la base, lancer le site |
+| [docs/contrat-commun.md](docs/contrat-commun.md) | Règles pour travailler chacun dans son dossier, session, sécurité |
+| [docs/guide-inscription.md](docs/guide-inscription.md) | Squelette complet des 4 inscriptions |
+| `<dossier>/README.md` | Étapes précises et checklist de la page concernée |
 
-Pages admin à relier à PHP :
-
-1. `admin-login/` : connexion par téléphone (table `administrateur`, session admin). Toutes les pages admin doivent refuser l'accès sans session admin.
-2. `gestion-utilisateurs/` : remplacer le `localStorage` par un CRUD PHP.
-3. `gestion-mots-de-passe/` : remplacer le `localStorage` par la table `demande_mot_de_passe`. L'envoi WhatsApp est déjà fait côté navigateur (`wa.me`) ; il reste à enregistrer `password_hash` du mot de passe temporaire, mettre `mot_de_passe_temporaire = 1` et marquer la demande `traitee`.
-4. `tirage/` : voir ci-dessous.
-
-### Le tirage (cahier des charges §4-5)
-
-- Le hasard est fait **côté serveur en PHP** ; le JS ne fait qu'afficher l'animation.
-- Deux manches : INF puis TR. Pour chaque filleul sans association, choisir un parrain **du même `sous_departement`** (les rôles `parrain` et `marraine` sont des parrains).
-- Règle **« PAS DE IF »** pour le choix : tirer par requête SQL (`ORDER BY RAND() LIMIT 1` sur les parrains de l'option) ou `array_rand`, sans branchements pour choisir ou corriger une association.
-- Enregistrer chaque association dans `association` (`date_tirage` se remplit seule).
-- Endpoints à prévoir : filleul suivant, pause / reprise, remise à zéro avec confirmation, vérification « tirage possible » (au moins un parrain dans l'option si elle a des filleuls).
-- `tirage/` ne contient aujourd'hui que le bouton « suivant » : pause, remise à zéro et vérification restent à ajouter.
+Fichiers PHP communs déjà fournis : `php/config/db.example.php`, `php/config/codes.example.php`, `php/includes/auth.php`, `php/dev/connecter-test.php`, `database/donnees-de-test.sql`.
 
 ### Points à noter
 
 - `resultats/` n'affiche les résultats et ne permet le téléchargement que si `termine = true`. En mode démo (endpoint vide) il affiche des données fictives, signalées sur la page.
-- `gestion-mots-de-passe/` génère un mot de passe aléatoire par demande (8 caractères) : ne jamais utiliser un mot de passe unique pour tout le monde.
-- Les anciens formulaires (champ e-mail, `config.js` du parrain option TR) ont été remplacés par les nouvelles pages ; plus rien ne dépend de `config.js` par page.
+- Les pages d'accueil des inscriptions sont dans `accueil/index.html` (URL sans nom de fichier).
+- L'espace admin garde ses couleurs roses, avec une barre latérale à icônes (`shared/css/admin.css`).
 
 ## Workflow Git
 
