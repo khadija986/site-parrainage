@@ -4,8 +4,8 @@
 //   $_SESSION['admin_telephone']        -> rempli par admin-login/php/connexion.php
 declare(strict_types=1);
 
-const PAGE_CONNEXION = '/connexion/html/connexion.html';
-const PAGE_CONNEXION_ADMIN = '/admin-login/html/login.html';
+const PAGE_CONNEXION = '/connexion/';
+const PAGE_CONNEXION_ADMIN = '/admin-login/';
 
 function demarrerSession(): void
 {
