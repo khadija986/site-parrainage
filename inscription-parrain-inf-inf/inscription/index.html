@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription parrain option INF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/theme.css">
+  <link rel="stylesheet" href="../../shared/css/formulaire.css">
+  <link rel="stylesheet" href="../css/inscription.css">
+</head>
+<body>
+  <main class="contenu">
+
+    <a class="retour" href="../accueil/" data-garde-code>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      Retour
+    </a>
+
+    <p class="badge">Parrain / Marraine · Option Informatique</p>
+    <h1>À toi de guider la relève</h1>
+    <p class="intro">Quelques infos, et tes filleuls te découvriront le jour du tirage.</p>
+
+    <!-- PHP : le traitement est dans le dossier php/ de cette page (voir README). Le rôle et l'option sont imposés par ce script, jamais par le formulaire. -->
+    <form action="../php/inscription.php" method="POST" enctype="multipart/form-data">
+
+      <input type="hidden" name="code" id="code">      <fieldset class="choix">
+        <legend>Tu es</legend>
+        <label><input type="radio" name="role" value="parrain" checked>Parrain</label>
+        <label><input type="radio" name="role" value="marraine">Marraine</label>
+      </fieldset>
+
+      <div class="ligne">
+        <div class="champ">
+          <label class="etiquette" for="prenom">Prénom</label>
+          <div class="saisie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" id="prenom" name="prenom" maxlength="50" placeholder="Ex. : Awa" autocomplete="given-name" required>
+          </div>
+        </div>
+        <div class="champ">
+          <label class="etiquette" for="nom">Nom</label>
+          <div class="saisie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" id="nom" name="nom" maxlength="50" placeholder="Ex. : Diop" autocomplete="family-name" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="champ">
+        <label class="etiquette" for="telephone">Numéro de téléphone</label>
+        <div class="saisie">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <input type="tel" id="telephone" name="telephone" maxlength="20" placeholder="77 123 45 67" autocomplete="tel" required>
+        </div>
+      </div>
+
+      <div class="ligne">
+        <div class="champ">
+          <label class="etiquette" for="mot_de_passe">Mot de passe</label>
+          <div class="saisie avec-oeil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input type="password" id="mot_de_passe" name="mot_de_passe" maxlength="30" placeholder="8 caractères minimum" autocomplete="new-password" required>
+            <button type="button" class="oeil" data-cible="mot_de_passe" aria-label="Afficher le mot de passe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </div>
+        </div>
+        <div class="champ">
+          <label class="etiquette" for="confirmation">Confirmation</label>
+          <div class="saisie avec-oeil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input type="password" id="confirmation" name="confirmation" maxlength="30" placeholder="Retape-le" autocomplete="new-password" required>
+            <button type="button" class="oeil" data-cible="confirmation" aria-label="Afficher le mot de passe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <label class="photo" for="photo">
+        <span class="photo-cercle" id="photo-cercle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <img id="photo-apercu" alt="Aperçu de ta photo">
+        </span>
+        <span class="photo-texte">
+          <strong id="photo-titre">Ajoute ta photo</strong>
+          <small id="photo-aide">Tes filleuls la verront le jour du tirage</small>
+        </span>
+        <input class="cache" type="file" id="photo" name="photo" accept="image/*" required>
+      </label>
+
+      <p id="message" role="alert"></p>
+
+      <button class="bouton" type="submit">S'inscrire</button>
+      <p class="pied">Déjà inscrit·e ? <a class="lien" href="../../connexion/">Se connecter</a></p>
+    </form>
+
+  </main>
+
+  <script src="../../shared/js/config.js"></script>
+  <script src="../../shared/js/formulaire.js"></script>
+  <script src="../js/inscription.js"></script>
+</body>
+</html>

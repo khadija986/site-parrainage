@@ -1,0 +1,232 @@
+/* PALETTE ROSE : #FFE9EF / #FFC9D7 / #FFBCCD / #FF9CB5 / #FC809F + #440814 pour le texte */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #FFE9EF;
+    color:#440814;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+main {
+    margin: 0 auto;
+    padding: 24px;
+   max-width: 1100px;
+}
+
+main h1,button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+button {
+    background: #FC809F;
+    color: #440814;
+    border: 2px solid #FF9CB5;
+    box-shadow: 1px 1px 5px rgba(68, 8, 20, 0.35);
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button:active{
+    transform: scale(0.94);
+}
+
+button:hover { background: #FF9CB5; }
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stats div, .carte {
+    background: #FFC9D7;
+    padding: 22px;
+    border-radius: 14px;
+    color: #440814;
+    box-shadow: 0 5px 18px rgba(68, 8, 20, 0.12);
+}
+
+.stats p { color: rgba(68, 8, 20, 0.7); margin-bottom: 12px; }
+.stats h2 { font-size: 30px; }
+
+#recherche, form input, form select {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 12px;
+    border: 1px solid #FF9CB5;
+    border-radius: 8px;
+    background: #FFFFFF;
+    outline-color: #FC809F;
+}
+
+#recherche { margin-bottom: 25px; }
+
+.grille {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.carte h3 {
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #FC809F;
+}
+
+.personne {
+    background: #FFE9EF;
+    padding: 13px;
+    border-radius: 9px;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+}
+
+.personne p { margin: 5px 0; font-size: 13px; }
+
+.personne button {
+    padding: 7px 10px;
+    margin: 8px 5px 0 0;
+    font-size: 12px;
+}
+
+/* le bouton Supprimer reste foncé pour se distinguer des autres boutons roses */
+.supprimer { background: #440814; color: #FFE9EF; }
+.supprimer:hover { background: #6b1a2e; }
+
+#modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #44081488;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+form {
+    background: #FFE9EF;
+    padding: 28px;
+    border-radius: 16px;
+    width: 400px;
+    max-width: 100%;
+    box-shadow: 0 10px 40px #0003;
+    animation: apparition .25s ease;
+}
+
+form h2 { margin-bottom: 20px; }
+
+.actions { display: flex; gap: 10px; }
+.annuler { background: #FFBCCD; }
+
+@keyframes apparition {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(68, 8, 20, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+#modal form {
+    background: #FFE9EF;
+    width: 400px;
+    max-width: 100%;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px #0003;
+}
+
+#modal input,
+#modal select {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #FF9CB5;
+    border-radius: 8px;
+}
+
+#modal .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#modal .actions button {
+    flex: 1;
+}
+
+/* champ de séléction de photo */
+#photo { 
+    background: #FFFFFF;
+    padding: 12px;
+    border: 1px dashed #FC809F;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* photo de l'utilisateur */
+.photo-personne {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+/* Image par défaut si aucune photo n'est fournie */
+.photo-defaut {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #FC809F;
+    color: #440814;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+@media (min-width: 1400px) {
+    main { max-width: 1300px; }
+}
+
+@media (max-width: 850px) {
+    main { padding: 20px; }
+    .grille { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .stats { grid-template-columns: 1fr; }
+                main { padding: 15px; }
+    form, #modal form { padding: 20px; }
+    #modal { padding: 12px; }
+}
+
+/* Champ de recherche avec icône */
+.recherche { position: relative; margin-bottom: 25px; }
+.recherche svg { position: absolute; left: 13px; top: 15px; width: 18px; height: 18px; color: #FC809F; pointer-events: none; }
+.recherche #recherche { margin-bottom: 0; padding-left: 40px; }
+
+/* Case « peut recevoir plusieurs filleuls » (parrains uniquement) */
+.option-plusieurs { display: flex; align-items: center; gap: 10px; margin: 6px 0; font-size: 0.9rem; }
+#modal .option-plusieurs input { width: auto; margin: 0; }

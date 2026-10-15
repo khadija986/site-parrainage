@@ -1,0 +1,89 @@
+/* Espace utilisateur (mobile-first) : barre du haut (nom du site + photo de profil) et barre de navigation du bas.
+   À utiliser avec <body class="avec-barre"> et theme.css. */
+
+body.avec-barre { display: block; padding: 0; min-height: 100vh; }
+
+.appbar {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px; padding: 0 16px;
+  background: var(--carte); box-shadow: 0 2px 12px rgba(110, 70, 50, 0.12);
+}
+.appbar-logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: "Lora", Georgia, serif; font-weight: 700; font-size: 1.1rem;
+  color: var(--cacao); text-decoration: none;
+}
+.appbar-logo svg { width: 28px; height: 28px; color: var(--accent); }
+.appbar-logo:focus-visible, .avatar-bouton:focus-visible { outline: 3px solid var(--cacao); outline-offset: 3px; }
+
+/* ---------- Avatar (photo de l'utilisateur, mène au profil) ---------- */
+.avatar-bouton { display: block; padding: 0; border-radius: 50%; text-decoration: none; }
+.avatar-mini {
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--peche); color: var(--accent-fonce); font-size: 0.9rem; font-weight: 600;
+  box-shadow: 0 0 0 2px var(--icone);
+}
+.avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Barre de navigation du bas (comme une application mobile) ---------- */
+.onglets-bas {
+  position: fixed; z-index: 30; left: 0; right: 0; bottom: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+  background: var(--carte); box-shadow: 0 -4px 18px rgba(110, 70, 50, 0.16);
+}
+.onglets-bas a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  min-height: 56px; border-radius: 16px; color: var(--texte-doux);
+  font-size: 0.72rem; font-weight: 500; text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.onglets-bas a svg { width: 24px; height: 24px; }
+.onglets-bas a:hover { background: var(--peche); }
+.onglets-bas a[aria-current="page"] { color: var(--accent-fonce); font-weight: 600; background: var(--peche); }
+.onglets-bas a.sortie { color: var(--erreur); }
+.onglets-bas a:focus-visible { outline: 3px solid var(--cacao); outline-offset: -3px; }
+
+/* ---------- Ordinateur / tablette : la navigation passe dans la barre du haut ---------- */
+@media (min-width: 768px) {
+  .appbar { padding: 0 32px; }
+  .onglets-bas {
+    top: 0; bottom: auto; left: auto; right: 96px; width: auto; height: 60px;
+    display: flex; align-items: center; gap: 6px; padding: 0;
+    background: transparent; box-shadow: none; transform: none; border-radius: 0;
+  }
+  .onglets-bas a { flex-direction: row; gap: 8px; min-height: 42px; padding: 0 16px; font-size: 0.92rem; }
+  .onglets-bas a svg { width: 20px; height: 20px; }
+}
+
+/* ---------- Contenu de page ---------- */
+body.avec-barre .page { width: 100%; max-width: 560px; margin: 0 auto; padding: 20px 16px 110px; }
+body.avec-barre .contenu { margin: 0 auto; padding: 20px 16px 110px; }
+@media (min-width: 600px) { body.avec-barre .page, body.avec-barre .contenu { padding-top: 32px; } }
+@media (min-width: 768px) { body.avec-barre .page, body.avec-barre .contenu { padding-bottom: 48px; } }
+@media (min-width: 1024px) { body.avec-barre .page { max-width: 960px; } }
+
+/* ---------- Photo ronde (cartes et résumé) ---------- */
+.photo-ronde {
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+  width: 128px; height: 128px; border-radius: 50%; object-fit: cover;
+  background: var(--peche); color: var(--accent-fonce); font-size: 2rem; font-weight: 600;
+  box-shadow: 0 0 0 3px var(--icone);
+}
+
+/* ---------- Colonne « mon compte » : grand écran seulement ---------- */
+.resume { display: none; }
+@media (min-width: 900px) {
+  body.avec-barre .mise-en-page { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 32px; align-items: start; max-width: 1040px; margin: 0 auto; padding: 32px 32px 48px; }
+  body.avec-barre .mise-en-page.page, body.avec-barre .mise-en-page.contenu { max-width: 1040px; }
+  .resume {
+    position: sticky; top: 92px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 24px 20px; text-align: center; background: var(--carte); border-radius: 28px;
+    box-shadow: 0 18px 40px rgba(110, 70, 50, 0.16);
+  }
+  .resume h2 { margin: 8px 0 0; font-size: 1.2rem; overflow-wrap: anywhere; }
+  .resume .badge { margin: 0; }
+  .resume .bouton { margin-top: 10px; }
+}

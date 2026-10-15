@@ -1,0 +1,182 @@
+/* Thème commun (mobile-first) : toutes les pages publiques, sauf l'espace admin.
+   Polices à charger dans chaque page : Lora 700 + Poppins 400/500/600 (Google Fonts). */
+
+:root {
+  --fond: #e9e2dc;
+  --carte: #fbf5ef;
+  --blanc: #ffffff;
+  --cacao: #4a3329;
+  --texte-doux: #86695a;
+  --accent: #b86e51;
+  --accent-fonce: #a35d42;
+  --peche: #f3dccd;
+  --bordure: #ecd9cc;
+  --icone: #c08a72;
+  --erreur: #b03a2e;
+  --succes: #3d7a4f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  color: var(--cacao);
+  background-color: var(--fond);
+}
+
+.contenu {
+  width: 100%;
+  max-width: 480px;
+  animation: entree 0.5s ease both;
+}
+
+@keyframes entree {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.carte,
+form {
+  padding: 20px;
+  background: var(--carte);
+  border-radius: 28px;
+  box-shadow: 0 18px 40px rgba(110, 70, 50, 0.16);
+}
+
+h1 {
+  font-family: "Lora", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 6.4vw, 2rem);
+  line-height: 1.15;
+  text-align: center;
+  text-wrap: balance;
+  margin: 0 0 8px;
+}
+
+h2 {
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.15rem;
+  margin: 0 0 8px;
+}
+
+.intro {
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--texte-doux);
+  margin: 0 0 16px;
+}
+
+.duo {
+  display: block;
+  width: 96px;
+  height: auto;
+  margin: 0 auto 8px;
+}
+
+/* ---------- Étapes ---------- */
+.etapes { list-style: none; margin: 0 0 18px; padding: 0; }
+.etapes li { position: relative; display: flex; align-items: center; gap: 14px; padding-bottom: 12px; }
+.etapes li:last-child { padding-bottom: 0; }
+.etapes li:not(:last-child)::before {
+  content: ""; position: absolute; left: 19px; top: 40px; bottom: 0; width: 2px; background: var(--bordure);
+}
+.icone {
+  flex: none; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--peche); color: var(--accent-fonce);
+  display: flex; align-items: center; justify-content: center;
+}
+.icone svg { width: 20px; height: 20px; }
+.etapes strong { display: block; font-size: 0.92rem; line-height: 1.3; }
+.etapes div span { display: block; font-size: 0.8rem; line-height: 1.35; color: var(--texte-doux); }
+
+/* ---------- Liens ---------- */
+.retour {
+  display: inline-flex; align-items: center; gap: 2px; margin-bottom: 6px;
+  font-size: 0.85rem; font-weight: 500; color: var(--texte-doux); text-decoration: none;
+}
+.retour svg { width: 16px; height: 16px; }
+.retour:hover { color: var(--cacao); text-decoration: underline; }
+
+.lien { color: var(--accent-fonce); font-weight: 600; text-decoration: none; }
+.lien:hover { text-decoration: underline; }
+
+.pied { margin: 14px 0 0; text-align: center; font-size: 0.85rem; color: var(--texte-doux); }
+.pied.lien-seul { margin-top: 10px; }
+
+/* ---------- Boutons ---------- */
+.bouton {
+  display: block; width: 100%; padding: 14px; border: none; border-radius: 999px;
+  font-family: inherit; font-size: 1rem; font-weight: 600; text-align: center; text-decoration: none;
+  color: var(--blanc); background: var(--accent);
+  box-shadow: 0 8px 18px rgba(184, 110, 81, 0.35); cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.bouton:hover { background: var(--accent-fonce); transform: translateY(-2px); box-shadow: 0 12px 22px rgba(184, 110, 81, 0.42); }
+.bouton:active { transform: none; }
+.bouton + .bouton { margin-top: 10px; }
+
+.bouton.clair {
+  color: var(--accent-fonce); background: var(--blanc);
+  border: 1.5px solid var(--bordure); box-shadow: none;
+}
+.bouton.clair:hover { background: #fffaf6; border-color: var(--accent); }
+
+.bouton.whatsapp { background: #1f8f4e; box-shadow: 0 8px 18px rgba(31, 143, 78, 0.35); }
+.bouton.whatsapp:hover { background: #197a42; }
+
+.bouton:focus-visible, .retour:focus-visible, .lien:focus-visible {
+  outline: 3px solid var(--cacao); outline-offset: 3px;
+}
+
+/* ---------- Petits écrans en hauteur ---------- */
+@media (max-height: 700px) {
+  body { padding: 12px; }
+  .carte, form { padding: 16px; }
+  .duo { width: 72px; margin-bottom: 4px; }
+  .intro { font-size: 0.85rem; margin-bottom: 12px; }
+  .etapes { margin-bottom: 14px; }
+  .etapes li { padding-bottom: 9px; }
+}
+@media (max-height: 600px) {
+  .carte, form { padding: 12px 14px; }
+  .intro { font-size: 0.8rem; line-height: 1.4; margin-bottom: 8px; }
+  .duo { width: 56px; }
+  .bouton { padding: 12px; }
+}
+
+/* ---------- Tablette ---------- */
+@media (min-width: 600px) {
+  body { padding: 32px; }
+  .contenu { max-width: 500px; }
+  .carte, form { padding: 30px; }
+  .intro { font-size: 1rem; }
+  .duo { width: 112px; }
+  .etapes strong { font-size: 1rem; }
+  .etapes div span { font-size: 0.88rem; }
+}
+
+/* ---------- Ordinateur / grand écran ---------- */
+@media (min-width: 1024px) {
+  .contenu { max-width: 540px; }
+  h1 { font-size: 2.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contenu { animation: none; }
+  * { transition: none !important; }
+}
+
+/* ---------- Pastille (option INF / TR) ---------- */
+.badge {
+  display: block; width: fit-content; margin: 0 auto 10px; padding: 4px 12px;
+  font-size: 0.75rem; font-weight: 600; color: var(--accent-fonce);
+  background: var(--peche); border-radius: 999px;
+}
