@@ -15,8 +15,8 @@ Chaque personne a **une page** (un dossier). Tout le monde peut avancer en même
 
 | Clé de session | Posée par | Lue par |
 |---|---|---|
-| `$_SESSION['participant_telephone']` | page `connexion` | `profil`, `mot-de-passe-oublie` (non), pages participant |
-| `$_SESSION['admin_telephone']` | page `admin-login` | `gestion-utilisateurs`, `gestion-mots-de-passe`, `tirage` |
+| `$_SESSION['participant_telephone']` | page `connexion` **et** les 4 inscriptions (après création du compte) | `espace`, `profil` |
+| `$_SESSION['admin_telephone']` | page `admin-login` | `gestion-utilisateurs`, `gestion-mots-de-passe`, `tirage`, `resultats` |
 
 Dans ton PHP, utilise seulement :
 
@@ -32,7 +32,8 @@ Le téléphone est l'identifiant partout (clé de `participant`, `association`, 
 ## Contrat JSON (pages qui parlent à du JS)
 
 - `profil` : `GET` → `{ nom, prenom, telephone, role, sous_departement, photo }` (brancher l'URL dans `shared/js/config.js` → `PROFIL_ENDPOINT`).
-- `resultats` : `GET` → `{ termine: bool, parrains: [{ nom, prenom, sous_departement, photo, filleuls: [{ nom, prenom, photo }] }] }` (`RESULTATS_ENDPOINT`). **Jamais de téléphone ni de mot de passe dans cette réponse.**
+- `espace` : `GET` → `{ role, sous_departement, prenom, nom, photo, tirage_effectue, parrain: {…} | filleuls: [{…}] }` — **uniquement l'utilisateur de la session** (`ESPACE_ENDPOINT`). Détail dans `espace/README.md`.
+- `resultats` (**page admin**, `exigerAdmin()`) : `GET` → `{ termine: bool, parrains: [{ nom, prenom, sous_departement, photo, filleuls: [{ nom, prenom, photo }] }] }` (`RESULTATS_ENDPOINT`). Jamais de mot de passe ; les téléphones sont permis ici car la page est réservée à l'admin.
 - `mot-de-passe-oublie` : `POST telephone` → enregistre une demande (`DEMANDE_MDP_ENDPOINT`).
 - Réponses d'erreur : code HTTP adapté (400, 401, 403, 404, 500) + `{ "erreur": "message lisible" }`. Ne jamais afficher une erreur SQL à l'utilisateur.
 
