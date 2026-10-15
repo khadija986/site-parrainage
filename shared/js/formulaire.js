@@ -23,11 +23,18 @@ function telephoneInternational(valeur) {
 }
 
 function verifierPhoto(fichier) {
-  if (!fichier) return "";
-  if (!fichier.type.startsWith("image/")) return "Le fichier choisi n'est pas une image.";
-  if (fichier.size > FORMULAIRE.PHOTO_MAX_OCTETS) return "La photo est trop lourde (2 Mo maximum).";
+  if (!fichier) {
+    return "La photo est obligatoire. Ajoute une photo avant de t'inscrire.";
+  }
+  if (!fichier.type.startsWith("image/")) {
+    return "Le fichier choisi n'est pas une image.";
+  }
+  if (fichier.size > FORMULAIRE.PHOTO_MAX_OCTETS) {
+    return "La photo est trop lourde (2 Mo maximum).";
+  }
   return "";
 }
+
 
 function verifierMotDePasse(motDePasse, confirmation) {
   if (motDePasse.length < FORMULAIRE.MOT_DE_PASSE_MIN) {
