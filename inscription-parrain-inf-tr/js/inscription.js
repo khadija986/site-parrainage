@@ -3,4 +3,4 @@ activerApercuPhoto("Tes filleuls la verront le jour du tirage");
 activerOeils();
 propagerCode();
 brancherVerification(document.querySelector("form"), verifierInscription);
-brancherDemo(document.querySelector("form"), "inscriptionParrainTr", "../../connexion/?inscrit=1");
+brancherDemo(document.querySelector("form"), "inscriptionParrainTr", "../../espace/");
