@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d2747">
+  <title>Programme de parrainage — Trouve ton parrain idéal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="page">
+    <section class="intro" aria-label="Présentation du programme">
+      <p class="eyebrow">PROGRAMME DE PARRAINAGE</p>
+      <p class="intro-copy">Un bon départ commence par la bonne rencontre. Trouve le parrain qui t’aidera à prendre tes
+        marques.</p>
+    </section>
+    <section class="form-panel" aria-labelledby="title">
+      <div class="form-wrap">
+        <p class="eyebrow form-eyebrow">TON AVENTURE COMMENCE ICI</p>
+        <h1 id="title">Trouve ton parrain idéal.</h1>
+        <p class="subtitle">Quelques informations suffisent pour créer ton profil filleul.</p>
+        <form id="signup" action="#" method="post">
+          <div class="name-row">
+            <div class="field"><label for="firstName">Prénom</label><input id="firstName" name="firstName" type="text"
+                placeholder="Ex. Awa" autocomplete="given-name" required></div>
+            <div class="field"><label for="lastName">Nom</label><input id="lastName" name="lastName" type="text"
+                placeholder="Ex. Diop" autocomplete="family-name" required></div>
+          </div>
+          <div class="field"><label for="email">Email étudiant</label><input id="email" name="email" type="email"
+              placeholder="prenom.nom@gmail.sn" autocomplete="email" required></div>
+          <div class="field"><label for="password">Mot de passe</label><input id="password" name="password"
+              type="password" placeholder="8 caractères minimum" autocomplete="new-password" minlength="8" required>
+          </div>
+          <div class="field"><label for="confirmPassword">Confirmer le mot de passe</label><input id="confirmPassword"
+              name="confirmPassword" type="password" placeholder="Saisis à nouveau ton mot de passe"
+              autocomplete="new-password" minlength="8" required></div>
+          <div class="consent"><input id="consent" name="consent" type="checkbox" required><label
+              for="consent">J’accepte que mes informations soient utilisées dans le cadre du programme de
+              parrainage.</label></div>
+          <button class="submit" type="submit"><span>Créer mon profil Filleul</span><span class="arrow"
+              aria-hidden="true">↗</span></button>
+          <p class="notice" id="notice" role="status" aria-live="polite"></p>
+        </form>
+        <p class="login">Déjà inscrit ? <a href="#connexion">Se connecter</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+
+</html>
