@@ -33,7 +33,7 @@ body {
 
 .contenu {
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
   animation: entree 0.5s ease both;
 }
 
