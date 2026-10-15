@@ -73,7 +73,8 @@ CREATE TABLE `participant` (
   `role` enum('parrain','marraine','filleul') NOT NULL,
   `mot_de_passe` varchar(255) NOT NULL,
   `photo` varchar(255) NOT NULL,
-  `mot_de_passe_temporaire` tinyint(1) NOT NULL DEFAULT 0
+  `mot_de_passe_temporaire` tinyint(1) NOT NULL DEFAULT 0,
+  `accepte_plusieurs` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
