@@ -8,13 +8,13 @@ Une personne connectée peut changer son nom, prénom, téléphone, photo et mot
 
 ## Déjà fait
 
-`html/profil.html` (formulaire, œil sur les mots de passe, aperçu photo), `js/profil.js` (vérifications, remplissage du formulaire depuis `CONFIG.PROFIL_ENDPOINT`, message « mot de passe temporaire » si l'URL contient `?mdp_temporaire=1`).
-Le formulaire envoie déjà en POST vers `../php/profil.php` (ton dossier).
+`index.html` (formulaire, œil sur les mots de passe, aperçu photo), `js/profil.js` (vérifications, remplissage du formulaire depuis `CONFIG.PROFIL_ENDPOINT`, message « mot de passe temporaire » si l'URL contient `?mdp_temporaire=1`).
+Le formulaire envoie déjà en POST vers `php/profil.php` (ton dossier).
 
 ## Étapes
 
 1. Environnement prêt. Ouvre `http://localhost:8000/php/dev/connecter-test.php?participant=771000001`.
-2. **GET** `profil.php?action=lire` → JSON `{nom, prenom, telephone, role, sous_departement, photo}` du participant connecté (jamais de mot de passe). Dans `shared/js/config.js`, `PROFIL_ENDPOINT` doit valoir `"../php/profil.php?action=lire"` (une seule ligne, voir l'exception dans `docs/contrat-commun.md`). Résultat : le formulaire se remplit tout seul.
+2. **GET** `profil.php?action=lire` → JSON `{nom, prenom, telephone, role, sous_departement, photo}` du participant connecté (jamais de mot de passe). Dans `shared/js/config.js`, `PROFIL_ENDPOINT` doit valoir `"php/profil.php?action=lire"` (une seule ligne, voir l'exception dans `docs/contrat-commun.md`). Résultat : le formulaire se remplit tout seul.
 3. **POST** `profil.php` pour enregistrer :
    1. `exigerParticipant()` ;
    2. vérifier le **mot de passe actuel** (`password_verify`) : sinon refus ;

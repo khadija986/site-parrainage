@@ -8,7 +8,7 @@ Fournir au navigateur les résultats **une fois le tirage terminé** : écrire `
 
 ## Déjà fait
 
-`html/resultats.html` + `js/resultats.js` : affichage des familles (parrain + filleuls, photos ou initiales), onglets Tous / INF / TR, téléchargement CSV, impression PDF. Le JS affiche des **données de démonstration** tant que `CONFIG.RESULTATS_ENDPOINT` est vide.
+`index.html` + `js/resultats.js` : affichage des familles (parrain + filleuls, photos ou initiales), onglets Tous / INF / TR, téléchargement CSV, impression PDF. Le JS affiche des **données de démonstration** tant que `CONFIG.RESULTATS_ENDPOINT` est vide.
 
 ## Format JSON à produire
 
@@ -35,7 +35,7 @@ Quand le tirage n'est pas terminé : `{"termine": false, "parrains": []}`.
    ```
 3. Si terminé : récupère tous les parrains/marraines (`role IN ('parrain','marraine')`) **avec** leurs filleuls (`LEFT JOIN`, parce qu'un parrain peut n'avoir aucun filleul). Construis le tableau PHP, puis `echo json_encode(...)` avec l'en-tête `Content-Type: application/json`.
 4. **Ne mets dans le JSON que** nom, prénom, option et photo. **Jamais** de téléphone, de mot de passe ni de rôle détaillé.
-5. Branche `RESULTATS_ENDPOINT` dans `shared/js/config.js` sur `"../php/resultats.php"` (une seule ligne, voir l'exception dans `docs/contrat-commun.md`) et vérifie que la bande « Données de démonstration » disparaît.
+5. Branche `RESULTATS_ENDPOINT` dans `shared/js/config.js` sur `"php/resultats.php"` (une seule ligne, voir l'exception dans `docs/contrat-commun.md`) et vérifie que la bande « Données de démonstration » disparaît.
 6. (Option) Téléchargement côté serveur : un export CSV en PHP avec `fputcsv` si on veut mieux que le CSV du navigateur.
 
 ## Pièges
