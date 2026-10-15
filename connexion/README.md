@@ -4,7 +4,7 @@
 
 ## Ta mission
 
-Écrire `connexion/php/connexion.php` : vérifier téléphone + mot de passe, ouvrir une **session**, et envoyer la personne vers son profil. Tu es la seule personne à écrire `$_SESSION['participant_telephone']`.
+Écrire `connexion/php/connexion.php` : vérifier téléphone + mot de passe, ouvrir une **session**, et envoyer la personne vers **son espace** (`/espace/`, son accueil après connexion). Tu es la seule personne à écrire `$_SESSION['participant_telephone']`.
 
 ## Déjà fait
 
@@ -12,7 +12,7 @@
 
 ## Mode démo actuel (important)
 
-Aujourd'hui ce formulaire **passe sans PHP ni base de données** : après les vérifications du navigateur, il mène directement à la page profil (`../profil/`), sans vérifier aucun mot de passe. C'est voulu, pour pouvoir naviguer dans tout le site avant la partie 2.
+Aujourd'hui ce formulaire **passe sans PHP ni base de données** : après les vérifications du navigateur, il mène directement à l'espace de l'utilisateur (`../espace/`), sans vérifier aucun mot de passe. C'est voulu, pour pouvoir naviguer dans tout le site avant la partie 2.
 **Remplacer ce comportement par du vrai est ton travail.** Quand ton PHP fonctionne :
 
 1. Dans `shared/js/config.js`, passe **ta** ligne `DEMO.connexion` à `false` (c'est la seule ligne à toucher) : le formulaire envoie alors vraiment les données à ton script PHP.
@@ -30,7 +30,8 @@ require __DIR__ . '/../../php/config/db.php';
 require __DIR__ . '/../../php/includes/auth.php';
 
 const PAGE_FORMULAIRE = '../';
-const PAGE_PROFIL = '../../profil/';
+const PAGE_ESPACE = '../../espace/';
+const PAGE_PROFIL = '../../profil/';   // seulement si le mot de passe est temporaire
 const MESSAGE_ERREUR = 'Numéro ou mot de passe incorrect.';   // le même dans les 2 cas, volontairement
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: ' . PAGE_FORMULAIRE); exit; }
@@ -53,8 +54,8 @@ demarrerSession();
 session_regenerate_id(true);                      // protège contre le vol de session
 $_SESSION['participant_telephone'] = $telephone;
 
-$suite = $participant['mot_de_passe_temporaire'] ? '?mdp_temporaire=1' : '';
-header('Location: ' . PAGE_PROFIL . $suite);
+// mot de passe temporaire : on envoie d'abord vers le profil pour qu'il soit changé
+header('Location: ' . ($participant['mot_de_passe_temporaire'] ? PAGE_PROFIL . '?mdp_temporaire=1' : PAGE_ESPACE));
 exit;
 ```
 
@@ -73,9 +74,9 @@ exit;
 
 ## C'est terminé quand…
 
-- [ ] `771000001` / `test1234` te connecte et te redirige vers le profil ; une mauvaise combinaison renvoie le message d'erreur.
+- [ ] `771000001` / `test1234` te connecte et te redirige vers `/espace/` ; une mauvaise combinaison renvoie le message d'erreur.
 - [ ] Après connexion, `$_SESSION['participant_telephone']` contient `771000001` (vérifie avec `/php/dev/connecter-test.php`).
-- [ ] Un participant dont `mot_de_passe_temporaire = 1` arrive sur `profil.html?mdp_temporaire=1`.
+- [ ] Un participant dont `mot_de_passe_temporaire = 1` arrive sur `/profil/?mdp_temporaire=1` (sinon sur `/espace/`).
 - [ ] Aucune requête SQL construite par concaténation.
 - [ ] Tu n'as modifié que le dossier `connexion/`.
 
