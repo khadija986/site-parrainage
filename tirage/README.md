@@ -14,7 +14,7 @@ Ces règles sont rappelées dans l'encadré « Règles du tirage » de la page (
 
 ## Déjà fait
 
-`html/tirage.html` + `css/` + `js/tirage.js` : choix de la manche, carte filleul → carte parrain, animation de suspense (photos de parrains qui défilent), barre de progression, liste des associations, encadré des règles. Le JS fonctionne **en démonstration** avec de fausses données ; ses fonctions `obtenirFilleul()` et `obtenirParrain()` sont les seuls endroits à brancher sur PHP.
+`index.html` + `css/` + `js/tirage.js` : choix de la manche, carte filleul → carte parrain, animation de suspense (photos de parrains qui défilent), barre de progression, liste des associations, encadré des règles. Le JS fonctionne **en démonstration** avec de fausses données ; ses fonctions `obtenirFilleul()` et `obtenirParrain()` sont les seuls endroits à brancher sur PHP.
 
 ## Ta mission
 

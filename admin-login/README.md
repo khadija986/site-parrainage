@@ -8,7 +8,7 @@
 
 ## Déjà fait
 
-`html/login.html` (téléphone + mot de passe, rose admin) qui envoie en POST vers `../php/connexion.php` (ton dossier).
+`index.html` (téléphone + mot de passe, rose admin) qui envoie en POST vers `php/connexion.php` (ton dossier).
 
 ## Étapes
 
@@ -16,7 +16,7 @@
 2. Écris `admin-login/php/connexion.php` en suivant le modèle de `connexion/README.md` (même logique), avec ces différences :
    - tu lis la table **`administrateur`** (colonnes `telephone`, `mot_de_passe`) ;
    - tu poses `$_SESSION['admin_telephone']` (jamais `participant_telephone`) ;
-   - succès → redirection vers `../../gestion-utilisateurs/html/gestion-utilisateurs.html`.
+   - succès → redirection vers `../../gestion-utilisateurs/`.
 3. Crée `admin-login/php/deconnexion.php` (détruit la session) et demande aux auteurs des pages admin de pointer le bouton « Déconnexion » de la barre latérale dessus.
 4. **Créer le vrai compte admin** (le jour J) : génère le hash puis insère-le.
    ```bash
@@ -42,6 +42,6 @@
 ## C'est terminé quand…
 
 - [ ] `770000000` / `admin1234` ouvre le tableau de bord ; un participant (`771000001`) ne passe **pas**.
-- [ ] Ouvrir directement `gestion-utilisateurs/html/...` sans être connecté admin ne donne accès à aucune donnée (les données viennent du PHP protégé par `exigerAdmin()`).
+- [ ] Ouvrir directement `gestion-utilisateurs/` sans être connecté admin ne donne accès à aucune donnée (les données viennent du PHP protégé par `exigerAdmin()`).
 - [ ] La déconnexion détruit la session.
 - [ ] Tu n'as modifié que `admin-login/`.

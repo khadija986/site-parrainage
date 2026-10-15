@@ -8,7 +8,7 @@ Remplacer le stockage temporaire du navigateur (`localStorage`) par la **vraie b
 
 ## Déjà fait
 
-`html/gestion-utilisateurs.html` + `css/` + `js/gestion-utilisateurs.js` : barre latérale, compteurs, recherche, 4 colonnes (parrains INF, filleuls INF, parrains TR, filleuls TR), fenêtre d'ajout / modification (nom, prénom, téléphone, photo, rôle, option, case « plusieurs filleuls »). Tout fonctionne en démo dans le navigateur.
+`index.html` + `css/` + `js/gestion-utilisateurs.js` : barre latérale, compteurs, recherche, 4 colonnes (parrains INF, filleuls INF, parrains TR, filleuls TR), fenêtre d'ajout / modification (nom, prénom, téléphone, photo, rôle, option, case « plusieurs filleuls »). Tout fonctionne en démo dans le navigateur.
 
 ## Étapes
 
@@ -20,7 +20,7 @@ Remplacer le stockage temporaire du navigateur (`localStorage`) par la **vraie b
    | `ajouter` | POST | Insère un participant (mot de passe provisoire aléatoire haché, voir 5) |
    | `modifier` | POST | Met à jour nom, prénom, téléphone, photo, rôle, option, `accepte_plusieurs` |
    | `supprimer` | POST | Supprime (les associations liées partent en cascade) |
-3. Adapte `js/gestion-utilisateurs.js` : remplace les lectures/écritures `localStorage` par des `fetch('../php/api.php?action=...')`. Garde l'affichage tel quel. **L'ordre conseillé** : d'abord `lister` (affichage), puis `ajouter`, puis `modifier`, puis `supprimer`.
+3. Adapte `js/gestion-utilisateurs.js` : remplace les lectures/écritures `localStorage` par des `fetch('php/api.php?action=...')`. Garde l'affichage tel quel. **L'ordre conseillé** : d'abord `lister` (affichage), puis `ajouter`, puis `modifier`, puis `supprimer`.
 4. Rôles dans la base : `parrain`, `marraine`, `filleul` (en minuscules). Le JS actuel utilise `Parrain` / `Filleul` : à convertir proprement (une seule fonction de conversion). Un menu « Marraine » peut être ajouté dans le formulaire.
 5. Mot de passe d'un utilisateur ajouté par l'admin : génère-en un aléatoire (`bin2hex(random_bytes(4))`), enregistre son hash, mets `mot_de_passe_temporaire = 1`, et montre-le **une seule fois** à l'admin pour qu'il le transmette.
 6. Photo : mêmes contrôles que l'inscription (`docs/guide-inscription.md`, étape 4). Si pas de photo : `uploads/defaut.svg`.

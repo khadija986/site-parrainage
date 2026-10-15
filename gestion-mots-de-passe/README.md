@@ -15,7 +15,7 @@ Remplacer le stockage temporaire (`localStorage`) par la table **`demande_mot_de
 
 ## Déjà fait
 
-`html/`, `css/`, `js/gestion-mots-de-passe.js` : liste des demandes, génération du mot de passe, bouton WhatsApp, compteurs, ajout manuel par numéro (quelqu'un qui appelle l'admin au téléphone).
+`index.html`, `css/`, `js/gestion-mots-de-passe.js` : liste des demandes, génération du mot de passe, bouton WhatsApp, compteurs, ajout manuel par numéro (quelqu'un qui appelle l'admin au téléphone).
 
 ## Étapes
 

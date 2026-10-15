@@ -29,7 +29,7 @@ function genererMotDePasse() {
 }
 
 function messageWhatsApp(motDePasse) {
-  const lienConnexion = new URL("../../connexion/html/connexion.html", window.location.href).href;
+  const lienConnexion = new URL("../connexion/", window.location.href).href;
   return "Bonjour, ton mot de passe du site de parrainage a été réinitialisé.\n"
     + "Mot de passe temporaire : " + motDePasse + "\n"
     + "Connecte-toi ici : " + lienConnexion + "\n"
