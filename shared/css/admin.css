@@ -28,11 +28,11 @@ button, input, select { font-family: inherit; }
 .sidebar .bas { margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(68, 8, 20, 0.25); }
 
 /* ---------- Barre du haut (mobile) ---------- */
-.topbar { display: none; align-items: center; gap: 12px; padding: 10px 14px; background:#f9cfda; border-bottom: 2px solid #efb1c0; }
+.topbar { display: none; align-items: center; gap: 12px; padding: 10px 14px; background:#f9cfda; border-bottom: 2px solid #f9ced9; }
 .topbar .titre { font-weight: 700; color: #440814; }
 .burger {
   display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin: 0; padding: 0;
-  background: #FFE9EF; border: 2px solid #efb1c0; border-radius: 10px; box-shadow: none; color: #440814; cursor: pointer;
+  background: #FFE9EF; border: 2px solid #f7c7d3; border-radius: 10px; box-shadow: none; color: #440814; cursor: pointer;
 }
 .burger svg { width: 22px; height: 22px; }
 .fond-menu { display: none; }

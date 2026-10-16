@@ -9,9 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/login4.css">
 </head>
+<?php 
+
+?>
 <body>
     <h1 id="h1_login">Welcome back to the admin space!</h1>
-    <form action="php/connexion.php" method="post">
+    <form action="admin-login/login.php" method="post">
         <h2 id="h2-login">Connect</h2>
         <div class="champ">
            <label for="telephone">Téléphone:</label>
