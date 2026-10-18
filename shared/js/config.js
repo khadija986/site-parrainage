@@ -4,7 +4,7 @@ const CONFIG = {
   // (il mène directement à la page suivante). Quand TON PHP fonctionne, passe TA ligne à false : le formulaire
   // enverra alors vraiment les données à ton script PHP. Une ligne par page, pour rester indépendants.
   DEMO: {
-    inscriptionFilleulInf: true,
+    inscriptionFilleulInf: false,
     inscriptionFilleulTr: true,
     inscriptionParrainInf: true,
     inscriptionParrainTr: true,
