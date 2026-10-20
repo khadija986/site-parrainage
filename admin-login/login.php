@@ -10,7 +10,55 @@
     <link rel="stylesheet" href="css/login4.css">
 </head>
 <?php 
+declare(strict_types=1);
 
+session_start();
+
+require_once __DIR__ . '/../php/config/db.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: index.php');
+    exit;
+}
+
+$telephone = trim($_POST['telephone'] ?? '');
+$motDePasse = $_POST['password'] ?? '';
+
+if ($telephone === '' || $motDePasse === '') {
+    exit('Veuillez remplir tous les champs.');
+}
+
+try {
+    $requete = pdo()->prepare(
+        'SELECT `telephone`, `mot_de_passe`
+         FROM `administrateur`
+         WHERE `telephone` = :telephone
+         LIMIT 1'
+    );
+
+    $requete->execute(['telephone' => $telephone]);
+    $admin = $requete->fetch();
+
+    if (
+        !$admin ||
+        !password_verify($motDePasse, $admin['mot_de_passe'])
+    ) {
+        exit('Téléphone ou mot de passe incorrect.');
+    }
+
+    session_regenerate_id(true);
+
+    $_SESSION['admin_telephone'] = $admin['telephone'];
+
+    // À adapter au véritable fichier d'accueil de ton espace admin.
+    header('Location: ../espace/index.php');
+    exit;
+
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    http_response_code(500);
+    exit('Une erreur est survenue lors de la connexion.');
+}
 ?>
 <body>
     <h1 id="h1_login">Welcome back to the admin space!</h1>

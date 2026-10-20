@@ -12,6 +12,49 @@
     <link rel="stylesheet" href="../gestion-utilisateurs/css/gestion-utilisateurs.css">
     <link rel="stylesheet" href="css/resultats.css">
 </head>
+<?php 
+declare(strict_types=1);
+
+session_start();
+
+require_once __DIR__ . '/../php/config/db.php';
+
+// Vérifier la connexion de l'administrateur
+if (empty($_SESSION['admin_telephone'])) {
+    header('Location: ../admin-login/');
+    exit;
+}
+
+try {
+    $sql = "
+        SELECT
+            a.telephone_filleul,
+            a.telephone_parrain,
+            a.date_tirage,
+            f.nom AS nom_filleul,
+            f.`prénom` AS prenom_filleul,
+            f.sous_departement AS departement_filleul,
+            f.photo AS photo_filleul,
+            p.nom AS nom_parrain,
+            p.`prénom` AS prenom_parrain,
+            p.sous_departement AS departement_parrain,
+            p.photo AS photo_parrain
+        FROM association a
+        INNER JOIN participant f
+            ON f.`téléphone` = a.telephone_filleul
+        INNER JOIN participant p
+            ON p.`téléphone` = a.telephone_parrain
+        ORDER BY a.date_tirage DESC
+    ";
+
+    $resultats = pdo()->query($sql)->fetchAll();
+
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    http_response_code(500);
+    exit('Erreur lors du chargement des résultats.');
+}
+?>
 <body>
 <div class="app">
     <aside class="sidebar" id="sidebar">
@@ -24,7 +67,7 @@
       </nav>
       <div class="bas">
         <nav aria-label="Compte">
-          <a href="../admin-login/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Déconnexion</a>
+          <a href="../admin-login/login.php"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Déconnexion</a>
         </nav>
       </div>
     </aside>
@@ -58,6 +101,16 @@
     </div>
     </div>
 
+   <script> 
+    window.resultatsParrainage = <?= json_encode(
+        $resultats,
+        JSON_UNESCAPED_UNICODE
+        | JSON_HEX_TAG
+        | JSON_HEX_APOS
+        | JSON_HEX_QUOT
+        | JSON_HEX_AMP
+    ) ?>;
+    </script> 
     <script src="../shared/js/config.js"></script>
     <script src="js/resultats.js"></script>
     <script src="../shared/js/admin-nav.js"></script>

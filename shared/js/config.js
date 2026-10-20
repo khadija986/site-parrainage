@@ -11,7 +11,7 @@ const CONFIG = {
     connexion: true,
     profil: true,
     espace: true,
-    adminLogin: true,
+    adminLogin: false,
   },
 
   // Numéro WhatsApp de l'administrateur, format international sans « + » (ex. Sénégal : 221 + 9 chiffres)
