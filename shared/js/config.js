@@ -6,7 +6,7 @@ const CONFIG = {
   DEMO: {
     inscriptionFilleulInf: true,
     inscriptionFilleulTr: true,
-    inscriptionParrainInf: true,
+    inscriptionParrainInf: false,
     inscriptionParrainTr: true,
     connexion: true,
     profil: true,
