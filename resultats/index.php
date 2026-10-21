@@ -1,3 +1,46 @@
+<?php 
+declare(strict_types=1);
+
+session_start();
+
+require_once __DIR__ . '/../php/config/db.php';
+
+// Vérifier la connexion de l'administrateur
+if (empty($_SESSION['admin_telephone'])) {
+    header('Location: ../admin-login/');
+    exit;
+}
+
+try {
+    $sql = "
+        SELECT
+            a.telephone_filleul,
+            a.telephone_parrain,
+            a.date_tirage,
+            f.nom AS nom_filleul,
+            f.`prénom` AS prenom_filleul,
+            f.sous_departement AS departement_filleul,
+            f.photo AS photo_filleul,
+            p.nom AS nom_parrain,
+            p.`prénom` AS prenom_parrain,
+            p.sous_departement AS departement_parrain,
+            p.photo AS photo_parrain
+        FROM association a
+        INNER JOIN participant f
+            ON f.`téléphone` = a.telephone_filleul
+        INNER JOIN participant p
+            ON p.`téléphone` = a.telephone_parrain
+        ORDER BY a.date_tirage DESC
+    ";
+
+    $resultats = pdo()->query($sql)->fetchAll();
+
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    http_response_code(500);
+    exit('Erreur lors du chargement des résultats.');
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
