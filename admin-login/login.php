@@ -2,19 +2,18 @@
 declare(strict_types=1);
 session_start();
 
+$erreur= '';
+
 require_once __DIR__ . '/../php/config/db.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../admin-login/login.php');
-    exit;
-}
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
 $telephone = trim($_POST['telephone'] ?? '');
 $motDePasse = $_POST['password'] ?? '';
 
 if ($telephone === '' || $motDePasse === '') {
-    exit('Veuillez remplir tous les champs.');
-}
+    $erreur = "Veuillez remplir tous les champs.";
+} else { 
 
 try {
     $requete = pdo()->prepare(
@@ -31,21 +30,20 @@ try {
         !$admin ||
         !password_verify($motDePasse, $admin['mot_de_passe'])
     ) {
-        exit('Téléphone ou mot de passe incorrect.');
+        $erreur = "Téléphone ou mot de passe incorrect.";
+    } else{
+        session_regenerate_id(true);
+        $_SESSION['admin_telephone'] = $admin['telephone'];
+        header('Location: ../resultats/index.php');
+        exit;
     }
-
-    session_regenerate_id(true);
-
-    $_SESSION['admin_telephone'] = $admin['telephone'];
-
-    // À adapter au véritable fichier d'accueil de ton espace admin.
-    header('Location: ../espace/index.php');
-    exit;
 
 } catch (PDOException $e) {
     error_log($e->getMessage());
     http_response_code(500);
-    exit('Une erreur est survenue lors de la connexion.');
+    $erreur = "Une erreur est survenue lors de la connexion.";
+}
+}
 }
 ?>
 <!DOCTYPE html>
@@ -61,7 +59,12 @@ try {
 </head>
 <body>
     <h1 id="h1_login">Welcome back to the admin space!</h1>
-    <form action="admin-login/login.php" method="post">
+    <form action="login.php" method="post">
+        <?php if($erreur !== ''): ?>
+            <p class="message-erreur" role="alert">
+                <?= htmlspecialchars($erreur, ENT_QUOTES, 'UTF-8') ?>
+            </p>
+        <?php endif; ?>
         <h2 id="h2-login">Connect</h2>
         <div class="champ">
            <label for="telephone">Téléphone:</label>

@@ -70,12 +70,21 @@ form{
     box-shadow: 0 10px 30px rgba(68, 8, 20, 0.2);
     animation: apparition 1.5s ease-out;
 }
+.message-erreur {
+    color: #dc2626;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
 form h2{
     margin: 0 0 22px;
     text-align: left;
     font-size: 1.9rem;
     letter-spacing: 1px;
-    color: #440814;
+    color: #641324;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .champ{
