@@ -7,9 +7,9 @@ const CONFIG = {
     inscriptionFilleulInf: true,
     inscriptionFilleulTr: true,
     inscriptionParrainInf: true,
-    inscriptionParrainTr: true,
+    inscriptionParrainTr: false,
     connexion: true,
-    profil: true,
+    profil: false,
     espace: true,
     adminLogin: false,
   },
@@ -20,6 +20,6 @@ const CONFIG = {
   // Endpoints PHP (partie 2). Laisser vide tant que PHP n'est pas branché : les pages restent utilisables en démo.
   DEMANDE_MDP_ENDPOINT: "",   // POST telephone -> enregistre une demande de réinitialisation
   ESPACE_ENDPOINT: "",      // GET -> { role, sous_departement, prenom, nom, photo, tirage_effectue, parrain: {...} | filleuls: [...] }
-  PROFIL_ENDPOINT: "",        // GET -> { nom, prenom, telephone, role, sous_departement, photo }
+  PROFIL_ENDPOINT: "php/profil.php?action=lire",        // GET -> { nom, prenom, telephone, role, sous_departement, photo }
   RESULTATS_ENDPOINT: "",     // (ADMIN) GET -> { termine, parrains: [{ nom, prenom, sous_departement, photo, filleuls: [...] }] }
 };
