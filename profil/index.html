@@ -38,6 +38,8 @@
     <!-- PHP : le traitement est à écrire dans php/profil.php (voir README) -->
     <form action="php/profil.php" method="POST" enctype="multipart/form-data">
 
+      <input type="hidden" name="csrf" id="csrf">
+
       <div class="ligne">
         <div class="champ">
           <label class="etiquette" for="prenom">Prénom</label>
