@@ -4,6 +4,7 @@ function remplirProfil(profil) {
   document.getElementById("nom").value = profil.nom;
   document.getElementById("prenom").value = profil.prenom;
   document.getElementById("telephone").value = profil.telephone;
+  document.getElementById("csrf").value = profil.csrf || "";   // jeton anti-CSRF envoyé avec le formulaire
 
 
   if (profil.photo) {
@@ -29,6 +30,14 @@ if (new URLSearchParams(window.location.search).get("mdp_temporaire")) {
   document.getElementById("intro-profil").textContent = "Ton mot de passe est temporaire : choisis-en un nouveau ci-dessous.";
 }
 
+// Messages renvoyés par profil.php après l'envoi du formulaire
+const parametresUrl = new URLSearchParams(window.location.search);
+if (parametresUrl.get("erreur")) {
+  afficherMessage(parametresUrl.get("erreur"));
+} else if (parametresUrl.get("succes")) {
+  afficherMessage("Modifications enregistrées.");
+}
+
 remplirAvatar(UTILISATEUR_DEMO);   // remplacé par le vrai profil dès que PROFIL_ENDPOINT répond
 activerApercuPhoto("Laisse vide pour garder l'actuelle");
 activerOeils();
@@ -45,7 +54,7 @@ brancherVerification(document.querySelector("form"), function () {
     const erreur = verifierMotDePasse(nouveau, confirmation);
     if (erreur !== "") return erreur;
   }
-  return verifierPhoto(document.getElementById("photo").files[0]);
+  // Sur le profil la photo est facultative : on ne la vérifie que si une nouvelle est choisie
+  const nouvellePhoto = document.getElementById("photo").files[0];
+  return nouvellePhoto ? verifierPhoto(nouvellePhoto) : "";
 });
-
-brancherDemo(document.querySelector("form"), "profil", "", "Modifications enregistrées (mode démo : rien n'est sauvegardé pour l'instant).");
